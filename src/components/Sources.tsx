@@ -6,8 +6,8 @@ interface SourcesProps {
 
 export default function Sources({ sources }: SourcesProps) {
   return (
-    <section className="mb-12">
-      <h2 className="text-3xl font-bold mb-6 text-text-primary">Part 5 — Source Discipline</h2>
+    <section id="sources" className="mb-12 scroll-mt-20">
+      <h2 className="text-3xl font-bold mb-6 text-text-primary">Source Discipline</h2>
       <div className="bg-secondary border border-border rounded-lg p-8">
         <div className="space-y-6">
           {sources.map((category, index) => (

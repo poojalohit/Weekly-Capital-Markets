@@ -56,8 +56,8 @@ export default function USMarketNarrative({ narrative }: USMarketNarrativeProps)
   };
 
   return (
-    <section className="mb-12">
-      <h2 className="text-3xl font-bold mb-6 text-text-primary">Part 2 — U.S. Weekly Market Narrative</h2>
+    <section id="us-narrative" className="mb-12 scroll-mt-20">
+      <h2 className="text-3xl font-bold mb-6 text-text-primary">U.S. Weekly Market Narrative</h2>
       <div className="bg-secondary border border-border rounded-lg p-8">
         <div className="prose prose-invert max-w-none">
           {formatText(narrative)}

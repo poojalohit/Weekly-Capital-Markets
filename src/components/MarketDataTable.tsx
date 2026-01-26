@@ -27,9 +27,9 @@ export default function MarketDataTable({ data, date, interpretation }: MarketDa
   };
 
   return (
-    <section className="mb-12">
+    <section id="market-data" className="mb-12 scroll-mt-20">
       <div className="mb-6">
-        <h1 className="text-4xl font-bold mb-2">Weekly U.S. Capital Markets Dashboard</h1>
+        <h2 className="text-4xl font-bold mb-2">Weekly Market Data Table</h2>
         <p className="text-text-secondary">
           <span className="font-semibold">Date:</span> {new Date(date).toLocaleDateString('en-US', { 
             weekday: 'long', 

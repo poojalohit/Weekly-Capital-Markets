@@ -6,8 +6,8 @@ interface CorporateFinanceConceptsProps {
 
 export default function CorporateFinanceConcepts({ concepts }: CorporateFinanceConceptsProps) {
   return (
-    <section className="mb-12">
-      <h2 className="text-3xl font-bold mb-6 text-text-primary">Part 4 — Corporate Finance Concepts</h2>
+    <section id="corporate-finance" className="mb-12 scroll-mt-20">
+      <h2 className="text-3xl font-bold mb-6 text-text-primary">Corporate Finance Concepts</h2>
       <div className="space-y-6">
         {concepts.map((concept, index) => (
           <div key={index} className="bg-secondary border border-border rounded-lg p-6">

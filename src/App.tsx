@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Navigation from './components/Navigation';
 import MarketDataTable from './components/MarketDataTable';
 import USMarketNarrative from './components/USMarketNarrative';
 import GlobalEvents from './components/GlobalEvents';
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-primary">
+      <Navigation lastUpdated={dashboardData.date} />
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <MarketDataTable 
           data={dashboardData.marketData}
