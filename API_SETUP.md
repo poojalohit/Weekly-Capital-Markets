@@ -4,7 +4,16 @@ This dashboard can automatically update market data every Wednesday morning usin
 
 ## Required API Keys
 
-### 1. FRED API (Free)
+### 1. OpenAI API (Required for AI-generated narratives)
+**Required for:** Automatic generation of interpretation, U.S. narrative, and global events
+
+1. Go to https://platform.openai.com/api-keys
+2. Sign up for an account
+3. Create an API key
+4. Add it to GitHub Secrets as `OPENAI_API_KEY`
+5. **Note:** Uses GPT-4o-mini model (cost-effective). You'll need to add credits to your OpenAI account.
+
+### 2. FRED API (Free)
 **Required for:** Treasury yields, SOFR rates
 
 1. Go to https://fred.stlouisfed.org/docs/api/api_key.html
@@ -12,7 +21,27 @@ This dashboard can automatically update market data every Wednesday morning usin
 3. Generate an API key
 4. Add it to GitHub Secrets as `FRED_API_KEY`
 
-### 2. Exchange Rate API (Optional - Free tier available)
+### 3. Trading Economics API (Optional - Free tier available)
+**Required for:** Economic calendar data (NFP, CPI, PPI, etc.)
+
+1. Go to https://tradingeconomics.com/api
+2. Sign up for free tier
+3. Get your API key
+4. Add it to GitHub Secrets as `TRADING_ECONOMICS_API_KEY`
+
+**Note:** Without this, narratives will use fallback data but may be less accurate.
+
+### 4. News API (Optional - Free tier available)
+**Required for:** Recent financial news for narrative context
+
+1. Go to https://newsapi.org/
+2. Sign up for free tier (100 requests/day)
+3. Get your API key
+4. Add it to GitHub Secrets as `NEWS_API_KEY`
+
+**Note:** Without this, narratives will use fallback data but may be less current.
+
+### 5. Exchange Rate API (Optional - Free tier available)
 **Required for:** Currency rates (USD/JPY, EUR/USD)
 
 1. Go to https://www.exchangerate-api.com/
@@ -22,7 +51,7 @@ This dashboard can automatically update market data every Wednesday morning usin
 
 **Note:** The script will work without this key using a fallback API, but rates may be less accurate.
 
-### 3. Yahoo Finance (No API key needed)
+### 6. Yahoo Finance (No API key needed)
 **Used for:** Stock indices (S&P 500, Nasdaq), VIX, commodities (Gold, Oil), Bitcoin
 
 No setup required - uses public Yahoo Finance endpoints.
@@ -33,8 +62,11 @@ No setup required - uses public Yahoo Finance endpoints.
 2. Click **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Add each API key:
-   - Name: `FRED_API_KEY`, Value: [your FRED API key]
-   - Name: `EXCHANGE_RATE_API_KEY`, Value: [your Exchange Rate API key] (optional)
+   - **Required:** `OPENAI_API_KEY` - Your OpenAI API key
+   - **Required:** `FRED_API_KEY` - Your FRED API key
+   - **Recommended:** `TRADING_ECONOMICS_API_KEY` - For economic calendar data
+   - **Recommended:** `NEWS_API_KEY` - For financial news
+   - **Optional:** `EXCHANGE_RATE_API_KEY` - For currency rates
 
 ## Data Sources That Require Manual Updates
 
@@ -44,17 +76,18 @@ Some data points are not available via free APIs and will need manual updates:
 - **U.S. High Yield OAS** - Requires Bloomberg Terminal or premium data service
 - **3-Month SOFR Rate** - Can be fetched from FRED if you have the correct series ID
 
-## Narrative Updates
+## Automatic Updates
 
-The automatic update script currently updates:
-- ✅ Market data values
-- ✅ Weekly and YTD percentage changes
+The automatic update script now updates **EVERYTHING** automatically:
+- ✅ Market data values (all 12 variables)
+- ✅ Weekly percentage changes (calculated from last Wednesday)
+- ✅ **YTD percentage changes (calculated from Dec 31, 2025)**
 - ✅ Date
+- ✅ **Interpretation text (3-5 sentences) - AI-generated**
+- ✅ **U.S. Market Narrative (350-450 words) - AI-generated**
+- ✅ **Global Events section (150-200 words) - AI-generated**
 
-**You still need to manually update:**
-- Interpretation text (3-5 sentences)
-- U.S. Market Narrative (350-450 words)
-- Global Events section (150-200 words)
+**No manual updates needed!** The entire dashboard refreshes automatically every Wednesday morning.
 
 ## Schedule
 
@@ -69,10 +102,13 @@ The workflow runs:
    npm install
    ```
 
-2. Set environment variables (optional):
+2. Set environment variables:
    ```bash
-   export FRED_API_KEY="your-key-here"
-   export EXCHANGE_RATE_API_KEY="your-key-here"
+   export OPENAI_API_KEY="your-openai-key-here"
+   export FRED_API_KEY="your-fred-key-here"
+   export TRADING_ECONOMICS_API_KEY="your-key-here"  # optional
+   export NEWS_API_KEY="your-key-here"  # optional
+   export EXCHANGE_RATE_API_KEY="your-key-here"  # optional
    ```
 
 3. Run the update script:
