@@ -5,13 +5,13 @@ export const sampleDashboardData: WeeklyDashboard = {
   marketData: [
     {
       variable: 'S&P 500 Index',
-      latestLevel: 4,850.00,
+      latestLevel: 4850.00,
       weeklyChange: 1.2,
       ytdChange: 3.5
     },
     {
       variable: 'Nasdaq Composite Index',
-      latestLevel: 15,200.00,
+      latestLevel: 15200.00,
       weeklyChange: 1.8,
       ytdChange: 4.2
     },
@@ -35,7 +35,7 @@ export const sampleDashboardData: WeeklyDashboard = {
     },
     {
       variable: 'Gold (USD/oz)',
-      latestLevel: 2,050.00,
+      latestLevel: 2050.00,
       weeklyChange: 0.8,
       ytdChange: 2.1
     },
@@ -71,7 +71,7 @@ export const sampleDashboardData: WeeklyDashboard = {
     },
     {
       variable: 'Bitcoin (USD)',
-      latestLevel: 42,500.00,
+      latestLevel: 42500.00,
       weeklyChange: 2.5,
       ytdChange: 8.3
     }
