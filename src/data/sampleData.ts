@@ -1,81 +1,81 @@
 import { WeeklyDashboard } from '../types/marketData';
 
 export const sampleDashboardData: WeeklyDashboard = {
-  date: '2026-01-26',
+  date: '2026-01-28',
   marketData: [
-    {
-      variable: 'S&P 500 Index',
-      latestLevel: 4850.00,
-      weeklyChange: 1.2,
-      ytdChange: 3.5
-    },
-    {
-      variable: 'Nasdaq Composite Index',
-      latestLevel: 15200.00,
-      weeklyChange: 1.8,
-      ytdChange: 4.2
-    },
-    {
-      variable: 'VIX Index',
-      latestLevel: 14.50,
-      weeklyChange: -5.2,
-      ytdChange: -12.3
-    },
-    {
-      variable: 'U.S. 10-Year Treasury Yield',
-      latestLevel: 4.15,
-      weeklyChange: 0.10,
-      ytdChange: 0.25
-    },
-    {
-      variable: '3-Month SOFR Rate',
-      latestLevel: 5.25,
-      weeklyChange: 0.00,
-      ytdChange: 0.00
-    },
-    {
-      variable: 'Gold (USD/oz)',
-      latestLevel: 2050.00,
-      weeklyChange: 0.8,
-      ytdChange: 2.1
-    },
-    {
-      variable: 'Crude Oil (WTI)',
-      latestLevel: 75.50,
-      weeklyChange: -1.5,
-      ytdChange: -3.2
-    },
-    {
-      variable: 'USD/JPY',
-      latestLevel: 148.50,
-      weeklyChange: 0.3,
-      ytdChange: 1.2
-    },
-    {
-      variable: 'EUR/USD',
-      latestLevel: 1.0850,
-      weeklyChange: -0.2,
-      ytdChange: -0.5
-    },
-    {
-      variable: 'BBB U.S. Corporate OAS',
-      latestLevel: 125,
-      weeklyChange: -2,
-      ytdChange: -8
-    },
-    {
-      variable: 'U.S. High Yield OAS',
-      latestLevel: 350,
-      weeklyChange: -5,
-      ytdChange: -15
-    },
-    {
-      variable: 'Bitcoin (USD)',
-      latestLevel: 42500.00,
-      weeklyChange: 2.5,
-      ytdChange: 8.3
-    }
-  ],
+  {
+    variable: "S&P 500 Index",
+    latestLevel: 6978.60009765625,
+    weeklyChange: 0.4081896177137236,
+    ytdChange: 1.1942719580840442
+  },
+  {
+    variable: "Nasdaq Composite Index",
+    latestLevel: 23817.099609375,
+    weeklyChange: 0.9141008826954485,
+    ytdChange: 1.6995523732026396
+  },
+  {
+    variable: "VIX Index",
+    latestLevel: 16.270000457763672,
+    weeklyChange: 0.7430392697700824,
+    ytdChange: 13.538035899416043
+  },
+  {
+    variable: "U.S. 10-Year Treasury Yield",
+    latestLevel: 4.15,
+    weeklyChange: 0.1,
+    ytdChange: 0.25
+  },
+  {
+    variable: "3-Month SOFR Rate",
+    latestLevel: 5.25,
+    weeklyChange: 0,
+    ytdChange: 0
+  },
+  {
+    variable: "Gold (USD/oz)",
+    latestLevel: 5304.7998046875,
+    weeklyChange: 4.431356196625931,
+    ytdChange: 21.388519396444565
+  },
+  {
+    variable: "Crude Oil (WTI)",
+    latestLevel: 62.2599983215332,
+    weeklyChange: 2.6884334895305972,
+    ytdChange: 7.437441763331446
+  },
+  {
+    variable: "USD/JPY",
+    latestLevel: 152.9,
+    weeklyChange: 0.3,
+    ytdChange: 1.2
+  },
+  {
+    variable: "EUR/USD",
+    latestLevel: 1,
+    weeklyChange: -0.2,
+    ytdChange: -0.5
+  },
+  {
+    variable: "BBB U.S. Corporate OAS",
+    latestLevel: 125,
+    weeklyChange: -2,
+    ytdChange: -8
+  },
+  {
+    variable: "U.S. High Yield OAS",
+    latestLevel: 350,
+    weeklyChange: -5,
+    ytdChange: -15
+  },
+  {
+    variable: "Bitcoin (USD)",
+    latestLevel: 89226.4296875,
+    weeklyChange: 1.0868020145520603,
+    ytdChange: 1.9627751842894423
+  }
+],
   interpretation: 'Equity markets continued their upward trajectory this week, with the S&P 500 and Nasdaq both posting solid gains. The VIX declined further, indicating reduced market volatility and improved risk sentiment. Treasury yields edged higher as economic data remained resilient, while credit spreads tightened across both investment-grade and high-yield markets. Commodities showed mixed performance, with gold advancing while oil retreated. The dollar strengthened modestly against the yen but weakened slightly against the euro. Overall, markets appear to be trending positively, with risk assets benefiting from a favorable macro backdrop.',
   usNarrative: `The U.S. capital markets experienced a constructive week, driven by a combination of resilient economic data and continued optimism around monetary policy. The week's key economic releases painted a picture of an economy that remains on solid footing, though with some emerging signs of moderation.
 
