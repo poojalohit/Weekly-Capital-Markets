@@ -6,8 +6,11 @@ on:
     - cron: '0 9 * * 3'
   workflow_dispatch: # Allow manual triggering
 
+# GITHUB_TOKEN permissions required for updating content and deploying Pages
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-data:
