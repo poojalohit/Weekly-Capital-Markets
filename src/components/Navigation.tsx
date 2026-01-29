@@ -46,9 +46,9 @@ export default function Navigation({ lastUpdated }: NavigationProps) {
 
   const navItems = [
     { id: 'market-data', label: 'Market Data' },
-    { id: 'us-narrative', label: 'U.S. Market Narrative' },
+    { id: 'us-narrative', label: 'Market Analysis' },
     { id: 'global-events', label: 'Global Events' },
-    { id: 'corporate-finance', label: 'Corporate Finance Concepts' },
+    { id: 'corporate-finance', label: 'Finance Concepts' },
     { id: 'sources', label: 'Sources' }
   ];
 

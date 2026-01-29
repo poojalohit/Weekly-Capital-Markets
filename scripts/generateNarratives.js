@@ -65,7 +65,7 @@ async function fetchFinancialNews() {
 // Generate interpretation using AI
 async function generateInterpretation(marketData) {
   if (!openai) {
-    return 'Equity markets continued their upward trajectory this week, with the S&P 500 and Nasdaq both posting solid gains. The VIX declined further, indicating reduced market volatility and improved risk sentiment. Treasury yields edged higher as economic data remained resilient, while credit spreads tightened across both investment-grade and high-yield markets. Commodities showed mixed performance, with gold advancing while oil retreated. The dollar strengthened modestly against the yen but weakened slightly against the euro. Overall, markets appear to be trending positively, with risk assets benefiting from a favorable macro backdrop.';
+    return generateFallbackInterpretation();
   }
   
   try {
@@ -73,34 +73,36 @@ async function generateInterpretation(marketData) {
       `${item.variable}: ${item.latestLevel} (Weekly: ${item.weeklyChange > 0 ? '+' : ''}${item.weeklyChange.toFixed(2)}%, YTD: ${item.ytdChange > 0 ? '+' : ''}${item.ytdChange.toFixed(2)}%)`
     ).join('\n');
     
-    const prompt = `Analyze the following U.S. capital markets data and write a brief interpretation (3-5 sentences) explaining:
-1. Which markets moved the most and why
-2. Which markets appear to be trending (positive or negative) or mean-reverting
-3. Any surprising divergences between markets
+    const prompt = `You are a senior portfolio manager writing a brief market interpretation for institutional investors.
+
+Analyze this week's market data and write a concise interpretation (3-5 sentences) that:
+1. Identifies the DEFINING TREND of the week (give it a memorable name if appropriate, e.g., "The Risk Rally" or "Flight to Quality")
+2. Notes any CORRELATION BREAKDOWNS or unusual cross-asset movements
+3. Highlights the BIGGEST MOVERS and explains WHY they moved
 
 Market Data:
 ${marketSummary}
 
-Write a professional, concise interpretation suitable for an investment briefing:`;
+Write in a professional, analytical tone. Be specific with numbers. Identify anomalies.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a financial market analyst writing brief market interpretations for investment professionals.' },
+        { role: 'system', content: 'You are a senior portfolio manager at a major investment bank writing market commentary for institutional clients. Be analytical, specific, and identify the key narrative driving markets.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 200,
+      max_tokens: 250,
       temperature: 0.7
     });
     
     return completion.choices[0].message.content.trim();
   } catch (error) {
     console.error('Error generating interpretation:', error.message);
-    return 'Equity markets continued their upward trajectory this week, with the S&P 500 and Nasdaq both posting solid gains. The VIX declined further, indicating reduced market volatility and improved risk sentiment. Treasury yields edged higher as economic data remained resilient, while credit spreads tightened across both investment-grade and high-yield markets.';
+    return generateFallbackInterpretation();
   }
 }
 
-// Generate U.S. Market Narrative using AI
+// Generate U.S. Market Narrative using AI - Updated format matching sample
 async function generateUSNarrative(marketData, economicCalendar, news) {
   if (!openai) {
     return generateFallbackUSNarrative();
@@ -119,38 +121,58 @@ async function generateUSNarrative(marketData, economicCalendar, news) {
       `${article.title} (${article.publishedAt})`
     ).join('\n');
     
-    const prompt = `Write a comprehensive U.S. Weekly Market Narrative (350-450 words) for a capital markets dashboard. The narrative should:
+    const prompt = `You are a senior portfolio manager writing a weekly market analysis for institutional investors. Write a comprehensive Market Analysis & Commentary (400-500 words) following this EXACT structure:
 
-1. **Key Economic Data Releases** section:
-   - Summarize major economic releases from the past week (NFP, CPI, PPI, PCE, Retail Sales, ISM, GDP, Jobless Claims, Housing data)
-   - Note whether each release beat/missed expectations
-   - Explain how markets reacted
-   - Connect data to broader macro themes
+**1. Trend Identification: [Give it a descriptive title]**
+- Identify the DEFINING TREND of the week
+- Explain what made this week's market action distinctive
+- Note any correlation breakdowns (e.g., if stocks and bonds moved together unusually)
+- Use bullet points for specific observations
 
-2. **U.S. Political and Policy Developments** section:
-   - Federal Reserve speeches or decisions
-   - Fiscal policy announcements
-   - Regulatory actions
-   - Geopolitical developments involving the U.S.
+**2. Key Catalysts**
+- Identify the most IMPACTFUL events that moved markets this week
+- For each catalyst, explain:
+  • What happened
+  • How markets reacted (be specific with numbers)
+  • Why this matters going forward
+- Include Fed actions, economic data releases, geopolitical events
 
-Use a concise, professional tone suitable for an investment briefing. Use markdown formatting with **bold** for section headers.
+**3. Sentiment Analysis**
+- Describe the overall market mood (risk-on, risk-off, cautious, euphoric, panic, etc.)
+- Use VIX levels as evidence
+- Reference credit spreads and other sentiment indicators
+- Note any sector-specific sentiment shifts
+
+**4. The "Fresh Money" Recommendation**
+- If you had $10M of fresh capital to deploy, what would you do?
+- Provide a clear RECOMMENDATION (e.g., "Hold Cash", "Buy IG Credit", "Overweight Equities")
+- Explain your RATIONALE with specific reasoning
+- Identify what you would AVOID and why
+
+**5. Forward Outlook**
+- What should investors watch NEXT WEEK?
+- Identify key RISKS that could derail markets
+- Identify potential OPPORTUNITIES
+- Name specific data releases or events to monitor
 
 Market Data:
 ${marketSummary}
 
-Economic Releases:
+Economic Releases This Week:
 ${economicReleases}
 
 Recent News:
-${recentNews}`;
+${recentNews}
+
+Write in a professional, analytical tone. Be SPECIFIC with data points. Connect macro events to market movements. Use bullet points within each section.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a financial market analyst writing weekly market narratives for investment professionals. Write in a professional, analytical tone.' },
+        { role: 'system', content: 'You are a senior portfolio manager at a top-tier investment bank writing weekly market commentary for sophisticated institutional clients. Your analysis should be insightful, specific, and actionable. Always connect data to market implications. Use the numbered section format exactly as specified.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 800,
+      max_tokens: 1200,
       temperature: 0.7
     });
     
@@ -168,30 +190,46 @@ async function generateGlobalEvents(marketData, news) {
   }
   
   try {
+    const marketSummary = marketData.map(item => 
+      `${item.variable}: ${item.latestLevel} (WoW: ${item.weeklyChange > 0 ? '+' : ''}${item.weeklyChange.toFixed(2)}%)`
+    ).join('\n');
+    
     const globalNews = news.filter(article => 
       article.title.toLowerCase().includes('europe') ||
       article.title.toLowerCase().includes('china') ||
       article.title.toLowerCase().includes('japan') ||
       article.title.toLowerCase().includes('ecb') ||
       article.title.toLowerCase().includes('boj') ||
-      article.title.toLowerCase().includes('geopolitical')
+      article.title.toLowerCase().includes('geopolitical') ||
+      article.title.toLowerCase().includes('oil') ||
+      article.title.toLowerCase().includes('opec')
     ).slice(0, 10);
     
     const newsSummary = globalNews.map(article => 
       `${article.title} - ${article.description || ''}`
     ).join('\n');
     
-    const prompt = `Write a Global Events section (150-200 words) for a U.S. capital markets dashboard. The section should:
+    const prompt = `You are a senior portfolio manager writing about global events affecting U.S. markets. Write a Global Events section (200-250 words) with this structure:
 
-1. Identify international developments that influenced U.S. markets
-2. Include:
-   - Central bank decisions abroad (ECB, BOJ, etc.)
-   - Geopolitical tensions or resolutions
-   - Commodity supply disruptions
-   - Economic surprises in major economies
-3. **Transmission Mechanism Requirement**: Explain how each major global event affected U.S. markets (yields, risk sentiment, FX, commodities)
+**International Developments**
+For each major global event this week:
+- Describe what happened
+- Explain the TRANSMISSION MECHANISM to U.S. markets:
+  • How did it affect U.S. Treasury yields?
+  • How did it affect risk sentiment?
+  • How did it affect FX markets (especially USD)?
+  • How did it affect commodities?
 
-Use markdown formatting with **bold** for section headers. Write in a professional, analytical tone.
+Cover these areas:
+- Central bank decisions abroad (ECB, BOJ, PBOC, etc.)
+- Geopolitical tensions or resolutions
+- Commodity supply/demand shocks
+- Economic surprises in major economies (China, Europe, Japan)
+
+Use bullet points. Be specific about transmission mechanisms.
+
+Market Data (for reference):
+${marketSummary}
 
 Recent Global News:
 ${newsSummary}`;
@@ -199,10 +237,10 @@ ${newsSummary}`;
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a financial market analyst writing about global events affecting U.S. markets. Write in a professional, analytical tone.' },
+        { role: 'system', content: 'You are a senior global macro strategist explaining how international events impact U.S. markets. Focus on transmission mechanisms - how global events flow through to U.S. assets.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 400,
+      max_tokens: 500,
       temperature: 0.7
     });
     
@@ -213,47 +251,79 @@ ${newsSummary}`;
   }
 }
 
+// Fallback interpretation
+function generateFallbackInterpretation() {
+  return `The defining trend this week was "Cautious Optimism" as risk assets advanced while defensive positioning remained elevated. The S&P 500 and Nasdaq both posted gains, yet the VIX remained above historical averages, suggesting investors are hedging against potential volatility. Treasury yields edged higher as economic data came in resilient, while credit spreads continued to tighten—a constructive signal for risk appetite. The correlation between equities and bonds remained elevated, indicating macro factors continue to dominate micro fundamentals. Currency markets showed USD strength against the yen but weakness versus the euro, reflecting divergent central bank expectations.`;
+}
+
 // Fallback narratives if AI is not available
 function generateFallbackUSNarrative() {
-  return `The U.S. capital markets experienced a constructive week, driven by a combination of resilient economic data and continued optimism around monetary policy. The week's key economic releases painted a picture of an economy that remains on solid footing, though with some emerging signs of moderation.
+  return `**1. Trend Identification: "The Resilience Rally"**
 
-**Key Economic Data Releases**
+The defining trend this week was continued market resilience despite mixed economic signals. Risk assets advanced while volatility remained contained.
 
-The week's economic calendar was headlined by several important data points. The latest Non-Farm Payrolls (NFP) report exceeded expectations, showing continued strength in the labor market. The unemployment rate held steady at historically low levels, while wage growth moderated slightly but remained above pre-pandemic trends. This labor market resilience has been a key factor supporting consumer spending and overall economic activity.
+• Equity markets posted solid gains with the S&P 500 and Nasdaq both finishing higher
+• Correlation Observation: Stocks and bonds moved in opposite directions, suggesting a return to normal cross-asset relationships
+• The VIX declined, indicating reduced hedging demand and improved risk appetite
 
-Inflation data, as measured by the Consumer Price Index (CPI), came in largely in line with expectations. Core inflation continued its gradual deceleration, providing the Federal Reserve with additional confidence that its policy measures are having the intended effect. The Producer Price Index (PPI) also showed signs of moderation, suggesting that pipeline inflationary pressures are easing.
+**2. Key Catalysts**
 
-Retail sales data for the month showed modest growth, indicating that consumer spending remains healthy despite some headwinds from higher interest rates. The ISM Manufacturing Index remained in contraction territory, though the pace of decline has slowed. The Services PMI, meanwhile, continued to indicate expansion, highlighting the ongoing shift in economic activity toward services.
+The most impactful events this week centered on economic data and Fed communications:
 
-**U.S. Political and Policy Developments**
+• Labor Market Data: The latest employment figures showed continued strength, supporting the "soft landing" narrative
+• Inflation Readings: CPI and PPI data came in near expectations, reinforcing the view that inflation is gradually moderating
+• Fed Communications: Multiple Fed officials spoke this week, maintaining a data-dependent stance while acknowledging progress on inflation
 
-Federal Reserve communications this week reinforced the central bank's data-dependent approach to monetary policy. Several Fed officials delivered speeches emphasizing the need to remain vigilant on inflation while acknowledging the progress made thus far. The Fed's latest meeting minutes revealed ongoing discussions about the appropriate pace of policy normalization, with most members favoring a gradual approach.
+**3. Sentiment Analysis**
 
-Fiscal policy developments remained relatively quiet, though there were continued discussions in Washington about potential budget measures. Regulatory actions in the financial sector continued to evolve, with several agencies providing additional guidance on implementation of recent rule changes.
+Market sentiment can be characterized as "cautiously optimistic":
 
-The combination of solid economic fundamentals, moderating inflation, and a measured approach to monetary policy has created a favorable environment for risk assets. Equity markets have responded positively to this backdrop, while credit markets have also benefited from improved sentiment.`;
+• VIX: Trading at moderate levels, suggesting neither complacency nor panic
+• Credit Spreads: Investment-grade and high-yield spreads continued to tighten, indicating confidence in corporate balance sheets
+• Sector Rotation: Growth stocks outperformed value, suggesting risk appetite is intact
+
+**4. The "Fresh Money" Recommendation**
+
+• Recommendation: Maintain balanced positioning with a slight overweight to equities
+• Rationale: Economic data supports continued expansion, and corporate earnings remain resilient. However, valuations are elevated, warranting selective stock-picking over broad index exposure
+• Avoid: Long-duration Treasuries remain vulnerable to any inflation surprises; also exercise caution in rate-sensitive sectors
+
+**5. Forward Outlook**
+
+Key events to monitor next week:
+
+• Risk: Any hawkish surprises from Fed speakers could trigger a volatility spike
+• Risk: Geopolitical developments remain a wildcard for energy prices and risk sentiment
+• Opportunity: Watch for dips in quality names as potential buying opportunities
+• Data to Watch: Housing data, consumer confidence, and any Fed meeting minutes`;
 }
 
 function generateFallbackGlobalEvents() {
-  return `International developments this week had meaningful implications for U.S. financial markets, primarily through their impact on global risk sentiment and commodity prices.
+  return `**International Developments**
 
-**Central Bank Decisions Abroad**
+Several global events had meaningful implications for U.S. markets this week:
 
-The European Central Bank (ECB) maintained its current policy stance, keeping interest rates unchanged while signaling a continued focus on inflation management. The ECB's relatively hawkish tone, compared to market expectations, contributed to some strength in the euro against the dollar. This development had implications for U.S. exporters and multinational corporations with significant European exposure.
-
-The Bank of Japan (BOJ) continued its ultra-accommodative monetary policy, maintaining negative interest rates and yield curve control measures. This policy divergence between the U.S. and Japan has been a key driver of the USD/JPY exchange rate, which moved higher this week.
+**Central Bank Divergence**
+• The ECB maintained its current policy stance, signaling continued focus on inflation
+• Transmission to U.S.: Euro strength vs. USD; modest pressure on U.S. export competitiveness
+• The BOJ continued ultra-accommodative policy, maintaining the USD/JPY carry trade dynamic
+• Transmission to U.S.: Supports risk appetite as yen-funded carry trades remain attractive
 
 **Geopolitical Developments**
+• Middle East tensions remained elevated, creating uncertainty in energy markets
+• Transmission to U.S.: Oil price volatility affects inflation expectations and Fed policy calculus
+• WTI crude movements this week reflected shifting supply/demand expectations
 
-Geopolitical tensions in key commodity-producing regions remained a focus for markets. Developments in the Middle East continued to influence oil prices, with WTI crude declining this week as concerns about supply disruptions eased somewhat. However, the situation remains fluid, and any escalation could quickly reverse this trend.
+**China Economic Signals**
+• Chinese economic data showed mixed signals on growth momentum
+• Transmission to U.S.: Impacts global growth expectations, commodity demand, and multinational earnings
+• Currency implications: PBOC actions influence USD/CNY and broader EM currency complex
 
-**Transmission Mechanisms**
-
-These global events affected U.S. markets through several channels. The ECB's policy stance contributed to a modest strengthening of the euro, which in turn supported European equity markets and improved sentiment toward global risk assets more broadly. This positive spillover effect benefited U.S. equities, particularly those with international exposure.
-
-Commodity price movements, driven in part by geopolitical developments, influenced inflation expectations and monetary policy outlooks. Lower oil prices helped ease some concerns about persistent inflationary pressures, supporting the case for a more accommodative Fed policy stance.
-
-The policy divergence between major central banks continued to drive currency movements, with implications for U.S. corporate earnings and international trade flows.`;
+**Key Transmission Mechanisms This Week**
+• Yields: Global central bank divergence supported modest Treasury yield increases
+• Risk Sentiment: Geopolitical uncertainty added a modest risk premium to markets
+• FX: Dollar showed mixed performance, strengthening vs. yen but weakening vs. euro
+• Commodities: Oil remained range-bound as supply concerns offset demand worries`;
 }
 
 export { 

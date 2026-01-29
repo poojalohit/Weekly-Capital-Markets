@@ -76,43 +76,75 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: 1.9627751842894423
   }
 ],
-  interpretation: 'Equity markets continued their upward trajectory this week, with the S&P 500 and Nasdaq both posting solid gains. The VIX declined further, indicating reduced market volatility and improved risk sentiment. Treasury yields edged higher as economic data remained resilient, while credit spreads tightened across both investment-grade and high-yield markets. Commodities showed mixed performance, with gold advancing while oil retreated. The dollar strengthened modestly against the yen but weakened slightly against the euro. Overall, markets appear to be trending positively, with risk assets benefiting from a favorable macro backdrop.',
-  usNarrative: `The U.S. capital markets experienced a constructive week, driven by a combination of resilient economic data and continued optimism around monetary policy. The week's key economic releases painted a picture of an economy that remains on solid footing, though with some emerging signs of moderation.
+  interpretation: 'The defining trend this week was "Cautious Optimism" as risk assets advanced while defensive positioning remained elevated. The S&P 500 gained +0.41% and Nasdaq rose +0.91%, yet the VIX remains elevated at 16.27 (+13.5% YTD), suggesting investors are hedging against potential volatility. A notable correlation observation: Gold surged +4.4% this week (+21.4% YTD) even as equities rallied—an unusual divergence that suggests persistent safe-haven demand despite the risk-on move in stocks. Credit spreads continued to tighten (BBB OAS -2 bps, HY -5 bps), supporting the constructive risk appetite narrative.',
+  usNarrative: `**1. Trend Identification: "The Cautious Rally"**
 
-**Key Economic Data Releases**
+The defining trend this week was continued market resilience with an underlying tone of caution. Risk assets advanced, but the elevated VIX and strong gold performance suggest investors are maintaining hedges.
 
-The week's economic calendar was headlined by several important data points. The latest Non-Farm Payrolls (NFP) report exceeded expectations, showing continued strength in the labor market. The unemployment rate held steady at historically low levels, while wage growth moderated slightly but remained above pre-pandemic trends. This labor market resilience has been a key factor supporting consumer spending and overall economic activity.
+• S&P 500 rose +0.41% on the week, now +1.19% YTD
+• Nasdaq outperformed at +0.91% weekly, +1.70% YTD
+• Correlation Anomaly: Gold surged +4.4% this week even as equities rallied—unusual behavior suggesting persistent safe-haven demand
+• VIX at 16.27 remains above historical averages, indicating hedging demand persists
 
-Inflation data, as measured by the Consumer Price Index (CPI), came in largely in line with expectations. Core inflation continued its gradual deceleration, providing the Federal Reserve with additional confidence that its policy measures are having the intended effect. The Producer Price Index (PPI) also showed signs of moderation, suggesting that pipeline inflationary pressures are easing.
+**2. Key Catalysts**
 
-Retail sales data for the month showed modest growth, indicating that consumer spending remains healthy despite some headwinds from higher interest rates. The ISM Manufacturing Index remained in contraction territory, though the pace of decline has slowed. The Services PMI, meanwhile, continued to indicate expansion, highlighting the ongoing shift in economic activity toward services.
+The most impactful events this week:
 
-**U.S. Political and Policy Developments**
+• Fed Communications: Multiple Fed officials maintained data-dependent stance, keeping rate cut expectations in check
+• Labor Market: Employment data showed continued resilience, supporting soft landing narrative
+• Earnings Season: Corporate results largely beat expectations, but forward guidance showed caution
+• Geopolitical: Middle East tensions remained elevated, supporting oil (+2.7%) and gold (+4.4%)
 
-Federal Reserve communications this week reinforced the central bank's data-dependent approach to monetary policy. Several Fed officials delivered speeches emphasizing the need to remain vigilant on inflation while acknowledging the progress made thus far. The Fed's latest meeting minutes revealed ongoing discussions about the appropriate pace of policy normalization, with most members favoring a gradual approach.
+**3. Sentiment Analysis**
 
-Fiscal policy developments remained relatively quiet, though there were continued discussions in Washington about potential budget measures. Regulatory actions in the financial sector continued to evolve, with several agencies providing additional guidance on implementation of recent rule changes.
+Market sentiment: Cautiously Optimistic (Risk-On with Hedges)
 
-The combination of solid economic fundamentals, moderating inflation, and a measured approach to monetary policy has created a favorable environment for risk assets. Equity markets have responded positively to this backdrop, while credit markets have also benefited from improved sentiment.`,
-  globalEvents: `International developments this week had meaningful implications for U.S. financial markets, primarily through their impact on global risk sentiment and commodity prices.
+• VIX: At 16.27, elevated from year-start levels (+13.5% YTD) despite equity gains
+• Credit Spreads: Tightening continues (BBB OAS 125 bps, -8 bps YTD)—constructive signal
+• Gold: The +21.4% YTD surge suggests persistent demand for portfolio insurance
+• Sector Leadership: Growth stocks outperforming value indicates risk appetite intact
 
-**Central Bank Decisions Abroad**
+**4. The "Fresh Money" Recommendation**
 
-The European Central Bank (ECB) maintained its current policy stance, keeping interest rates unchanged while signaling a continued focus on inflation management. The ECB's relatively hawkish tone, compared to market expectations, contributed to some strength in the euro against the dollar. This development had implications for U.S. exporters and multinational corporations with significant European exposure.
+• Recommendation: Maintain balanced positioning; overweight quality equities selectively
+• Rationale: Economic data supports continued expansion, but valuations are elevated. The unusual gold/equity correlation suggests maintaining some defensive exposure
+• Avoid: Long-duration Treasuries (rate volatility persists); speculative small-caps (VIX elevation signals potential volatility ahead)
+• Opportunity: Investment-grade credit offers attractive risk-adjusted returns with spreads still above long-term averages
 
-The Bank of Japan (BOJ) continued its ultra-accommodative monetary policy, maintaining negative interest rates and yield curve control measures. This policy divergence between the U.S. and Japan has been a key driver of the USD/JPY exchange rate, which moved higher this week.
+**5. Forward Outlook**
+
+Key items to monitor next week:
+
+• Risk: Fed speakers could shift tone if inflation data surprises
+• Risk: Geopolitical escalation could spike oil prices and volatility
+• Opportunity: Any equity pullback toward 6800 S&P would be a buying opportunity
+• Data Watch: PCE inflation data, consumer confidence, housing starts
+• Technical: S&P 500 approaching key resistance; watch for breakout or rejection`,
+  globalEvents: `**International Developments**
+
+Several global events had meaningful implications for U.S. markets this week:
+
+**Central Bank Divergence**
+• ECB maintained hawkish stance, signaling rates will stay higher for longer
+• Transmission to U.S.: Euro strength vs. USD; modest pressure on U.S. export competitiveness
+• BOJ continued ultra-accommodative policy, supporting USD/JPY carry trades
+• Transmission to U.S.: Supports risk appetite as yen-funded carry trades remain attractive
 
 **Geopolitical Developments**
+• Middle East tensions remained elevated, creating uncertainty in energy markets
+• Transmission to U.S.: WTI crude +2.7% this week; supports inflation concerns
+• Oil price volatility affects Fed policy calculus and inflation expectations
 
-Geopolitical tensions in key commodity-producing regions remained a focus for markets. Developments in the Middle East continued to influence oil prices, with WTI crude declining this week as concerns about supply disruptions eased somewhat. However, the situation remains fluid, and any escalation could quickly reverse this trend.
+**China Economic Signals**
+• Chinese economic data showed continued mixed signals on growth recovery
+• Transmission to U.S.: Impacts global growth expectations and commodity demand
+• PBOC policy actions influence USD/CNY and broader EM currency complex
 
-**Transmission Mechanisms**
-
-These global events affected U.S. markets through several channels. The ECB's policy stance contributed to a modest strengthening of the euro, which in turn supported European equity markets and improved sentiment toward global risk assets more broadly. This positive spillover effect benefited U.S. equities, particularly those with international exposure.
-
-Commodity price movements, driven in part by geopolitical developments, influenced inflation expectations and monetary policy outlooks. Lower oil prices helped ease some concerns about persistent inflationary pressures, supporting the case for a more accommodative Fed policy stance.
-
-The policy divergence between major central banks continued to drive currency movements, with implications for U.S. corporate earnings and international trade flows.`,
+**Key Transmission Mechanisms This Week**
+• Yields: Global central bank divergence contributed to Treasury yield stability
+• Risk Sentiment: Geopolitical uncertainty added modest risk premium; gold +4.4%
+• FX: Dollar showed mixed performance (stronger vs. EUR, stable vs. JPY)
+• Commodities: Oil rose on supply concerns; gold surged on safe-haven demand`,
   corporateFinanceConcepts: [
     {
       title: 'Option-Adjusted Spread (OAS)',
