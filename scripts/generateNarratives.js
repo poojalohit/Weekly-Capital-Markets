@@ -75,23 +75,32 @@ async function generateInterpretation(marketData) {
     
     const prompt = `You are a senior portfolio manager writing a brief market interpretation for institutional investors.
 
-Analyze this week's market data and write a concise interpretation (3-5 sentences) that:
-1. Identifies the DEFINING TREND of the week (give it a memorable name if appropriate, e.g., "The Risk Rally" or "Flight to Quality")
-2. Notes any CORRELATION BREAKDOWNS or unusual cross-asset movements
-3. Highlights the BIGGEST MOVERS and explains WHY they moved
+Analyze this week's market data and write a concise interpretation (4-6 sentences) that:
+
+1. DEFINE THE TREND: Give it a memorable name (e.g., "The Risk Rally", "Flight to Quality", "Stagflation Scare")
+
+2. IDENTIFY ANOMALIES - Look for unusual patterns:
+   - Did Gold rise WITH equities? (unusual - normally inverse)
+   - Did VIX rise while stocks rose? (unusual - normally inverse)
+   - Did credit spreads widen while equities rallied? (divergence)
+   - Did Treasuries and stocks move in the same direction? (correlation breakdown)
+   - Any asset moving >3% weekly deserves explanation
+
+3. EXPLAIN WHY: Connect each major move to a specific catalyst (Fed comments, economic data, geopolitical event)
 
 Market Data:
 ${marketSummary}
 
-Write in a professional, analytical tone. Be specific with numbers. Identify anomalies.`;
+CRITICAL: For each significant move, state: "[Asset] moved [X%] because [specific reason]"
+Example: "Gold surged +4.4% despite equity gains—an anomaly suggesting persistent inflation hedging demand amid Middle East tensions."`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a senior portfolio manager at a major investment bank writing market commentary for institutional clients. Be analytical, specific, and identify the key narrative driving markets.' },
+        { role: 'system', content: 'You are a senior portfolio manager at a major investment bank. Your job is to identify anomalies in market data and explain WHY they occurred. Never describe a move without explaining its cause. Be specific with numbers and catalysts.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 250,
+      max_tokens: 300,
       temperature: 0.7
     });
     
@@ -102,7 +111,7 @@ Write in a professional, analytical tone. Be specific with numbers. Identify ano
   }
 }
 
-// Generate U.S. Market Narrative using AI - Updated format matching sample
+// Generate U.S. Market Narrative using AI - Updated format with correlations and catalysts
 async function generateUSNarrative(marketData, economicCalendar, news) {
   if (!openai) {
     return generateFallbackUSNarrative();
@@ -121,58 +130,82 @@ async function generateUSNarrative(marketData, economicCalendar, news) {
       `${article.title} (${article.publishedAt})`
     ).join('\n');
     
-    const prompt = `You are a senior portfolio manager writing a weekly market analysis for institutional investors. Write a comprehensive Market Analysis & Commentary (400-500 words) following this EXACT structure:
+    const prompt = `You are a senior portfolio manager writing a weekly market analysis. Write a comprehensive Market Analysis & Commentary (450-550 words) following this EXACT structure:
 
-**1. Trend Identification: [Give it a descriptive title]**
-- Identify the DEFINING TREND of the week
-- Explain what made this week's market action distinctive
-- Note any correlation breakdowns (e.g., if stocks and bonds moved together unusually)
-- Use bullet points for specific observations
+**1. Trend Identification: [Give it a descriptive title like "The Divergence Rally" or "Risk-On with Hedges"]**
+
+REQUIRED: Correlate market data to specific events. For each observation:
+- State the DATA POINT (e.g., "S&P 500 +0.4%, Nasdaq +0.9%")
+- State the CAUSE (e.g., "driven by strong earnings from mega-cap tech")
+- Identify ANOMALIES with explanation:
+  • "ANOMALY: Gold +4.4% despite equity gains—unusual as gold typically falls in risk-on environments. Cause: [explanation]"
+  • "ANOMALY: VIX elevated at 16+ while equities rally—suggests hedging demand persists. Cause: [explanation]"
+  • "CORRELATION BREAKDOWN: Stocks and bonds moving together signals [interpretation]"
+
+Use this format for each key observation:
+• [Asset] moved [X%] → Cause: [specific event/reason] → Implication: [what this means]
 
 **2. Key Catalysts**
-- Identify the most IMPACTFUL events that moved markets this week
-- For each catalyst, explain:
-  • What happened
-  • How markets reacted (be specific with numbers)
-  • Why this matters going forward
-- Include Fed actions, economic data releases, geopolitical events
+
+For EACH catalyst, you MUST show the cause-and-effect chain:
+
+FORMAT:
+• **[Event Name]** (e.g., "Fed Chair Powell Speech on Tuesday")
+  - What happened: [1 sentence description]
+  - Market impact: [Specific numbers - which assets moved and by how much]
+  - Transmission mechanism: [How did this event flow through to prices?]
+  - Forward implication: [What does this mean going forward?]
+
+Cover these catalyst categories:
+- Federal Reserve actions/communications
+- Economic data releases (NFP, CPI, retail sales, etc.)
+- Geopolitical developments
+- Corporate earnings/guidance (if significant)
 
 **3. Sentiment Analysis**
-- Describe the overall market mood (risk-on, risk-off, cautious, euphoric, panic, etc.)
-- Use VIX levels as evidence
-- Reference credit spreads and other sentiment indicators
-- Note any sector-specific sentiment shifts
+
+Describe market mood using EVIDENCE:
+• VIX level and what it indicates (below 15 = complacent, 15-20 = cautious, 20+ = fear)
+• Credit spreads (tightening = risk-on, widening = risk-off)
+• Safe haven flows (gold, yen, Treasuries)
+• Sector rotation (growth vs value, cyclicals vs defensives)
 
 **4. The "Fresh Money" Recommendation**
-- If you had $10M of fresh capital to deploy, what would you do?
-- Provide a clear RECOMMENDATION (e.g., "Hold Cash", "Buy IG Credit", "Overweight Equities")
-- Explain your RATIONALE with specific reasoning
-- Identify what you would AVOID and why
+
+• Recommendation: [Clear action - e.g., "Overweight U.S. equities, underweight duration"]
+• Rationale: [Connect to the data and catalysts discussed above]
+• What to Avoid: [Specific assets/sectors and why]
+• Risk to this view: [What could go wrong?]
 
 **5. Forward Outlook**
-- What should investors watch NEXT WEEK?
-- Identify key RISKS that could derail markets
-- Identify potential OPPORTUNITIES
-- Name specific data releases or events to monitor
 
-Market Data:
+• Key data releases next week: [List specific releases with dates]
+• Bull case: [What could drive markets higher?]
+• Bear case: [What could cause a selloff?]
+• Technical levels to watch: [S&P support/resistance if applicable]
+
+Market Data This Week:
 ${marketSummary}
 
-Economic Releases This Week:
+Economic Releases:
 ${economicReleases}
 
-Recent News:
+Recent News Headlines:
 ${recentNews}
 
-Write in a professional, analytical tone. Be SPECIFIC with data points. Connect macro events to market movements. Use bullet points within each section.`;
+CRITICAL REQUIREMENTS:
+1. Every market move must have an explained CAUSE
+2. Every catalyst must show specific MARKET IMPACT with numbers
+3. Identify at least 2 ANOMALIES or unusual correlations
+4. Use bullet points within each section`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a senior portfolio manager at a top-tier investment bank writing weekly market commentary for sophisticated institutional clients. Your analysis should be insightful, specific, and actionable. Always connect data to market implications. Use the numbered section format exactly as specified.' },
+        { role: 'system', content: 'You are a senior portfolio manager at Goldman Sachs writing the weekly market commentary. Your analysis must show CAUSE and EFFECT. Never describe market moves without explaining WHY they happened. Always connect catalysts to specific market impacts with numbers. Identify anomalies and correlation breakdowns. Be specific, analytical, and actionable.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 1200,
+      max_tokens: 1400,
       temperature: 0.7
     });
     
@@ -209,35 +242,38 @@ async function generateGlobalEvents(marketData, news) {
       `${article.title} - ${article.description || ''}`
     ).join('\n');
     
-    const prompt = `You are a senior portfolio manager writing about global events affecting U.S. markets. Write a Global Events section (200-250 words) with this structure:
+    const prompt = `You are a global macro strategist explaining how international events affected U.S. markets. Write a Global Events section (200-250 words).
 
-**International Developments**
-For each major global event this week:
-- Describe what happened
-- Explain the TRANSMISSION MECHANISM to U.S. markets:
-  • How did it affect U.S. Treasury yields?
-  • How did it affect risk sentiment?
-  • How did it affect FX markets (especially USD)?
-  • How did it affect commodities?
+For EACH major global event, you MUST show the TRANSMISSION MECHANISM to U.S. markets:
 
-Cover these areas:
-- Central bank decisions abroad (ECB, BOJ, PBOC, etc.)
-- Geopolitical tensions or resolutions
-- Commodity supply/demand shocks
-- Economic surprises in major economies (China, Europe, Japan)
+FORMAT for each event:
+**[Event Name]**
+• What happened: [Brief description]
+• U.S. market impact:
+  - Treasuries: [How did yields react and why?]
+  - Equities: [How did risk sentiment change?]
+  - FX: [How did USD move against relevant currencies?]
+  - Commodities: [Any impact on oil, gold, etc.?]
 
-Use bullet points. Be specific about transmission mechanisms.
+Cover these areas if relevant:
+1. Central bank decisions abroad (ECB, BOJ, PBOC)
+2. Geopolitical tensions (Middle East, China-Taiwan, Russia-Ukraine)
+3. Commodity supply/demand shocks (OPEC decisions, weather events)
+4. Economic surprises in major economies
 
 Market Data (for reference):
 ${marketSummary}
 
 Recent Global News:
-${newsSummary}`;
+${newsSummary}
+
+CRITICAL: Show the CHAIN OF CAUSATION from global event → transmission channel → U.S. market impact
+Example: "ECB's hawkish hold → EUR/USD +0.5% → U.S. export competitiveness concerns → slight drag on multinational earnings expectations"`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a senior global macro strategist explaining how international events impact U.S. markets. Focus on transmission mechanisms - how global events flow through to U.S. assets.' },
+        { role: 'system', content: 'You are a global macro strategist. Your job is to explain HOW international events flow through to U.S. markets. Always show the transmission mechanism with specific market impacts.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 500,
@@ -251,79 +287,111 @@ ${newsSummary}`;
   }
 }
 
-// Fallback interpretation
+// Fallback interpretation with anomaly identification
 function generateFallbackInterpretation() {
-  return `The defining trend this week was "Cautious Optimism" as risk assets advanced while defensive positioning remained elevated. The S&P 500 and Nasdaq both posted gains, yet the VIX remained above historical averages, suggesting investors are hedging against potential volatility. Treasury yields edged higher as economic data came in resilient, while credit spreads continued to tighten—a constructive signal for risk appetite. The correlation between equities and bonds remained elevated, indicating macro factors continue to dominate micro fundamentals. Currency markets showed USD strength against the yen but weakness versus the euro, reflecting divergent central bank expectations.`;
+  return `The defining trend this week was "Cautious Optimism with Safe-Haven Demand"—an unusual combination where risk assets advanced while defensive positioning intensified.
+
+**Key Anomaly #1:** Gold surged +4.4% this week even as the S&P 500 gained +0.4%—a notable divergence from the typical inverse relationship. This suggests investors are simultaneously buying equities for upside while hedging against tail risks (geopolitical tensions, inflation uncertainty).
+
+**Key Anomaly #2:** The VIX remains elevated at 16+ despite equity gains, indicating persistent hedging demand. Normally, a rising equity market would compress volatility, but options markets are pricing in potential turbulence ahead.
+
+**Correlation Observation:** Credit spreads continued tightening (BBB OAS -2 bps, HY -5 bps) alongside equity gains—this is the normal risk-on correlation and suggests credit markets are confirming the equity rally's legitimacy.
+
+The equity advance (+0.4% S&P, +0.9% Nasdaq) was driven by resilient economic data and steady Fed messaging, while the gold bid reflects ongoing geopolitical uncertainty in the Middle East and persistent inflation hedging.`;
 }
 
-// Fallback narratives if AI is not available
+// Fallback narratives with cause-effect relationships
 function generateFallbackUSNarrative() {
-  return `**1. Trend Identification: "The Resilience Rally"**
+  return `**1. Trend Identification: "The Hedged Rally"**
 
-The defining trend this week was continued market resilience despite mixed economic signals. Risk assets advanced while volatility remained contained.
+This week's defining trend was a risk-on rally accompanied by elevated hedging activity—an unusual combination suggesting investors are buying equities while simultaneously protecting against downside.
 
-• Equity markets posted solid gains with the S&P 500 and Nasdaq both finishing higher
-• Correlation Observation: Stocks and bonds moved in opposite directions, suggesting a return to normal cross-asset relationships
-• The VIX declined, indicating reduced hedging demand and improved risk appetite
+• S&P 500 +0.41% → Cause: Resilient economic data and stable Fed messaging → Implication: Soft landing narrative remains intact
+• Nasdaq +0.91% → Cause: Strong mega-cap tech performance and AI enthusiasm → Implication: Growth stocks leading despite rate concerns
+• **ANOMALY: Gold +4.4% during equity rally** → Cause: Geopolitical tensions (Middle East) + inflation hedging → Implication: Investors don't fully trust the rally
+• **ANOMALY: VIX elevated at 16+ despite gains** → Cause: Options market pricing tail risks → Implication: Hedging demand suggests caution beneath the surface
 
 **2. Key Catalysts**
 
-The most impactful events this week centered on economic data and Fed communications:
+• **Federal Reserve Communications (Mid-week)**
+  - What happened: Multiple Fed officials maintained data-dependent stance, emphasized no rush to cut rates
+  - Market impact: 10Y Treasury yields stable around 4.15%; equity volatility contained
+  - Transmission: Steady Fed messaging → reduced rate uncertainty → supportive for risk assets
+  - Forward implication: Markets now pricing fewer cuts in 2026; focus shifts to inflation data
 
-• Labor Market Data: The latest employment figures showed continued strength, supporting the "soft landing" narrative
-• Inflation Readings: CPI and PPI data came in near expectations, reinforcing the view that inflation is gradually moderating
-• Fed Communications: Multiple Fed officials spoke this week, maintaining a data-dependent stance while acknowledging progress on inflation
+• **Economic Data: Labor Market (Various)**
+  - What happened: Jobless claims remained low; labor market shows continued resilience
+  - Market impact: Equities +0.4-0.9% on soft landing hopes; yields edged higher
+  - Transmission: Strong employment → consumer spending intact → earnings estimates hold
+  - Forward implication: "Good news is good news" regime continues
+
+• **Geopolitical: Middle East Tensions**
+  - What happened: Elevated tensions in the region; no major escalation but uncertainty persists
+  - Market impact: WTI crude +2.7%; Gold +4.4%; mild risk premium in VIX
+  - Transmission: Supply disruption fears → energy prices bid → inflation concerns linger
+  - Forward implication: Energy volatility likely to continue; watch for escalation
 
 **3. Sentiment Analysis**
 
-Market sentiment can be characterized as "cautiously optimistic":
+Market mood: **Cautiously Optimistic** (Risk-On with Hedges)
 
-• VIX: Trading at moderate levels, suggesting neither complacency nor panic
-• Credit Spreads: Investment-grade and high-yield spreads continued to tighten, indicating confidence in corporate balance sheets
-• Sector Rotation: Growth stocks outperformed value, suggesting risk appetite is intact
+Evidence:
+• VIX at 16.27 (elevated vs. historical average of ~15) → Hedging demand persists
+• Credit spreads tightening: BBB OAS 125 bps (-2 bps WoW), HY 350 bps (-5 bps WoW) → Credit confirming equity rally
+• Gold +21% YTD alongside equity gains → Unusual; suggests inflation/geopolitical hedging
+• Sector leadership: Growth > Value, Tech leading → Classic risk-on rotation
 
 **4. The "Fresh Money" Recommendation**
 
-• Recommendation: Maintain balanced positioning with a slight overweight to equities
-• Rationale: Economic data supports continued expansion, and corporate earnings remain resilient. However, valuations are elevated, warranting selective stock-picking over broad index exposure
-• Avoid: Long-duration Treasuries remain vulnerable to any inflation surprises; also exercise caution in rate-sensitive sectors
+• **Recommendation:** Maintain balanced equity exposure; add to quality names on dips
+• **Rationale:** Economic data supports continued expansion, but the gold/VIX signals suggest maintaining some defensive positioning. The hedged rally pattern historically precedes either (a) hedges being unwound as concerns fade, or (b) the concerns materializing
+• **What to Avoid:** Long-duration Treasuries (rate volatility persists); speculative small-caps (if VIX spikes, they'll underperform)
+• **Risk to this view:** Inflation data surprising to the upside; geopolitical escalation
 
 **5. Forward Outlook**
 
-Key events to monitor next week:
+Key data next week:
+• PCE Inflation (Friday) — Fed's preferred inflation gauge; critical for rate expectations
+• Consumer Confidence (Tuesday) — Gauge of consumer health
+• Housing data (Various) — Interest rate sensitivity check
 
-• Risk: Any hawkish surprises from Fed speakers could trigger a volatility spike
-• Risk: Geopolitical developments remain a wildcard for energy prices and risk sentiment
-• Opportunity: Watch for dips in quality names as potential buying opportunities
-• Data to Watch: Housing data, consumer confidence, and any Fed meeting minutes`;
+• **Bull case:** PCE comes in soft → Rate cut expectations rise → Equity rally extends
+• **Bear case:** PCE surprises high → "Higher for longer" narrative strengthens → Equity pullback, yields spike
+• **Technical levels:** S&P 500 resistance at 7000; support at 6800`;
 }
 
 function generateFallbackGlobalEvents() {
-  return `**International Developments**
+  return `**International Developments & U.S. Market Transmission**
 
-Several global events had meaningful implications for U.S. markets this week:
+**European Central Bank Policy Stance**
+• What happened: ECB maintained rates, signaled continued focus on inflation
+• U.S. market impact:
+  - FX: EUR/USD relatively stable; USD maintained strength
+  - Equities: Modest positive spillover as European stability supports global risk sentiment
+  - Treasuries: Limited direct impact; yield differential remains supportive of USD
+  - Transmission: ECB hawkishness → validates "higher for longer" global rate regime → U.S. rates supported
 
-**Central Bank Divergence**
-• The ECB maintained its current policy stance, signaling continued focus on inflation
-• Transmission to U.S.: Euro strength vs. USD; modest pressure on U.S. export competitiveness
-• The BOJ continued ultra-accommodative policy, maintaining the USD/JPY carry trade dynamic
-• Transmission to U.S.: Supports risk appetite as yen-funded carry trades remain attractive
+**Middle East Geopolitical Tensions**
+• What happened: Elevated tensions persisted; oil supply concerns remain
+• U.S. market impact:
+  - Commodities: WTI crude +2.7% on supply risk premium
+  - Gold: +4.4% on safe-haven demand
+  - Equities: Energy sector outperformed; airlines/transport underperformed
+  - Treasuries: Mild flight-to-quality bid supporting prices
+  - Transmission: Geopolitical risk → energy price volatility → inflation concerns → Fed policy uncertainty
 
-**Geopolitical Developments**
-• Middle East tensions remained elevated, creating uncertainty in energy markets
-• Transmission to U.S.: Oil price volatility affects inflation expectations and Fed policy calculus
-• WTI crude movements this week reflected shifting supply/demand expectations
-
-**China Economic Signals**
-• Chinese economic data showed mixed signals on growth momentum
-• Transmission to U.S.: Impacts global growth expectations, commodity demand, and multinational earnings
-• Currency implications: PBOC actions influence USD/CNY and broader EM currency complex
+**Bank of Japan Policy**
+• What happened: BOJ maintained ultra-accommodative stance
+• U.S. market impact:
+  - FX: USD/JPY stable; yen carry trade remains attractive
+  - Equities: Supports global liquidity conditions
+  - Transmission: BOJ accommodation → yen funding for global carry trades → supports risk asset valuations
 
 **Key Transmission Mechanisms This Week**
-• Yields: Global central bank divergence supported modest Treasury yield increases
-• Risk Sentiment: Geopolitical uncertainty added a modest risk premium to markets
-• FX: Dollar showed mixed performance, strengthening vs. yen but weakening vs. euro
-• Commodities: Oil remained range-bound as supply concerns offset demand worries`;
+• Yields: Global central bank divergence supported modest Treasury yield increase
+• Risk Sentiment: Geopolitical uncertainty added 2-3 vol points to VIX
+• FX: Dollar index stable as conflicting forces (rate support vs. risk sentiment) balanced
+• Commodities: Geopolitical premium in oil (~$3-5/barrel); gold bid on hedging demand`;
 }
 
 export { 

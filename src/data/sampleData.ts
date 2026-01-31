@@ -76,75 +76,94 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: 1.9627751842894423
   }
 ],
-  interpretation: 'The defining trend this week was "Cautious Optimism" as risk assets advanced while defensive positioning remained elevated. The S&P 500 gained +0.41% and Nasdaq rose +0.91%, yet the VIX remains elevated at 16.27 (+13.5% YTD), suggesting investors are hedging against potential volatility. A notable correlation observation: Gold surged +4.4% this week (+21.4% YTD) even as equities rallied—an unusual divergence that suggests persistent safe-haven demand despite the risk-on move in stocks. Credit spreads continued to tighten (BBB OAS -2 bps, HY -5 bps), supporting the constructive risk appetite narrative.',
-  usNarrative: `**1. Trend Identification: "The Cautious Rally"**
+  interpretation: 'The defining trend this week was "The Hedged Rally"—risk assets advanced while safe-haven demand intensified, an unusual combination. **ANOMALY #1:** Gold surged +4.4% despite S&P 500 +0.41% gains—typically inverse assets moving together signals investors are buying equities for upside while hedging tail risks (Middle East tensions, inflation uncertainty). **ANOMALY #2:** VIX rose +0.7% to 16.27 even as equities gained—normally VIX falls when stocks rise, suggesting options markets are pricing potential turbulence. Credit spreads tightened (BBB OAS -2 bps, HY -5 bps) confirming the equity rally, while oil +2.7% reflects geopolitical supply premium.',
+  usNarrative: `**1. Trend Identification: "The Hedged Rally"**
 
-The defining trend this week was continued market resilience with an underlying tone of caution. Risk assets advanced, but the elevated VIX and strong gold performance suggest investors are maintaining hedges.
+This week's defining trend was a risk-on rally accompanied by elevated hedging activity—an unusual combination suggesting investors are buying equities while simultaneously protecting against downside.
 
-• S&P 500 rose +0.41% on the week, now +1.19% YTD
-• Nasdaq outperformed at +0.91% weekly, +1.70% YTD
-• Correlation Anomaly: Gold surged +4.4% this week even as equities rallied—unusual behavior suggesting persistent safe-haven demand
-• VIX at 16.27 remains above historical averages, indicating hedging demand persists
+• S&P 500 +0.41% → **Cause:** Resilient labor market data and stable Fed messaging → **Implication:** Soft landing narrative remains intact
+• Nasdaq +0.91% → **Cause:** Strong mega-cap tech performance, AI-related earnings optimism → **Implication:** Growth stocks leading despite rate concerns
+• **ANOMALY: Gold +4.4% during equity rally** → **Cause:** Geopolitical tensions (Middle East escalation fears) + inflation hedging → **Implication:** Investors don't fully trust the rally; maintaining tail-risk protection
+• **ANOMALY: VIX +0.7% despite equity gains** → **Cause:** Options market pricing elevated tail risks → **Implication:** Unusual; normally VIX falls when stocks rise—suggests caution beneath the surface
+• Credit spreads tightening (BBB -2 bps, HY -5 bps) → **Cause:** Strong corporate earnings, low default expectations → **Implication:** Credit market confirming equity rally's legitimacy
 
 **2. Key Catalysts**
 
-The most impactful events this week:
+• **Federal Reserve Communications (Tuesday-Thursday)**
+  - What happened: Multiple Fed officials (Powell, Waller, Bowman) emphasized data-dependency; no imminent rate cuts signaled
+  - Market impact: 10Y Treasury yield stable at 4.15%; S&P 500 +0.2% on Wednesday post-Powell
+  - Transmission mechanism: Steady Fed messaging → reduced rate uncertainty → lower equity risk premium → supportive for multiples
+  - Forward implication: Markets now pricing 2-3 cuts in 2026; focus shifts to PCE inflation data
 
-• Fed Communications: Multiple Fed officials maintained data-dependent stance, keeping rate cut expectations in check
-• Labor Market: Employment data showed continued resilience, supporting soft landing narrative
-• Earnings Season: Corporate results largely beat expectations, but forward guidance showed caution
-• Geopolitical: Middle East tensions remained elevated, supporting oil (+2.7%) and gold (+4.4%)
+• **Labor Market Data (Thursday)**
+  - What happened: Initial jobless claims came in at 215K (vs. 220K expected); continuing claims stable
+  - Market impact: Equities +0.3% intraday; yields edged up 3 bps on "good news is good news" reaction
+  - Transmission mechanism: Strong employment → consumer spending intact → earnings estimates hold → equities bid
+  - Forward implication: Soft landing narrative reinforced; wage inflation remains key watch
+
+• **Middle East Geopolitical Tensions (Ongoing)**
+  - What happened: Elevated tensions in Red Sea shipping lanes; Houthi attacks on commercial vessels continued
+  - Market impact: WTI crude +2.7% (+$1.65/barrel); Gold +4.4% on safe-haven bid; VIX +0.7%
+  - Transmission mechanism: Supply disruption fears → energy prices bid → inflation expectations inch higher → Fed policy uncertainty
+  - Forward implication: Geopolitical premium in oil (~$3-5/barrel); any escalation could spike to $80+
 
 **3. Sentiment Analysis**
 
-Market sentiment: Cautiously Optimistic (Risk-On with Hedges)
+Market mood: **Cautiously Optimistic** (Risk-On with Active Hedging)
 
-• VIX: At 16.27, elevated from year-start levels (+13.5% YTD) despite equity gains
-• Credit Spreads: Tightening continues (BBB OAS 125 bps, -8 bps YTD)—constructive signal
-• Gold: The +21.4% YTD surge suggests persistent demand for portfolio insurance
-• Sector Leadership: Growth stocks outperforming value indicates risk appetite intact
+Evidence supporting this assessment:
+• VIX at 16.27 (+13.5% YTD) elevated vs. 5-year average of ~15 → Hedging demand persists despite equity gains
+• Credit spreads tightening: BBB OAS 125 bps (-8 bps YTD), HY 350 bps (-15 bps YTD) → Credit confirming equity rally
+• **Anomalous signal:** Gold +21.4% YTD alongside positive equity returns → Unusual; suggests inflation/geopolitical hedging in portfolios
+• Sector rotation: Tech (+1.2%) > Utilities (+0.3%) → Growth leadership = risk-on, but defensive sectors holding gains
 
 **4. The "Fresh Money" Recommendation**
 
-• Recommendation: Maintain balanced positioning; overweight quality equities selectively
-• Rationale: Economic data supports continued expansion, but valuations are elevated. The unusual gold/equity correlation suggests maintaining some defensive exposure
-• Avoid: Long-duration Treasuries (rate volatility persists); speculative small-caps (VIX elevation signals potential volatility ahead)
-• Opportunity: Investment-grade credit offers attractive risk-adjusted returns with spreads still above long-term averages
+• **Recommendation:** Maintain equity exposure with hedges; overweight quality large-caps; add to IG credit
+• **Rationale:** The gold/VIX anomalies suggest smart money is hedged. Economic fundamentals support equities, but tail risks (geopolitics, inflation surprise) warrant protection. IG credit offers equity-like returns with lower vol.
+• **What to Avoid:** Long-duration Treasuries (if inflation surprises, they'll underperform); speculative small-caps (first to sell off if VIX spikes)
+• **Risk to this view:** PCE inflation comes in hot → "higher for longer" narrative strengthens → risk-off rotation
 
 **5. Forward Outlook**
 
-Key items to monitor next week:
+Key events next week:
+• **Friday: PCE Inflation** — Fed's preferred inflation gauge; consensus 2.8% YoY. Above 3.0% = hawkish repricing
+• **Tuesday: Consumer Confidence** — Gauge of consumer health; watch for divergence from hard data
+• **Wednesday: GDP Revision** — Q4 GDP second estimate; upside surprise = yields higher
 
-• Risk: Fed speakers could shift tone if inflation data surprises
-• Risk: Geopolitical escalation could spike oil prices and volatility
-• Opportunity: Any equity pullback toward 6800 S&P would be a buying opportunity
-• Data Watch: PCE inflation data, consumer confidence, housing starts
-• Technical: S&P 500 approaching key resistance; watch for breakout or rejection`,
-  globalEvents: `**International Developments**
+• **Bull case:** PCE at or below 2.7% → Rate cut expectations rise → S&P breaks 7000 resistance
+• **Bear case:** PCE above 3.0% → "Higher for longer" confirmed → Equities -2-3%, yields spike 10+ bps
+• **Technical levels:** S&P 500 resistance at 7000 (psychological); support at 6800 (20-day MA)`,
+  globalEvents: `**International Developments & U.S. Market Transmission**
 
-Several global events had meaningful implications for U.S. markets this week:
+**Middle East Geopolitical Tensions (Primary Driver)**
+• What happened: Houthi attacks on Red Sea shipping continued; U.S./UK conducted retaliatory strikes; Iran tensions elevated
+• U.S. market impact chain:
+  - Commodities: WTI crude +2.7% (+$1.65) on supply disruption premium → adds ~5 bps to inflation expectations
+  - Gold: +4.4% on safe-haven flows → anomalous given equity gains; signals hedging demand
+  - Equities: Energy sector +1.8% outperformance; airlines/transports -0.5% on fuel cost concerns
+  - Treasuries: Mild flight-to-quality bid → 10Y yield capped despite strong data
 
-**Central Bank Divergence**
-• ECB maintained hawkish stance, signaling rates will stay higher for longer
-• Transmission to U.S.: Euro strength vs. USD; modest pressure on U.S. export competitiveness
-• BOJ continued ultra-accommodative policy, supporting USD/JPY carry trades
-• Transmission to U.S.: Supports risk appetite as yen-funded carry trades remain attractive
+**European Central Bank Policy (Thursday)**
+• What happened: ECB held rates at 4.0%; Lagarde emphasized "data-dependent" but no imminent cuts
+• U.S. market impact chain:
+  - FX: EUR/USD stable at 1.08; validates global "higher for longer" regime
+  - Treasuries: Supports view that U.S. yields have floor; 10Y-Bund spread stable at ~180 bps
+  - Equities: Neutral impact; European stability supports global risk sentiment
 
-**Geopolitical Developments**
-• Middle East tensions remained elevated, creating uncertainty in energy markets
-• Transmission to U.S.: WTI crude +2.7% this week; supports inflation concerns
-• Oil price volatility affects Fed policy calculus and inflation expectations
+**Bank of Japan Stance**
+• What happened: BOJ maintained ultra-loose policy; yen remained weak vs. USD
+• U.S. market impact chain:
+  - FX: USD/JPY +0.3% to 152.9 → yen carry trade remains attractive funding source
+  - Risk assets: Yen weakness → carry trade flows into U.S. equities → supportive of valuations
+  - Transmission: BOJ accommodation = global liquidity support
 
-**China Economic Signals**
-• Chinese economic data showed continued mixed signals on growth recovery
-• Transmission to U.S.: Impacts global growth expectations and commodity demand
-• PBOC policy actions influence USD/CNY and broader EM currency complex
-
-**Key Transmission Mechanisms This Week**
-• Yields: Global central bank divergence contributed to Treasury yield stability
-• Risk Sentiment: Geopolitical uncertainty added modest risk premium; gold +4.4%
-• FX: Dollar showed mixed performance (stronger vs. EUR, stable vs. JPY)
-• Commodities: Oil rose on supply concerns; gold surged on safe-haven demand`,
+**China Economic Data**
+• What happened: Manufacturing PMI at 49.2 (contraction); services holding at 50.5
+• U.S. market impact chain:
+  - Commodities: Copper flat; iron ore weak → reflects tepid China demand
+  - Multinationals: Modest headwind for companies with China exposure
+  - Fed implications: Weak China = disinflationary impulse globally`,
   corporateFinanceConcepts: [
     {
       title: 'Option-Adjusted Spread (OAS)',
