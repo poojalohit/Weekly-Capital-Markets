@@ -161,30 +161,44 @@ Several global events had meaningful implications for U.S. markets this week:
   ],
   sources: [
     {
-      category: 'Market Data',
+      category: 'Equity & Volatility Data - Yahoo Finance',
       sources: [
-        'FRED (Federal Reserve Economic Data) - Treasury yields, interest rates',
-        'Yahoo Finance - Equity indices, VIX, commodity prices',
-        'WSJ Markets - Currency rates, corporate spreads',
-        'MarketWatch - Real-time market data and indices'
+        'S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/%5EGSPC',
+        'Nasdaq Composite (^IXIC) - https://finance.yahoo.com/quote/%5EIXIC',
+        'VIX Index (^VIX) - https://finance.yahoo.com/quote/%5EVIX',
+        'Gold Futures (GC=F) - https://finance.yahoo.com/quote/GC%3DF',
+        'WTI Crude Oil (CL=F) - https://finance.yahoo.com/quote/CL%3DF',
+        'Bitcoin (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD',
+        'USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY%3DX',
+        'EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD%3DX'
       ]
     },
     {
-      category: 'Economic Data',
+      category: 'Interest Rates & Credit Spreads - FRED (Federal Reserve Economic Data)',
       sources: [
-        'Bureau of Labor Statistics (BLS) - Employment, CPI, PPI data',
-        'Bureau of Economic Analysis (BEA) - GDP, PCE data',
-        'Federal Reserve - Monetary policy, interest rate decisions',
-        'ISM (Institute for Supply Management) - Manufacturing and Services PMI',
-        'Conference Board - Consumer confidence, leading indicators'
+        '10-Year Treasury Yield (DGS10) - https://fred.stlouisfed.org/series/DGS10',
+        'SOFR Rate (SOFR) - https://fred.stlouisfed.org/series/SOFR',
+        'BBB Corporate OAS (BAMLC0A4CBBB) - https://fred.stlouisfed.org/series/BAMLC0A4CBBB',
+        'High Yield OAS (BAMLH0A0HYM2) - https://fred.stlouisfed.org/series/BAMLH0A0HYM2'
       ]
     },
     {
-      category: 'Policy and Analysis',
+      category: 'Economic Data & News',
       sources: [
-        'Federal Reserve Communications - Speeches, meeting minutes, policy statements',
-        'Trading Economics - Economic calendar and data releases',
-        'Bloomberg - Market analysis and financial news'
+        'Bureau of Labor Statistics (BLS) - Employment, CPI, PPI - https://www.bls.gov/',
+        'Bureau of Economic Analysis (BEA) - GDP, PCE - https://www.bea.gov/',
+        'Federal Reserve - Monetary Policy - https://www.federalreserve.gov/',
+        'Trading Economics - Economic Calendar - https://tradingeconomics.com/calendar',
+        'NewsAPI - Financial News Aggregation - https://newsapi.org/'
+      ]
+    },
+    {
+      category: 'Verification Sources',
+      sources: [
+        'WSJ Markets - https://www.wsj.com/market-data',
+        'MarketWatch - https://www.marketwatch.com/',
+        'Bloomberg - https://www.bloomberg.com/markets',
+        'CNBC - https://www.cnbc.com/markets/'
       ]
     }
   ]
