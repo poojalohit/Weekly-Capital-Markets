@@ -76,106 +76,106 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: 1.9627751842894423
   }
 ],
-  interpretation: 'The defining trend this week was "The Hedged Rally"—risk assets advanced while safe-haven demand intensified, an unusual combination. **ANOMALY #1:** Gold surged +4.4% despite S&P 500 +0.41% gains—typically inverse assets moving together signals investors are buying equities for upside while hedging tail risks (Middle East tensions, inflation uncertainty). **ANOMALY #2:** VIX rose +0.7% to 16.27 even as equities gained—normally VIX falls when stocks rise, suggesting options markets are pricing potential turbulence. Credit spreads tightened (BBB OAS -2 bps, HY -5 bps) confirming the equity rally, while oil +2.7% reflects geopolitical supply premium.',
-  usNarrative: `**1. Trend Identification: "The Hedged Rally"**
+  interpretation: '**This Week\\'s Theme: "Stocks Up, But Investors Are Playing It Safe"**\\n\\nThe stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here\\'s what\\'s interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they\\'re nervous.\\n\\n**Why is this unusual?** Normally, when investors feel confident about stocks, they don\\'t rush to buy gold—it\\'s like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong (Middle East tensions, inflation concerns).\\n\\n**What\\'s causing the nervousness?** The VIX (often called the "fear index" because it measures how worried investors are) stayed elevated. Oil prices rose 2.7% due to Middle East tensions, which could mean higher gas prices ahead.',
+  usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
 
-This week's defining trend was a risk-on rally accompanied by elevated hedging activity—an unusual combination suggesting investors are buying equities while simultaneously protecting against downside.
+In simple terms: U.S. stocks went up this week, but investors also bought a lot of "safe" investments like gold—which usually happens when people are nervous. It's like going to the beach but packing a rain jacket just in case.
 
-• S&P 500 +0.41% → **Cause:** Resilient labor market data and stable Fed messaging → **Implication:** Soft landing narrative remains intact
-• Nasdaq +0.91% → **Cause:** Strong mega-cap tech performance, AI-related earnings optimism → **Implication:** Growth stocks leading despite rate concerns
-• **ANOMALY: Gold +4.4% during equity rally** → **Cause:** Geopolitical tensions (Middle East escalation fears) + inflation hedging → **Implication:** Investors don't fully trust the rally; maintaining tail-risk protection
-• **ANOMALY: VIX +0.7% despite equity gains** → **Cause:** Options market pricing elevated tail risks → **Implication:** Unusual; normally VIX falls when stocks rise—suggests caution beneath the surface
-• Credit spreads tightening (BBB -2 bps, HY -5 bps) → **Cause:** Strong corporate earnings, low default expectations → **Implication:** Credit market confirming equity rally's legitimacy
+Here's what moved and why:
 
-**2. Key Catalysts**
+• **Stocks rose** (S&P 500 +0.4%, Nasdaq +0.9%) → The economy is still growing, jobs data looked good, and the Federal Reserve (the institution that sets interest rates) isn't planning any surprises
+• **Gold jumped +4.4%** → This is unusual when stocks are also up! Normally investors choose one or the other. They're buying gold as "insurance" against potential problems (Middle East tensions, inflation worries)
+• **Oil prices rose +2.7%** → Conflicts in the Middle East are creating worries about oil supply, which could eventually push gas prices higher
+• **The "fear index" (VIX) stayed elevated** → This gauge measures how nervous investors are. Usually when stocks go up, it goes down. The fact that it stayed high suggests some underlying worry
 
-• **Federal Reserve Communications (Tuesday-Thursday)**
-  - What happened: Multiple Fed officials (Powell, Waller, Bowman) emphasized data-dependency; no imminent rate cuts signaled
-  - Market impact: 10Y Treasury yield stable at 4.15%; S&P 500 +0.2% on Wednesday post-Powell
-  - Transmission mechanism: Steady Fed messaging → reduced rate uncertainty → lower equity risk premium → supportive for multiples
-  - Forward implication: Markets now pricing 2-3 cuts in 2026; focus shifts to PCE inflation data
+**Unusual Pattern:** When stocks AND gold both go up together, it's like seeing people celebrate AND buy emergency supplies at the same time. It suggests investors are hopeful but hedging their bets.
 
-• **Labor Market Data (Thursday)**
-  - What happened: Initial jobless claims came in at 215K (vs. 220K expected); continuing claims stable
-  - Market impact: Equities +0.3% intraday; yields edged up 3 bps on "good news is good news" reaction
-  - Transmission mechanism: Strong employment → consumer spending intact → earnings estimates hold → equities bid
-  - Forward implication: Soft landing narrative reinforced; wage inflation remains key watch
+**2. What Caused These Moves**
 
-• **Middle East Geopolitical Tensions (Ongoing)**
-  - What happened: Elevated tensions in Red Sea shipping lanes; Houthi attacks on commercial vessels continued
-  - Market impact: WTI crude +2.7% (+$1.65/barrel); Gold +4.4% on safe-haven bid; VIX +0.7%
-  - Transmission mechanism: Supply disruption fears → energy prices bid → inflation expectations inch higher → Fed policy uncertainty
-  - Forward implication: Geopolitical premium in oil (~$3-5/barrel); any escalation could spike to $80+
+• **Federal Reserve Kept Rates Unchanged**
+  - What happened: Fed officials (the people who control U.S. interest rates) said they're not ready to cut rates yet—they want to make sure inflation is truly under control first
+  - Why it matters for you: This affects mortgage rates, car loans, and credit card interest. No rate cuts soon means borrowing costs stay higher for now
+  - Market reaction: Stocks took it in stride because this was expected
 
-**3. Sentiment Analysis**
+• **Jobs Report Was Strong**
+  - What happened: Fewer people filed for unemployment benefits than expected, suggesting the job market is healthy
+  - Why it matters for you: When people have jobs, they spend money, which keeps the economy (and company profits) growing
+  - Market reaction: Stocks rose because healthy employment is good for business
 
-Market mood: **Cautiously Optimistic** (Risk-On with Active Hedging)
+• **Middle East Tensions Continued**
+  - What happened: Conflicts in the Red Sea region are disrupting shipping and raising concerns about oil supply
+  - Why it matters for you: This could raise gas prices and contribute to inflation, which affects everything from groceries to rent
+  - Market reaction: Oil and gold both rose; investors are nervous about potential escalation
 
-Evidence supporting this assessment:
-• VIX at 16.27 (+13.5% YTD) elevated vs. 5-year average of ~15 → Hedging demand persists despite equity gains
-• Credit spreads tightening: BBB OAS 125 bps (-8 bps YTD), HY 350 bps (-15 bps YTD) → Credit confirming equity rally
-• **Anomalous signal:** Gold +21.4% YTD alongside positive equity returns → Unusual; suggests inflation/geopolitical hedging in portfolios
-• Sector rotation: Tech (+1.2%) > Utilities (+0.3%) → Growth leadership = risk-on, but defensive sectors holding gains
+**3. How Are Investors Feeling?**
 
-**4. The "Fresh Money" Recommendation**
+The mood is "cautiously optimistic"—like being happy about a sunny forecast but checking the weather app twice to be sure.
 
-• **Recommendation:** Maintain equity exposure with hedges; overweight quality large-caps; add to IG credit
-• **Rationale:** The gold/VIX anomalies suggest smart money is hedged. Economic fundamentals support equities, but tail risks (geopolitics, inflation surprise) warrant protection. IG credit offers equity-like returns with lower vol.
-• **What to Avoid:** Long-duration Treasuries (if inflation surprises, they'll underperform); speculative small-caps (first to sell off if VIX spikes)
-• **Risk to this view:** PCE inflation comes in hot → "higher for longer" narrative strengthens → risk-off rotation
+Evidence:
+• The VIX (fear gauge) is at 16.27—that's in the "slightly nervous" zone. Below 15 would be calm; above 20 would be worried
+• Companies can still borrow money at reasonable rates—this is a good sign that lenders trust businesses to pay them back
+• Gold's big jump (+21% this year!) shows many investors are keeping "insurance" in their portfolios
 
-**5. Forward Outlook**
+**4. What Would a Pro Do With New Money?**
 
-Key events next week:
-• **Friday: PCE Inflation** — Fed's preferred inflation gauge; consensus 2.8% YoY. Above 3.0% = hawkish repricing
-• **Tuesday: Consumer Confidence** — Gauge of consumer health; watch for divergence from hard data
-• **Wednesday: GDP Revision** — Q4 GDP second estimate; upside surprise = yields higher
+If you had money to invest right now:
 
-• **Bull case:** PCE at or below 2.7% → Rate cut expectations rise → S&P breaks 7000 resistance
-• **Bear case:** PCE above 3.0% → "Higher for longer" confirmed → Equities -2-3%, yields spike 10+ bps
-• **Technical levels:** S&P 500 resistance at 7000 (psychological); support at 6800 (20-day MA)`,
-  globalEvents: `**International Developments & U.S. Market Transmission**
+• **Smart move:** A balanced approach—some stocks (the economy looks okay), some bonds (in case things get rocky)
+• **Be careful with:** Very long-term bonds—if inflation surprises to the upside, these could lose value. Also risky small company stocks that tend to drop first when markets get scared
+• **Keep in mind:** Even professional investors are staying hedged. It's okay to be optimistic while also having a safety net
 
-**Middle East Geopolitical Tensions (Primary Driver)**
-• What happened: Houthi attacks on Red Sea shipping continued; U.S./UK conducted retaliatory strikes; Iran tensions elevated
-• U.S. market impact chain:
-  - Commodities: WTI crude +2.7% (+$1.65) on supply disruption premium → adds ~5 bps to inflation expectations
-  - Gold: +4.4% on safe-haven flows → anomalous given equity gains; signals hedging demand
-  - Equities: Energy sector +1.8% outperformance; airlines/transports -0.5% on fuel cost concerns
-  - Treasuries: Mild flight-to-quality bid → 10Y yield capped despite strong data
+**5. What to Watch Next Week**
 
-**European Central Bank Policy (Thursday)**
-• What happened: ECB held rates at 4.0%; Lagarde emphasized "data-dependent" but no imminent cuts
-• U.S. market impact chain:
-  - FX: EUR/USD stable at 1.08; validates global "higher for longer" regime
-  - Treasuries: Supports view that U.S. yields have floor; 10Y-Bund spread stable at ~180 bps
-  - Equities: Neutral impact; European stability supports global risk sentiment
+Key events that could move markets:
 
-**Bank of Japan Stance**
-• What happened: BOJ maintained ultra-loose policy; yen remained weak vs. USD
-• U.S. market impact chain:
-  - FX: USD/JPY +0.3% to 152.9 → yen carry trade remains attractive funding source
-  - Risk assets: Yen weakness → carry trade flows into U.S. equities → supportive of valuations
-  - Transmission: BOJ accommodation = global liquidity support
+• **Friday: PCE Inflation Report** — This is how the Federal Reserve measures inflation. If it's higher than expected, the Fed might keep interest rates high longer (bad for stocks and borrowers)
+  - Best case: Inflation cooling down → rate cuts become more likely → stocks could rally
+  - Worst case: Inflation heating up → rates stay high → stocks and bonds could both fall
 
-**China Economic Data**
-• What happened: Manufacturing PMI at 49.2 (contraction); services holding at 50.5
-• U.S. market impact chain:
-  - Commodities: Copper flat; iron ore weak → reflects tepid China demand
-  - Multinationals: Modest headwind for companies with China exposure
-  - Fed implications: Weak China = disinflationary impulse globally`,
+• **Consumer Confidence Report** — Are everyday Americans feeling good about the economy? This affects how much people spend
+
+• **Wild card:** Any escalation in Middle East tensions could spike oil prices and shake up markets`,
+  globalEvents: `**How World Events Affected U.S. Markets This Week**
+
+**Middle East Tensions: Why You Might Pay More at the Pump**
+
+What happened: Conflicts near important shipping routes in the Red Sea continued this week, with attacks on commercial ships disrupting global trade.
+
+Why Americans should care: This is pushing oil prices up (+2.7% this week). When oil costs more, gas prices eventually follow. It also adds to inflation worries—and the Federal Reserve is watching prices closely to decide when to cut interest rates. Higher gas prices = higher inflation = interest rates stay high longer.
+
+Market reaction: Oil prices rose, gold jumped +4.4% (investors buying "safety"), and energy company stocks outperformed. Airlines and shipping companies fell slightly because higher fuel costs hurt their profits.
+
+**Europe's Central Bank Keeping Rates High**
+
+What happened: The European Central Bank (Europe's version of the Federal Reserve) decided to keep interest rates high to fight inflation.
+
+Why Americans should care: When major economies worldwide keep rates high, it suggests inflation is a global problem, not just a U.S. issue. This makes it harder for our Federal Reserve to cut rates, which means mortgages, car loans, and credit card rates stay expensive longer.
+
+**Japan Keeping Rates Near Zero**
+
+What happened: Japan's central bank kept its interest rates extremely low (near zero), making the Japanese yen weak compared to the U.S. dollar.
+
+Why Americans should care: When Japanese rates are low and U.S. rates are high, investors borrow cheaply in Japan and invest in U.S. assets—this actually helps support U.S. stock prices.
+
+**China's Economy Still Struggling**
+
+What happened: China's factories are still slowing down (their manufacturing activity shrank for another month).
+
+Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there. On the bright side, weak Chinese demand means less competition for oil, which can help keep some prices in check.
+
+**The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious. The main concerns are Middle East tensions (oil/gas prices) and the fact that central banks worldwide are keeping rates high to fight inflation.`,
   corporateFinanceConcepts: [
     {
-      title: 'Option-Adjusted Spread (OAS)',
-      explanation: 'Option-Adjusted Spread (OAS) is a measure of the yield spread between a fixed-income security and a risk-free rate, adjusted for embedded options. Unlike nominal spreads, OAS accounts for the value of call or put options embedded in bonds, providing a more accurate assessment of credit risk and relative value. For example, a callable bond will have a higher OAS than a non-callable bond with the same credit quality, reflecting the additional risk to investors from potential early redemption. OAS is particularly important for analyzing mortgage-backed securities, callable corporate bonds, and other structured products where optionality significantly impacts pricing.'
+      title: 'Credit Spreads: How Risky is Lending to Companies?',
+      explanation: 'When companies borrow money by issuing bonds, they have to pay a higher interest rate than the U.S. government (which is considered the safest borrower). The difference between what a company pays and what the government pays is called the "credit spread." Think of it like this: if you were lending money to your friend vs. a stranger, you might charge the stranger a higher rate because it\'s riskier. When credit spreads are WIDE (high), it means investors are worried about companies\' ability to pay back loans. When spreads are NARROW (low), investors feel confident. We track BBB spreads (medium-quality companies) and High Yield spreads (riskier companies) to gauge market confidence.'
     },
     {
-      title: 'Risk-On / Risk-Off Sentiment',
-      explanation: 'Risk-on/risk-off (RORO) sentiment refers to the collective market psychology that drives capital flows between risky and safe-haven assets. During risk-on periods, investors favor equities, high-yield bonds, commodities, and emerging market assets, driving their prices higher. Conversely, risk-off periods see capital flight to safe havens like U.S. Treasuries, gold, and the Japanese yen. This sentiment is often driven by macroeconomic factors, geopolitical events, central bank policies, and changes in growth expectations. The VIX index, credit spreads, and currency movements are key indicators of market risk sentiment, with lower VIX and tighter spreads typically signaling risk-on conditions.'
+      title: 'Risk-On vs. Risk-Off: Reading the Market\'s Mood',
+      explanation: 'Markets have two basic moods: "risk-on" (feeling confident) and "risk-off" (feeling nervous). During RISK-ON periods, investors buy stocks, cryptocurrencies, and riskier investments hoping for higher returns. During RISK-OFF periods, they sell those and buy "safe" things like gold, U.S. Treasury bonds, and sometimes the Japanese yen. You can tell the market\'s mood by watching the VIX (fear index), gold prices, and credit spreads. Low VIX + falling gold + tight spreads = risk-on. High VIX + rising gold + wide spreads = risk-off. This week\'s unusual pattern (stocks UP but gold also UP) suggests a mixed mood—optimistic but hedged.'
     },
     {
-      title: 'Yield Curve Dynamics',
-      explanation: 'The yield curve represents the relationship between interest rates (yields) and the time to maturity of debt securities, typically U.S. Treasury bonds. A normal yield curve slopes upward, with longer-term bonds offering higher yields to compensate for time and inflation risk. An inverted yield curve, where short-term rates exceed long-term rates, has historically been a reliable predictor of economic recessions. The shape of the yield curve reflects market expectations about future interest rates, inflation, and economic growth. Changes in the curve\'s slope, steepness, or curvature can signal shifts in monetary policy expectations, economic outlook, or risk perceptions, making it a crucial tool for financial market analysis and economic forecasting.'
+      title: 'The Yield Curve: A Recession Crystal Ball?',
+      explanation: 'The yield curve shows how much interest the government pays on bonds of different lengths—from 3 months to 30 years. Normally, longer-term bonds pay MORE because you\'re locking up your money longer (like a 5-year CD paying more than a 1-year CD). But sometimes this flips, and short-term rates exceed long-term rates—this is called an "inverted yield curve." Here\'s why it matters: an inverted curve has predicted almost every U.S. recession in the past 50 years. It suggests investors think the economy will slow down, causing the Fed to cut rates in the future. Currently, we watch the difference between 10-year and 2-year Treasury rates as a key economic indicator.'
     }
   ],
   sources: [

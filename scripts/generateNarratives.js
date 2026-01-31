@@ -73,34 +73,32 @@ async function generateInterpretation(marketData) {
       `${item.variable}: ${item.latestLevel} (Weekly: ${item.weeklyChange > 0 ? '+' : ''}${item.weeklyChange.toFixed(2)}%, YTD: ${item.ytdChange > 0 ? '+' : ''}${item.ytdChange.toFixed(2)}%)`
     ).join('\n');
     
-    const prompt = `You are a senior portfolio manager writing a brief market interpretation for institutional investors.
+    const prompt = `Write a brief market summary (4-6 sentences) for someone who is NOT a finance expert. 
 
-Analyze this week's market data and write a concise interpretation (4-6 sentences) that:
+RULES FOR SIMPLE LANGUAGE:
+- Avoid jargon. If you must use a term like "VIX" or "yield," explain it in parentheses
+- Use everyday analogies (e.g., "Gold is like a safety blanket for investors")
+- Explain WHY something matters, not just what happened
+- Use phrases like "This means..." or "In simple terms..."
 
-1. DEFINE THE TREND: Give it a memorable name (e.g., "The Risk Rally", "Flight to Quality", "Stagflation Scare")
-
-2. IDENTIFY ANOMALIES - Look for unusual patterns:
-   - Did Gold rise WITH equities? (unusual - normally inverse)
-   - Did VIX rise while stocks rose? (unusual - normally inverse)
-   - Did credit spreads widen while equities rallied? (divergence)
-   - Did Treasuries and stocks move in the same direction? (correlation breakdown)
-   - Any asset moving >3% weekly deserves explanation
-
-3. EXPLAIN WHY: Connect each major move to a specific catalyst (Fed comments, economic data, geopolitical event)
+Analyze this data and explain:
+1. Give the week a simple theme name (e.g., "A Good Week for Stocks, But Investors Are Nervous")
+2. What UNUSUAL patterns happened? Explain why they're unusual in simple terms
+3. What caused the biggest moves?
 
 Market Data:
 ${marketSummary}
 
-CRITICAL: For each significant move, state: "[Asset] moved [X%] because [specific reason]"
-Example: "Gold surged +4.4% despite equity gains—an anomaly suggesting persistent inflation hedging demand amid Middle East tensions."`;
+Example of good simple language:
+"Gold jumped +4.4% even though stocks also went up. That's unusual—normally when investors feel confident about stocks, they don't buy as much gold (which is seen as a 'safe haven' investment). This suggests investors are hedging their bets, buying stocks for growth but also buying gold just in case something goes wrong."`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a senior portfolio manager at a major investment bank. Your job is to identify anomalies in market data and explain WHY they occurred. Never describe a move without explaining its cause. Be specific with numbers and catalysts.' },
+        { role: 'system', content: 'You are a financial educator who explains market movements to everyday people. Use simple language, avoid jargon, and always explain the "so what" behind the numbers. If you use a technical term, immediately explain it in plain English.' },
         { role: 'user', content: prompt }
       ],
-      max_tokens: 300,
+      max_tokens: 350,
       temperature: 0.7
     });
     
@@ -111,7 +109,7 @@ Example: "Gold surged +4.4% despite equity gains—an anomaly suggesting persist
   }
 }
 
-// Generate U.S. Market Narrative using AI - Updated format with correlations and catalysts
+// Generate U.S. Market Narrative using AI - Simple language version
 async function generateUSNarrative(marketData, economicCalendar, news) {
   if (!openai) {
     return generateFallbackUSNarrative();
@@ -130,79 +128,66 @@ async function generateUSNarrative(marketData, economicCalendar, news) {
       `${article.title} (${article.publishedAt})`
     ).join('\n');
     
-    const prompt = `You are a senior portfolio manager writing a weekly market analysis. Write a comprehensive Market Analysis & Commentary (450-550 words) following this EXACT structure:
+    const prompt = `Write a weekly market analysis (450-500 words) that a non-finance person can understand. Use simple language throughout.
 
-**1. Trend Identification: [Give it a descriptive title like "The Divergence Rally" or "Risk-On with Hedges"]**
+LANGUAGE RULES:
+- When you use a term like "VIX," immediately explain it: "VIX (a measure of market fear)"
+- Use analogies: "Think of credit spreads like the interest rate premium risky borrowers pay"
+- Explain cause and effect clearly: "Because X happened → investors did Y → which caused Z"
+- Use "In simple terms..." or "What this means for everyday investors..."
 
-REQUIRED: Correlate market data to specific events. For each observation:
-- State the DATA POINT (e.g., "S&P 500 +0.4%, Nasdaq +0.9%")
-- State the CAUSE (e.g., "driven by strong earnings from mega-cap tech")
-- Identify ANOMALIES with explanation:
-  • "ANOMALY: Gold +4.4% despite equity gains—unusual as gold typically falls in risk-on environments. Cause: [explanation]"
-  • "ANOMALY: VIX elevated at 16+ while equities rally—suggests hedging demand persists. Cause: [explanation]"
-  • "CORRELATION BREAKDOWN: Stocks and bonds moving together signals [interpretation]"
+Follow this structure:
 
-Use this format for each key observation:
-• [Asset] moved [X%] → Cause: [specific event/reason] → Implication: [what this means]
+**1. What Happened This Week: [Simple descriptive title]**
 
-**2. Key Catalysts**
+Start with a 2-sentence plain English summary anyone could understand. Then explain:
+- Which investments went up or down, and WHY (connect to real-world events)
+- **Unusual Pattern:** Point out anything surprising and explain why it's unusual
+  Example: "Normally when stocks go up, gold goes down (investors feel confident and don't need 'safe' investments). But this week, BOTH went up—suggesting investors are buying stocks but also hedging their bets."
 
-For EACH catalyst, you MUST show the cause-and-effect chain:
+**2. What Caused These Moves**
 
-FORMAT:
-• **[Event Name]** (e.g., "Fed Chair Powell Speech on Tuesday")
-  - What happened: [1 sentence description]
-  - Market impact: [Specific numbers - which assets moved and by how much]
-  - Transmission mechanism: [How did this event flow through to prices?]
-  - Forward implication: [What does this mean going forward?]
+For each major event, explain it simply:
+- **[Event in plain English]** (e.g., "The Federal Reserve Signaled No Rate Cuts Soon")
+  - What happened: [1-2 simple sentences]
+  - Why it matters: [How does this affect regular people's investments, mortgages, savings?]
+  - Market reaction: [What did investors do in response?]
 
-Cover these catalyst categories:
-- Federal Reserve actions/communications
-- Economic data releases (NFP, CPI, retail sales, etc.)
-- Geopolitical developments
-- Corporate earnings/guidance (if significant)
+**3. How Are Investors Feeling?**
 
-**3. Sentiment Analysis**
+Describe the market mood in everyday terms:
+- Are investors nervous or confident? What's the evidence?
+- Explain VIX in simple terms (fear gauge: below 15 = calm, 15-20 = cautious, above 20 = worried)
+- Are investors seeking "safe" investments (gold, government bonds) or "risky" ones (stocks, crypto)?
 
-Describe market mood using EVIDENCE:
-• VIX level and what it indicates (below 15 = complacent, 15-20 = cautious, 20+ = fear)
-• Credit spreads (tightening = risk-on, widening = risk-off)
-• Safe haven flows (gold, yen, Treasuries)
-• Sector rotation (growth vs value, cyclicals vs defensives)
+**4. What Would a Pro Do With New Money?**
 
-**4. The "Fresh Money" Recommendation**
+Give practical, understandable advice:
+- If someone had money to invest, what would be smart right now?
+- What should investors be careful about?
+- Explain the reasoning in simple terms
 
-• Recommendation: [Clear action - e.g., "Overweight U.S. equities, underweight duration"]
-• Rationale: [Connect to the data and catalysts discussed above]
-• What to Avoid: [Specific assets/sectors and why]
-• Risk to this view: [What could go wrong?]
+**5. What to Watch Next Week**
 
-**5. Forward Outlook**
+- What upcoming events could move markets?
+- What's the best-case scenario? Worst-case?
+- Any important economic reports coming (and why they matter)?
 
-• Key data releases next week: [List specific releases with dates]
-• Bull case: [What could drive markets higher?]
-• Bear case: [What could cause a selloff?]
-• Technical levels to watch: [S&P support/resistance if applicable]
-
-Market Data This Week:
+Market Data:
 ${marketSummary}
 
-Economic Releases:
+Economic Events:
 ${economicReleases}
 
-Recent News Headlines:
+News:
 ${recentNews}
 
-CRITICAL REQUIREMENTS:
-1. Every market move must have an explained CAUSE
-2. Every catalyst must show specific MARKET IMPACT with numbers
-3. Identify at least 2 ANOMALIES or unusual correlations
-4. Use bullet points within each section`;
+Remember: Write as if explaining to a smart friend who doesn't follow finance. Be clear, not condescending.`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a senior portfolio manager at Goldman Sachs writing the weekly market commentary. Your analysis must show CAUSE and EFFECT. Never describe market moves without explaining WHY they happened. Always connect catalysts to specific market impacts with numbers. Identify anomalies and correlation breakdowns. Be specific, analytical, and actionable.' },
+        { role: 'system', content: 'You are a financial educator who makes markets understandable for everyone. You explain complex concepts using everyday language and analogies. You never assume the reader knows financial jargon. When you must use a technical term, you immediately explain it in parentheses. Your goal is clarity, not impressive vocabulary.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 1400,
@@ -216,7 +201,7 @@ CRITICAL REQUIREMENTS:
   }
 }
 
-// Generate Global Events section using AI
+// Generate Global Events section using AI - Simple language
 async function generateGlobalEvents(marketData, news) {
   if (!openai) {
     return generateFallbackGlobalEvents();
@@ -242,38 +227,37 @@ async function generateGlobalEvents(marketData, news) {
       `${article.title} - ${article.description || ''}`
     ).join('\n');
     
-    const prompt = `You are a global macro strategist explaining how international events affected U.S. markets. Write a Global Events section (200-250 words).
+    const prompt = `Write a simple explanation (200-250 words) of how world events affected U.S. markets this week. 
 
-For EACH major global event, you MUST show the TRANSMISSION MECHANISM to U.S. markets:
+SIMPLE LANGUAGE RULES:
+- Explain everything as if to someone who doesn't follow international news closely
+- Connect global events to things people care about: gas prices, grocery costs, their 401k
+- Use cause-and-effect chains: "Conflict in Middle East → oil prices up → gas prices may rise → inflation worries"
 
-FORMAT for each event:
-**[Event Name]**
-• What happened: [Brief description]
-• U.S. market impact:
-  - Treasuries: [How did yields react and why?]
-  - Equities: [How did risk sentiment change?]
-  - FX: [How did USD move against relevant currencies?]
-  - Commodities: [Any impact on oil, gold, etc.?]
+For each major global event:
+**[Event Name in Plain English]**
+- What happened: [Simple 1-sentence explanation]
+- Why Americans should care: [How does this affect U.S. investors or consumers?]
+- Market reaction: [Did this make investments go up or down? Which ones?]
 
-Cover these areas if relevant:
-1. Central bank decisions abroad (ECB, BOJ, PBOC)
-2. Geopolitical tensions (Middle East, China-Taiwan, Russia-Ukraine)
-3. Commodity supply/demand shocks (OPEC decisions, weather events)
-4. Economic surprises in major economies
+Cover events like:
+- Tensions in the Middle East (and oil/gas prices)
+- What other countries' central banks did (and why it matters for U.S. interest rates)
+- China's economy (and what it means for global growth)
 
-Market Data (for reference):
+Market Data:
 ${marketSummary}
 
-Recent Global News:
+Global News:
 ${newsSummary}
 
-CRITICAL: Show the CHAIN OF CAUSATION from global event → transmission channel → U.S. market impact
-Example: "ECB's hawkish hold → EUR/USD +0.5% → U.S. export competitiveness concerns → slight drag on multinational earnings expectations"`;
+Example of good simple language:
+"The European Central Bank (Europe's version of the Federal Reserve) kept interest rates high. This matters for U.S. investors because it signals that inflation is still a global concern—not just an American problem. When Europe keeps rates high, it makes the euro stronger compared to the dollar, which can make American exports more expensive overseas."`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
-        { role: 'system', content: 'You are a global macro strategist. Your job is to explain HOW international events flow through to U.S. markets. Always show the transmission mechanism with specific market impacts.' },
+        { role: 'system', content: 'You explain global events and their market impact in simple terms anyone can understand. You connect international news to everyday concerns like gas prices, grocery costs, and retirement savings. You never use jargon without explaining it.' },
         { role: 'user', content: prompt }
       ],
       max_tokens: 500,
@@ -287,111 +271,105 @@ Example: "ECB's hawkish hold → EUR/USD +0.5% → U.S. export competitiveness c
   }
 }
 
-// Fallback interpretation with anomaly identification
+// Fallback interpretation with simple language
 function generateFallbackInterpretation() {
-  return `The defining trend this week was "Cautious Optimism with Safe-Haven Demand"—an unusual combination where risk assets advanced while defensive positioning intensified.
+  return `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
 
-**Key Anomaly #1:** Gold surged +4.4% this week even as the S&P 500 gained +0.4%—a notable divergence from the typical inverse relationship. This suggests investors are simultaneously buying equities for upside while hedging against tail risks (geopolitical tensions, inflation uncertainty).
+The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here's what's interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they're nervous.
 
-**Key Anomaly #2:** The VIX remains elevated at 16+ despite equity gains, indicating persistent hedging demand. Normally, a rising equity market would compress volatility, but options markets are pricing in potential turbulence ahead.
+**Why is this unusual?** Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong.
 
-**Correlation Observation:** Credit spreads continued tightening (BBB OAS -2 bps, HY -5 bps) alongside equity gains—this is the normal risk-on correlation and suggests credit markets are confirming the equity rally's legitimacy.
+**What's causing the nervousness?** The VIX (often called the "fear index" because it measures how volatile investors expect the market to be) is elevated at 16.27. Tensions in the Middle East are pushing oil prices up (+2.7%), and there's still uncertainty about when the Federal Reserve might cut interest rates.
 
-The equity advance (+0.4% S&P, +0.9% Nasdaq) was driven by resilient economic data and steady Fed messaging, while the gold bid reflects ongoing geopolitical uncertainty in the Middle East and persistent inflation hedging.`;
+**The bottom line:** Markets are doing well on the surface, but investors are clearly keeping one eye on potential risks.`;
 }
 
-// Fallback narratives with cause-effect relationships
+// Fallback narratives with simple language
 function generateFallbackUSNarrative() {
-  return `**1. Trend Identification: "The Hedged Rally"**
+  return `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
 
-This week's defining trend was a risk-on rally accompanied by elevated hedging activity—an unusual combination suggesting investors are buying equities while simultaneously protecting against downside.
+In simple terms: U.S. stocks went up this week, but investors also bought a lot of "safe haven" investments like gold—which usually happens when people are nervous. It's like going to the beach but packing a rain jacket just in case.
 
-• S&P 500 +0.41% → Cause: Resilient economic data and stable Fed messaging → Implication: Soft landing narrative remains intact
-• Nasdaq +0.91% → Cause: Strong mega-cap tech performance and AI enthusiasm → Implication: Growth stocks leading despite rate concerns
-• **ANOMALY: Gold +4.4% during equity rally** → Cause: Geopolitical tensions (Middle East) + inflation hedging → Implication: Investors don't fully trust the rally
-• **ANOMALY: VIX elevated at 16+ despite gains** → Cause: Options market pricing tail risks → Implication: Hedging demand suggests caution beneath the surface
+Here's what moved and why:
 
-**2. Key Catalysts**
+• **Stocks rose** (+0.4% for S&P 500, +0.9% for tech-heavy Nasdaq) → The economy is still growing, jobs data looked good, and the Federal Reserve isn't planning any surprises
+• **Gold jumped +4.4%** → This is unusual when stocks are up! Investors are buying gold as "insurance" against potential problems (Middle East tensions, inflation concerns)
+• **Oil prices rose +2.7%** → Conflicts in the Middle East are creating worries about oil supply, which could push gas prices higher
+• **The "fear index" (VIX) stayed elevated** → Usually when stocks go up, the VIX goes down. The fact that it stayed high suggests investors are still worried about something
 
-• **Federal Reserve Communications (Mid-week)**
-  - What happened: Multiple Fed officials maintained data-dependent stance, emphasized no rush to cut rates
-  - Market impact: 10Y Treasury yields stable around 4.15%; equity volatility contained
-  - Transmission: Steady Fed messaging → reduced rate uncertainty → supportive for risk assets
-  - Forward implication: Markets now pricing fewer cuts in 2026; focus shifts to inflation data
+**Unusual Pattern to Note:** When stocks AND gold both go up, it's like seeing people celebrate AND buy emergency supplies at the same time. It suggests investors are hopeful but hedging their bets.
 
-• **Economic Data: Labor Market (Various)**
-  - What happened: Jobless claims remained low; labor market shows continued resilience
-  - Market impact: Equities +0.4-0.9% on soft landing hopes; yields edged higher
-  - Transmission: Strong employment → consumer spending intact → earnings estimates hold
-  - Forward implication: "Good news is good news" regime continues
+**2. What Caused These Moves**
 
-• **Geopolitical: Middle East Tensions**
-  - What happened: Elevated tensions in the region; no major escalation but uncertainty persists
-  - Market impact: WTI crude +2.7%; Gold +4.4%; mild risk premium in VIX
-  - Transmission: Supply disruption fears → energy prices bid → inflation concerns linger
-  - Forward implication: Energy volatility likely to continue; watch for escalation
+• **Federal Reserve Held Steady on Rates**
+  - What happened: Fed officials (the people who control U.S. interest rates) said they're not ready to cut rates yet—they want to see more evidence that inflation is under control
+  - Why it matters: This affects everything from mortgage rates to credit card interest. No rate cuts soon means borrowing costs stay higher
+  - Market reaction: Stocks took it in stride; this was expected
 
-**3. Sentiment Analysis**
+• **Strong Jobs Report**
+  - What happened: Fewer people filed for unemployment benefits than expected, suggesting the job market is still healthy
+  - Why it matters: When people have jobs, they spend money, which keeps the economy growing
+  - Market reaction: Stocks rose because a healthy job market supports company profits
 
-Market mood: **Cautiously Optimistic** (Risk-On with Hedges)
+• **Middle East Tensions**
+  - What happened: Conflicts in the Red Sea region are disrupting shipping and creating concerns about oil supply
+  - Why it matters: This could raise gas prices and contribute to inflation
+  - Market reaction: Oil and gold both rose; investors are nervous about potential escalation
+
+**3. How Are Investors Feeling?**
+
+The mood is "cautiously optimistic"—like being happy about a sunny forecast but checking the weather app twice to be sure.
 
 Evidence:
-• VIX at 16.27 (elevated vs. historical average of ~15) → Hedging demand persists
-• Credit spreads tightening: BBB OAS 125 bps (-2 bps WoW), HY 350 bps (-5 bps WoW) → Credit confirming equity rally
-• Gold +21% YTD alongside equity gains → Unusual; suggests inflation/geopolitical hedging
-• Sector leadership: Growth > Value, Tech leading → Classic risk-on rotation
+• The VIX (fear gauge) is at 16.27—that's in the "slightly nervous" zone (below 15 would be calm, above 20 would be worried)
+• Credit spreads (the extra interest that risky companies pay to borrow money) are getting smaller—this is a good sign, meaning investors trust companies to pay back their loans
+• Gold's big jump (+21% this year!) suggests many investors are keeping "insurance" in their portfolios
 
-**4. The "Fresh Money" Recommendation**
+**4. What Would a Pro Do With New Money?**
 
-• **Recommendation:** Maintain balanced equity exposure; add to quality names on dips
-• **Rationale:** Economic data supports continued expansion, but the gold/VIX signals suggest maintaining some defensive positioning. The hedged rally pattern historically precedes either (a) hedges being unwound as concerns fade, or (b) the concerns materializing
-• **What to Avoid:** Long-duration Treasuries (rate volatility persists); speculative small-caps (if VIX spikes, they'll underperform)
-• **Risk to this view:** Inflation data surprising to the upside; geopolitical escalation
+If you had money to invest right now, here's what might make sense:
 
-**5. Forward Outlook**
+• **Consider:** A balanced approach—some stocks (the economy looks okay), some bonds (in case things get rocky)
+• **Be careful with:** Very long-term bonds—if inflation surprises to the upside, these could lose value
+• **Keep in mind:** The gold rally suggests smart money is staying hedged. It's okay to be optimistic while also having a safety net
 
-Key data next week:
-• PCE Inflation (Friday) — Fed's preferred inflation gauge; critical for rate expectations
-• Consumer Confidence (Tuesday) — Gauge of consumer health
-• Housing data (Various) — Interest rate sensitivity check
+**5. What to Watch Next Week**
 
-• **Bull case:** PCE comes in soft → Rate cut expectations rise → Equity rally extends
-• **Bear case:** PCE surprises high → "Higher for longer" narrative strengthens → Equity pullback, yields spike
-• **Technical levels:** S&P 500 resistance at 7000; support at 6800`;
+Key events that could move markets:
+
+• **Friday: PCE Inflation Report** — This is the Federal Reserve's favorite way to measure inflation. If it comes in higher than expected, the Fed might keep rates higher for longer, which would be bad for stocks
+  - Best case: Inflation cooling → rate cuts become more likely → stocks rally
+  - Worst case: Inflation heating up → "higher for longer" rates → stocks and bonds both fall
+
+• **Consumer Confidence Report** — Are everyday Americans feeling good about the economy? This affects spending
+
+• **Wild card:** Any escalation in Middle East tensions could spike oil prices and create market volatility`;
 }
 
 function generateFallbackGlobalEvents() {
-  return `**International Developments & U.S. Market Transmission**
+  return `**How World Events Affected U.S. Markets This Week**
 
-**European Central Bank Policy Stance**
-• What happened: ECB maintained rates, signaled continued focus on inflation
-• U.S. market impact:
-  - FX: EUR/USD relatively stable; USD maintained strength
-  - Equities: Modest positive spillover as European stability supports global risk sentiment
-  - Treasuries: Limited direct impact; yield differential remains supportive of USD
-  - Transmission: ECB hawkishness → validates "higher for longer" global rate regime → U.S. rates supported
+**Middle East Tensions: Why You Might Pay More at the Pump**
 
-**Middle East Geopolitical Tensions**
-• What happened: Elevated tensions persisted; oil supply concerns remain
-• U.S. market impact:
-  - Commodities: WTI crude +2.7% on supply risk premium
-  - Gold: +4.4% on safe-haven demand
-  - Equities: Energy sector outperformed; airlines/transport underperformed
-  - Treasuries: Mild flight-to-quality bid supporting prices
-  - Transmission: Geopolitical risk → energy price volatility → inflation concerns → Fed policy uncertainty
+What happened: Conflicts in the Red Sea region (near important shipping routes) continued this week, with attacks on commercial ships disrupting global trade.
 
-**Bank of Japan Policy**
-• What happened: BOJ maintained ultra-accommodative stance
-• U.S. market impact:
-  - FX: USD/JPY stable; yen carry trade remains attractive
-  - Equities: Supports global liquidity conditions
-  - Transmission: BOJ accommodation → yen funding for global carry trades → supports risk asset valuations
+Why Americans should care: This is pushing oil prices up (+2.7% this week). When oil costs more, gas prices eventually follow. It also adds to inflation worries—remember, the Federal Reserve is watching prices closely to decide when to cut interest rates.
 
-**Key Transmission Mechanisms This Week**
-• Yields: Global central bank divergence supported modest Treasury yield increase
-• Risk Sentiment: Geopolitical uncertainty added 2-3 vol points to VIX
-• FX: Dollar index stable as conflicting forces (rate support vs. risk sentiment) balanced
-• Commodities: Geopolitical premium in oil (~$3-5/barrel); gold bid on hedging demand`;
+Market reaction: Oil prices rose, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
+
+**Europe's Central Bank Keeping Rates High**
+
+What happened: The European Central Bank (like America's Federal Reserve, but for Europe) decided to keep interest rates high to fight inflation.
+
+Why Americans should care: When major economies worldwide keep rates high, it suggests inflation is a global problem, not just a U.S. issue. This makes it harder for the Fed to cut rates, which means mortgages, car loans, and credit card rates stay expensive longer.
+
+**China's Economy Still Sluggish**
+
+What happened: China's manufacturing sector is still struggling (their PMI, a measure of factory activity, stayed below 50, which indicates shrinking activity).
+
+Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there. On the flip side, weak Chinese demand means less competition for oil and commodities, which can help keep some prices in check.
+
+**The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious, even as U.S. markets perform reasonably well.`;
 }
 
 export { 
