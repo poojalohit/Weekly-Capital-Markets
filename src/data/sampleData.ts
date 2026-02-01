@@ -76,7 +76,13 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: 1.9627751842894423
   }
 ],
-  interpretation: '**This Week\\'s Theme: "Stocks Up, But Investors Are Playing It Safe"**\\n\\nThe stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here\\'s what\\'s interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they\\'re nervous.\\n\\n**Why is this unusual?** Normally, when investors feel confident about stocks, they don\\'t rush to buy gold—it\\'s like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong (Middle East tensions, inflation concerns).\\n\\n**What\\'s causing the nervousness?** The VIX (often called the "fear index" because it measures how worried investors are) stayed elevated. Oil prices rose 2.7% due to Middle East tensions, which could mean higher gas prices ahead.',
+  interpretation: `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
+
+The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here's what's interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they're nervous.
+
+**Why is this unusual?** Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong (Middle East tensions, inflation concerns).
+
+**What's causing the nervousness?** The VIX (often called the "fear index" because it measures how worried investors are) stayed elevated. Oil prices rose 2.7% due to Middle East tensions, which could mean higher gas prices ahead.`,
   usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
 
 In simple terms: U.S. stocks went up this week, but investors also bought a lot of "safe" investments like gold—which usually happens when people are nervous. It's like going to the beach but packing a rain jacket just in case.
