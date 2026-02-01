@@ -11,13 +11,7 @@ export interface WeeklyDashboard {
   interpretation: string;
   usNarrative: string;
   globalEvents: string;
-  corporateFinanceConcepts: CorporateFinanceConcept[];
   sources: Source[];
-}
-
-export interface CorporateFinanceConcept {
-  title: string;
-  explanation: string;
 }
 
 export interface Source {

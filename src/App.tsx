@@ -3,7 +3,6 @@ import Navigation from './components/Navigation';
 import MarketDataTable from './components/MarketDataTable';
 import USMarketNarrative from './components/USMarketNarrative';
 import GlobalEvents from './components/GlobalEvents';
-import CorporateFinanceConcepts from './components/CorporateFinanceConcepts';
 import Sources from './components/Sources';
 import { sampleDashboardData } from './data/sampleData';
 
@@ -23,8 +22,6 @@ function App() {
         <USMarketNarrative narrative={dashboardData.usNarrative} />
         
         <GlobalEvents content={dashboardData.globalEvents} />
-        
-        <CorporateFinanceConcepts concepts={dashboardData.corporateFinanceConcepts} />
         
         <Sources sources={dashboardData.sources} />
       </div>

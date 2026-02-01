@@ -170,20 +170,6 @@ What happened: China's factories are still slowing down (their manufacturing act
 Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there. On the bright side, weak Chinese demand means less competition for oil, which can help keep some prices in check.
 
 **The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious. The main concerns are Middle East tensions (oil/gas prices) and the fact that central banks worldwide are keeping rates high to fight inflation.`,
-  corporateFinanceConcepts: [
-    {
-      title: 'Credit Spreads: How Risky is Lending to Companies?',
-      explanation: 'When companies borrow money by issuing bonds, they have to pay a higher interest rate than the U.S. government (which is considered the safest borrower). The difference between what a company pays and what the government pays is called the "credit spread." Think of it like this: if you were lending money to your friend vs. a stranger, you might charge the stranger a higher rate because it\'s riskier. When credit spreads are WIDE (high), it means investors are worried about companies\' ability to pay back loans. When spreads are NARROW (low), investors feel confident. We track BBB spreads (medium-quality companies) and High Yield spreads (riskier companies) to gauge market confidence.'
-    },
-    {
-      title: 'Risk-On vs. Risk-Off: Reading the Market\'s Mood',
-      explanation: 'Markets have two basic moods: "risk-on" (feeling confident) and "risk-off" (feeling nervous). During RISK-ON periods, investors buy stocks, cryptocurrencies, and riskier investments hoping for higher returns. During RISK-OFF periods, they sell those and buy "safe" things like gold, U.S. Treasury bonds, and sometimes the Japanese yen. You can tell the market\'s mood by watching the VIX (fear index), gold prices, and credit spreads. Low VIX + falling gold + tight spreads = risk-on. High VIX + rising gold + wide spreads = risk-off. This week\'s unusual pattern (stocks UP but gold also UP) suggests a mixed mood—optimistic but hedged.'
-    },
-    {
-      title: 'The Yield Curve: A Recession Crystal Ball?',
-      explanation: 'The yield curve shows how much interest the government pays on bonds of different lengths—from 3 months to 30 years. Normally, longer-term bonds pay MORE because you\'re locking up your money longer (like a 5-year CD paying more than a 1-year CD). But sometimes this flips, and short-term rates exceed long-term rates—this is called an "inverted yield curve." Here\'s why it matters: an inverted curve has predicted almost every U.S. recession in the past 50 years. It suggests investors think the economy will slow down, causing the Fed to cut rates in the future. Currently, we watch the difference between 10-year and 2-year Treasury rates as a key economic indicator.'
-    }
-  ],
   sources: [
     {
       category: 'Equity & Volatility Data - Yahoo Finance',

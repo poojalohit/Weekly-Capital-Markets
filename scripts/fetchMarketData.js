@@ -453,23 +453,9 @@ async function updateMarketData() {
 export const sampleDashboardData: WeeklyDashboard = {
   date: '${marketData.date}',
   marketData: ${JSON.stringify(marketData.marketData, null, 2).replace(/"([^"]+)":/g, '$1:')},
-  interpretation: '${escapeTemplate(interpretation)}',
+  interpretation: \`${escapeTemplate(interpretation)}\`,
   usNarrative: \`${escapeTemplate(usNarrative)}\`,
   globalEvents: \`${escapeTemplate(globalEvents)}\`,
-  corporateFinanceConcepts: [
-    {
-      title: 'Option-Adjusted Spread (OAS)',
-      explanation: 'Option-Adjusted Spread (OAS) is a measure of the yield spread between a fixed-income security and a risk-free rate, adjusted for embedded options. Unlike nominal spreads, OAS accounts for the value of call or put options embedded in bonds, providing a more accurate assessment of credit risk and relative value. For example, a callable bond will have a higher OAS than a non-callable bond with the same credit quality, reflecting the additional risk to investors from potential early redemption. OAS is particularly important for analyzing mortgage-backed securities, callable corporate bonds, and other structured products where optionality significantly impacts pricing.'
-    },
-    {
-      title: 'Risk-On / Risk-Off Sentiment',
-      explanation: 'Risk-on/risk-off (RORO) sentiment refers to the collective market psychology that drives capital flows between risky and safe-haven assets. During risk-on periods, investors favor equities, high-yield bonds, commodities, and emerging market assets, driving their prices higher. Conversely, risk-off periods see capital flight to safe havens like U.S. Treasuries, gold, and the Japanese yen. This sentiment is often driven by macroeconomic factors, geopolitical events, central bank policies, and changes in growth expectations. The VIX index, credit spreads, and currency movements are key indicators of market risk sentiment, with lower VIX and tighter spreads typically signaling risk-on conditions.'
-    },
-    {
-      title: 'Yield Curve Dynamics',
-      explanation: 'The yield curve represents the relationship between interest rates (yields) and the time to maturity of debt securities, typically U.S. Treasury bonds. A normal yield curve slopes upward, with longer-term bonds offering higher yields to compensate for time and inflation risk. An inverted yield curve, where short-term rates exceed long-term rates, has historically been a reliable predictor of economic recessions. The shape of the yield curve reflects market expectations about future interest rates, inflation, and economic growth. Changes in the curve\\'s slope, steepness, or curvature can signal shifts in monetary policy expectations, economic outlook, or risk perceptions, making it a crucial tool for financial market analysis and economic forecasting.'
-    }
-  ],
   sources: ${JSON.stringify(sources, null, 4).replace(/"([^"]+)":/g, '$1:')}
 };`;
     

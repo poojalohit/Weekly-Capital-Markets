@@ -9,7 +9,7 @@ export default function Navigation({ lastUpdated }: NavigationProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['market-data', 'us-narrative', 'global-events', 'corporate-finance', 'sources'];
+      const sections = ['market-data', 'us-narrative', 'global-events', 'sources'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -48,7 +48,6 @@ export default function Navigation({ lastUpdated }: NavigationProps) {
     { id: 'market-data', label: 'Market Data' },
     { id: 'us-narrative', label: 'Market Analysis' },
     { id: 'global-events', label: 'Global Events' },
-    { id: 'corporate-finance', label: 'Finance Concepts' },
     { id: 'sources', label: 'Sources' }
   ];
 
