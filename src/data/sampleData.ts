@@ -1,7 +1,7 @@
 import { WeeklyDashboard } from '../types/marketData';
 
 export const sampleDashboardData: WeeklyDashboard = {
-  date: '2026-01-28',
+  date: '2026-01-26',
   marketData: [
   {
     variable: "S&P 500 Index",
@@ -76,100 +76,115 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: 1.9627751842894423
   }
 ],
-  interpretation: `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
+  interpretation: `**This Week's Theme: "The Gold Rush Amid Stock Gains"**
 
-The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here's what's interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they're nervous.
+Something unusual happened this week: both stocks AND gold went up together. The S&P 500 climbed 0.4% to nearly 6,979, while the Nasdaq rose 0.9%—but gold surged an eye-popping 4.4%, now up over 21% for the year!
 
-**Why is this unusual?** Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong (Middle East tensions, inflation concerns).
+**Why this is strange:** Gold is typically a "fear" investment. When people are confident, they buy stocks. When they're scared, they buy gold. But right now, investors are buying BOTH—like someone celebrating a promotion while also updating their resume. This signals optimism mixed with caution.
 
-**What's causing the nervousness?** The VIX (often called the "fear index" because it measures how worried investors are) stayed elevated. Oil prices rose 2.7% due to Middle East tensions, which could mean higher gas prices ahead.`,
-  usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
+**What's driving the nerves?** Oil jumped 2.7% this week on Middle East supply concerns (potential gas price increases ahead). The VIX "fear index" ticked up even as stocks rose—another unusual signal. Meanwhile, Bitcoin broke $89,000, up 1% this week, showing appetite for risk assets alongside the hedging behavior.`,
+  usNarrative: `**1. What Happened This Week: "Stocks Hit New Highs While Gold Steals the Show"**
 
-In simple terms: U.S. stocks went up this week, but investors also bought a lot of "safe" investments like gold—which usually happens when people are nervous. It's like going to the beach but packing a rain jacket just in case.
+In simple terms: It was a good week for investors—stocks climbed to near-record levels, but the real story is gold's explosive +4.4% surge. When stocks AND gold both rally together, it tells us investors are optimistic but also buying "insurance" against uncertainty.
 
 Here's what moved and why:
 
-• **Stocks rose** (S&P 500 +0.4%, Nasdaq +0.9%) → The economy is still growing, jobs data looked good, and the Federal Reserve (the institution that sets interest rates) isn't planning any surprises
-• **Gold jumped +4.4%** → This is unusual when stocks are also up! Normally investors choose one or the other. They're buying gold as "insurance" against potential problems (Middle East tensions, inflation worries)
-• **Oil prices rose +2.7%** → Conflicts in the Middle East are creating worries about oil supply, which could eventually push gas prices higher
-• **The "fear index" (VIX) stayed elevated** → This gauge measures how nervous investors are. Usually when stocks go up, it goes down. The fact that it stayed high suggests some underlying worry
+• **S&P 500 rose to 6,979 (+0.4%)** → Strong corporate earnings and solid economic data kept buyers interested. The index is now up 1.2% for the year
+• **Nasdaq jumped +0.9%** → Tech stocks led the way, with AI-related companies continuing to attract investment dollars
+• **Gold exploded +4.4% to $5,305/oz** → This is the week's big surprise. Gold usually falls when stocks rise, but investors are hedging against Middle East risks and potential inflation. Gold is now up a stunning 21% year-to-date!
+• **Oil climbed +2.7% to $62.26** → Red Sea shipping disruptions and OPEC supply concerns are pushing prices higher. Watch your gas pump—prices may follow
+• **Bitcoin topped $89,000 (+1.1%)** → Risk appetite remains healthy for speculative assets
+• **VIX (fear gauge) rose slightly to 16.27** → Unusual to see this rise while stocks gain. It suggests options traders are buying protection
 
-**Unusual Pattern:** When stocks AND gold both go up together, it's like seeing people celebrate AND buy emergency supplies at the same time. It suggests investors are hopeful but hedging their bets.
+**Unusual Pattern Alert:** Gold up 4.4% WHILE stocks rally is like seeing people throw a party AND stock up on emergency supplies. It signals: "We're optimistic, but we're hedging our bets."
 
 **2. What Caused These Moves**
 
-• **Federal Reserve Kept Rates Unchanged**
-  - What happened: Fed officials (the people who control U.S. interest rates) said they're not ready to cut rates yet—they want to make sure inflation is truly under control first
-  - Why it matters for you: This affects mortgage rates, car loans, and credit card interest. No rate cuts soon means borrowing costs stay higher for now
-  - Market reaction: Stocks took it in stride because this was expected
+• **Fed's "Higher for Longer" Message**
+  - What happened: Federal Reserve officials reiterated they're in no rush to cut interest rates. The 10-year Treasury yield sits at 4.15%
+  - Why it matters for you: Mortgage rates, car loans, and credit cards stay expensive. A 30-year mortgage is still around 7%
+  - Market reaction: Stocks shrugged it off—this was expected. But it explains why gold is attractive (real yields matter)
 
-• **Jobs Report Was Strong**
-  - What happened: Fewer people filed for unemployment benefits than expected, suggesting the job market is healthy
-  - Why it matters for you: When people have jobs, they spend money, which keeps the economy (and company profits) growing
-  - Market reaction: Stocks rose because healthy employment is good for business
+• **Strong Employment Data**
+  - What happened: Weekly jobless claims came in lower than expected, showing the job market remains resilient
+  - Why it matters for you: Job security means consumers keep spending, which supports company profits and stock prices
+  - Market reaction: Stocks rose on "soft landing" hopes—the economy is slowing but not crashing
 
-• **Middle East Tensions Continued**
-  - What happened: Conflicts in the Red Sea region are disrupting shipping and raising concerns about oil supply
-  - Why it matters for you: This could raise gas prices and contribute to inflation, which affects everything from groceries to rent
-  - Market reaction: Oil and gold both rose; investors are nervous about potential escalation
+• **Middle East Tensions Escalating**
+  - What happened: Houthi attacks on Red Sea shipping continued, disrupting 12% of global trade. Iran tensions remain elevated
+  - Why it matters for you: Higher shipping costs → higher prices for imported goods. Oil supply fears → higher gas prices
+  - Market reaction: Oil +2.7%, Gold +4.4%. This is the main driver of the gold surge
+
+• **China Stimulus Hopes**
+  - What happened: Reports suggest China may announce more economic stimulus measures to boost their struggling economy
+  - Why it matters for you: A stronger China buys more commodities (good for oil, copper) and more U.S. goods (good for exporters)
+  - Market reaction: Contributed to the risk-on tone in markets
 
 **3. How Are Investors Feeling?**
 
-The mood is "cautiously optimistic"—like being happy about a sunny forecast but checking the weather app twice to be sure.
+The mood is **"Optimistic but Hedged"**—investors are buying stocks for growth but also buying gold and options for protection.
 
 Evidence:
-• The VIX (fear gauge) is at 16.27—that's in the "slightly nervous" zone. Below 15 would be calm; above 20 would be worried
-• Companies can still borrow money at reasonable rates—this is a good sign that lenders trust businesses to pay them back
-• Gold's big jump (+21% this year!) shows many investors are keeping "insurance" in their portfolios
+• VIX at 16.27—in the "mildly cautious" zone (below 15 = calm, 15-20 = cautious, above 20 = worried)
+• Credit spreads tightening: BBB corporate bonds now only pay 1.25% more than Treasuries, down from 1.33% at year start. This means lenders trust companies to pay back loans—a healthy sign
+• Gold's 21% YTD gain shows serious hedging demand. Investors are saying: "I'll take the upside in stocks, but I want insurance too"
+• Bitcoin at $89K suggests risk appetite is alive—people are still willing to speculate
 
 **4. What Would a Pro Do With New Money?**
 
-If you had money to invest right now:
+If you had $10,000 to invest right now:
 
-• **Smart move:** A balanced approach—some stocks (the economy looks okay), some bonds (in case things get rocky)
-• **Be careful with:** Very long-term bonds—if inflation surprises to the upside, these could lose value. Also risky small company stocks that tend to drop first when markets get scared
-• **Keep in mind:** Even professional investors are staying hedged. It's okay to be optimistic while also having a safety net
+• **Smart allocation:** 60% stocks (lean toward large, quality companies), 30% bonds (short-to-medium term), 10% gold or commodities
+• **Why this mix:** Stocks for growth, bonds for stability, gold for insurance against inflation/geopolitical surprises
+• **Be careful with:** Long-term bonds (if inflation surprises, they'll lose value), highly speculative stocks (first to fall if sentiment turns), and excessive crypto exposure
+• **Opportunity:** Investment-grade corporate bonds paying 5%+ yields with relatively low risk
 
 **5. What to Watch Next Week**
 
 Key events that could move markets:
 
-• **Friday: PCE Inflation Report** — This is how the Federal Reserve measures inflation. If it's higher than expected, the Fed might keep interest rates high longer (bad for stocks and borrowers)
-  - Best case: Inflation cooling down → rate cuts become more likely → stocks could rally
-  - Worst case: Inflation heating up → rates stay high → stocks and bonds could both fall
+• **Wednesday: Federal Reserve Meeting** — Will they hint at rate cuts later this year? Any hawkish surprise could hurt stocks
+• **Thursday: Q4 GDP Report** — How fast did the economy grow? Strong growth = good for stocks but might delay rate cuts
+• **Friday: PCE Inflation (Fed's preferred measure)** — The most important number of the week
+  - Best case: Inflation at 2.5% or below → Rate cuts more likely → Stocks rally
+  - Worst case: Inflation above 3% → "Higher for longer" confirmed → Stocks and bonds both fall
 
-• **Consumer Confidence Report** — Are everyday Americans feeling good about the economy? This affects how much people spend
+• **Earnings season continues:** Microsoft, Apple, and other tech giants report. Strong results could push Nasdaq higher
 
-• **Wild card:** Any escalation in Middle East tensions could spike oil prices and shake up markets`,
+• **Wild card:** Any escalation in Middle East (Iran, Red Sea) could spike oil above $70 and trigger a risk-off move`,
   globalEvents: `**How World Events Affected U.S. Markets This Week**
 
-**Middle East Tensions: Why You Might Pay More at the Pump**
+**Red Sea Crisis: The Biggest Driver of Gold and Oil This Week**
 
-What happened: Conflicts near important shipping routes in the Red Sea continued this week, with attacks on commercial ships disrupting global trade.
+What happened: Houthi rebels (backed by Iran) continued attacking commercial ships in the Red Sea, one of the world's most important shipping lanes. About 12% of global trade normally passes through here. Major shipping companies are now routing around Africa, adding 10-14 days to delivery times.
 
-Why Americans should care: This is pushing oil prices up (+2.7% this week). When oil costs more, gas prices eventually follow. It also adds to inflation worries—and the Federal Reserve is watching prices closely to decide when to cut interest rates. Higher gas prices = higher inflation = interest rates stay high longer.
+Why Americans should care: This is THE reason gold jumped 4.4% and oil rose 2.7% this week. Longer shipping routes = higher costs = higher prices for imported goods. If your new TV or clothes cost more in the coming months, this is partly why. It also raises the risk of a broader Iran conflict, which would spike oil prices dramatically.
 
-Market reaction: Oil prices rose, gold jumped +4.4% (investors buying "safety"), and energy company stocks outperformed. Airlines and shipping companies fell slightly because higher fuel costs hurt their profits.
+Impact on markets: Gold surged as a "fear hedge." Oil rose on supply concerns. Defense stocks rallied. Shipping and airline stocks fell on higher fuel costs.
 
-**Europe's Central Bank Keeping Rates High**
+**European Central Bank: No Rate Cuts Yet**
 
-What happened: The European Central Bank (Europe's version of the Federal Reserve) decided to keep interest rates high to fight inflation.
+What happened: The ECB kept rates at 4%, signaling they're not ready to cut despite slowing European growth. Inflation in Europe is still above their 2% target.
 
-Why Americans should care: When major economies worldwide keep rates high, it suggests inflation is a global problem, not just a U.S. issue. This makes it harder for our Federal Reserve to cut rates, which means mortgages, car loans, and credit card rates stay expensive longer.
+Why Americans should care: When Europe keeps rates high, it tells us inflation is a global problem. This makes it harder for the Fed to cut U.S. rates without risking the dollar weakening too much. Translation: Your mortgage and car loan rates probably aren't coming down soon.
 
-**Japan Keeping Rates Near Zero**
+Impact on markets: The euro stayed weak against the dollar (EUR/USD at 1.00). This helps U.S. tourists in Europe but hurts American companies trying to sell products overseas.
 
-What happened: Japan's central bank kept its interest rates extremely low (near zero), making the Japanese yen weak compared to the U.S. dollar.
+**China Hints at More Stimulus**
 
-Why Americans should care: When Japanese rates are low and U.S. rates are high, investors borrow cheaply in Japan and invest in U.S. assets—this actually helps support U.S. stock prices.
+What happened: Chinese officials signaled they may announce more measures to boost their struggling economy. Property markets remain weak, and consumer spending is sluggish.
 
-**China's Economy Still Struggling**
+Why Americans should care: A stronger China would buy more oil, copper, and American goods—good for U.S. exporters and commodity prices. But stimulus also means more Chinese manufacturing, which could keep inflation pressures alive globally.
 
-What happened: China's factories are still slowing down (their manufacturing activity shrank for another month).
+Impact on markets: Contributed to the positive risk tone. Copper and industrial metals got a small boost on hopes of increased Chinese demand.
 
-Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there. On the bright side, weak Chinese demand means less competition for oil, which can help keep some prices in check.
+**Bank of Japan Still Ultra-Easy**
 
-**The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious. The main concerns are Middle East tensions (oil/gas prices) and the fact that central banks worldwide are keeping rates high to fight inflation.`,
+What happened: Japan's central bank continues keeping interest rates near zero, even as other major economies have rates of 4-5%.
+
+Why Americans should care: This keeps the yen weak (USD/JPY at 152.9). The "carry trade" (borrowing cheap in yen, investing in higher-yielding U.S. assets) remains attractive, which supports U.S. stock and bond prices. However, if Japan suddenly raised rates, it could trigger a global market selloff as these trades unwind.
+
+**The Bottom Line:** The Middle East situation is the week's dominant global story, driving both gold's surge and oil's rise. Central banks worldwide remain cautious on rate cuts, suggesting borrowing costs stay elevated. Watch for any Iran escalation—that's the biggest risk to markets right now.`,
   sources: [
     {
       category: 'Equity & Volatility Data - Yahoo Finance',
