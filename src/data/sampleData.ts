@@ -76,14 +76,14 @@ export const sampleDashboardData: WeeklyDashboard = {
     ytdChange: -13.053531206226515
   }
 ],
-  interpretation: \`**This Week's Theme: "Flight to Safety as Stocks Stumble"**
+  interpretation: `**This Week's Theme: "Flight to Safety as Stocks Stumble"**
 
 This was a rough week for risk assets. The S&P 500 fell -0.8% and the Nasdaq dropped -1.4%, while gold exploded higher by nearly +10%—the biggest weekly gold move in months. This is classic "risk-off" behavior: investors are selling stocks and buying safe havens.
 
 **What's driving the fear?** The VIX (fear index) spiked +11% to 18.18, its highest level this year. Bitcoin crashed -3.3%, now down -13% year-to-date. When both stocks AND crypto fall while gold surges, it signals genuine worry—not just profit-taking.
 
-**The catalyst:** A combination of factors spooked investors this week—renewed concerns about inflation staying "sticky," geopolitical tensions pushing oil up +2.2%, and uncertainty about how long the Fed will keep rates high. The Nasdaq turning negative for the year (-0.7% YTD) after last year's big gains has investors questioning if the rally has run its course.\`,
-  usNarrative: \`**1. What Happened This Week: "A Wake-Up Call for Investors"**
+**The catalyst:** A combination of factors spooked investors this week—renewed concerns about inflation staying "sticky," geopolitical tensions pushing oil up +2.2%, and uncertainty about how long the Fed will keep rates high. The Nasdaq turning negative for the year (-0.7% YTD) after last year's big gains has investors questioning if the rally has run its course.`,
+  usNarrative: `**1. What Happened This Week: "A Wake-Up Call for Investors"**
 
 In simple terms: This week was a reality check. After months of steady gains, stocks pulled back while "safe" investments like gold surged. It's like the market went from confident to cautious in just a few days.
 
@@ -156,8 +156,8 @@ What could go wrong:
 • Inflation stays hot → "Higher for longer" confirmed → More selling
 • Geopolitical escalation → Oil spikes → More fear → Deeper correction
 
-**The Bottom Line:** After a strong start to the year, this week was a reminder that markets can go down too. The smart move is to stay balanced—don't panic, but don't be complacent either.\`,
-  globalEvents: \`**How World Events Affected U.S. Markets This Week**
+**The Bottom Line:** After a strong start to the year, this week was a reminder that markets can go down too. The smart move is to stay balanced—don't panic, but don't be complacent either.`,
+  globalEvents: `**How World Events Affected U.S. Markets This Week**
 
 **The Flight to Gold: A Global Phenomenon**
 
@@ -195,7 +195,7 @@ What happened: The Japanese yen weakened further against the dollar (USD/JPY ros
 
 Why Americans should care: A weak yen makes Japanese products cheaper for Americans but also signals that the interest rate difference between the U.S. and Japan remains wide.
 
-**The Bottom Line:** Global investors are nervous, and it's showing in the rush to gold. The combination of persistent inflation, geopolitical uncertainty, and trade concerns is creating a "risk-off" environment worldwide. This isn't just an American story—it's global.\`,
+**The Bottom Line:** Global investors are nervous, and it's showing in the rush to gold. The combination of persistent inflation, geopolitical uncertainty, and trade concerns is creating a "risk-off" environment worldwide. This isn't just an American story—it's global.`,
   sources: [
     {
       category: 'Equity & Volatility Data - Yahoo Finance',
