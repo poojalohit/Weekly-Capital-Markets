@@ -80,9 +80,18 @@ export const sampleDashboardData: WeeklyDashboard = {
 
 This was a rough week for risk assets. The S&P 500 fell -0.8% and the Nasdaq dropped -1.4%, while gold exploded higher by nearly +10%—the biggest weekly gold move in months. This is classic "risk-off" behavior: investors are selling stocks and buying safe havens.
 
-**What's driving the fear?** The VIX (fear index) spiked +11% to 18.18, its highest level this year. Bitcoin crashed -3.3%, now down -13% year-to-date. When both stocks AND crypto fall while gold surges, it signals genuine worry—not just profit-taking.
+**What's driving the fear?**
 
-**The catalyst:** A combination of factors spooked investors this week—renewed concerns about inflation staying "sticky," geopolitical tensions pushing oil up +2.2%, and uncertainty about how long the Fed will keep rates high. The Nasdaq turning negative for the year (-0.7% YTD) after last year's big gains has investors questioning if the rally has run its course.`,
+• The VIX (fear index) spiked +11% to 18.18, its highest level this year
+• Bitcoin crashed -3.3%, now down -13% year-to-date
+• When both stocks AND crypto fall while gold surges, it signals genuine worry—not just profit-taking
+
+**The catalyst:**
+
+• Renewed concerns about inflation staying "sticky"
+• Geopolitical tensions pushing oil up +2.2%
+• Uncertainty about how long the Fed will keep rates high
+• The Nasdaq turning negative for the year (-0.7% YTD) after last year's big gains has investors questioning if the rally has run its course`,
   usNarrative: `**1. What Happened This Week: "A Wake-Up Call for Investors"**
 
 In simple terms: This week was a reality check. After months of steady gains, stocks pulled back while "safe" investments like gold surged. It's like the market went from confident to cautious in just a few days.

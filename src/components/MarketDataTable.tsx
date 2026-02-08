@@ -26,6 +26,77 @@ export default function MarketDataTable({ data, date, interpretation }: MarketDa
     return 'text-text-secondary';
   };
 
+  // Format interpretation text with bullet points
+  const formatInterpretation = (text: string) => {
+    const lines = text.split('\n');
+    const formatted: JSX.Element[] = [];
+    let currentList: string[] = [];
+    let listKey = 0;
+
+    const flushList = () => {
+      if (currentList.length > 0) {
+        formatted.push(
+          <ul key={`list-${listKey++}`} className="list-disc list-outside ml-6 mb-4 space-y-2">
+            {currentList.map((item, idx) => (
+              <li key={idx} className="text-text-secondary leading-relaxed">
+                {formatInlineText(item)}
+              </li>
+            ))}
+          </ul>
+        );
+        currentList = [];
+      }
+    };
+
+    // Format inline bold text
+    const formatInlineText = (text: string) => {
+      const parts = text.split(/(\*\*[^*]+\*\*)/g);
+      return parts.map((part, idx) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={idx} className="text-text-primary font-semibold">{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      });
+    };
+
+    lines.forEach((line, index) => {
+      const trimmedLine = line.trim();
+      
+      // Check if line is a header (starts and ends with **)
+      if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**') && trimmedLine.length > 4) {
+        flushList();
+        const header = trimmedLine.replace(/\*\*/g, '');
+        formatted.push(
+          <h4 key={`subheader-${index}`} className="text-lg font-semibold mt-4 mb-3 text-text-primary">
+            {header}
+          </h4>
+        );
+      }
+      // Check if line is a bullet point
+      else if (trimmedLine.startsWith('•') || trimmedLine.startsWith('-') || trimmedLine.startsWith('*')) {
+        const bulletContent = trimmedLine.replace(/^[•\-\*]\s*/, '');
+        currentList.push(bulletContent);
+      }
+      // Empty line
+      else if (trimmedLine === '') {
+        flushList();
+      }
+      // Regular paragraph text
+      else {
+        flushList();
+        formatted.push(
+          <p key={`para-${index}`} className="mb-3 text-text-secondary leading-relaxed">
+            {formatInlineText(trimmedLine)}
+          </p>
+        );
+      }
+    });
+
+    flushList(); // Flush any remaining list items
+
+    return formatted;
+  };
+
   return (
     <section id="market-data" className="mb-12 scroll-mt-20">
       <div className="mb-6">
@@ -72,7 +143,9 @@ export default function MarketDataTable({ data, date, interpretation }: MarketDa
 
       <div className="bg-secondary border border-border rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-3 text-text-primary">Interpretation Box</h2>
-        <p className="text-text-secondary leading-relaxed">{interpretation}</p>
+        <div className="text-text-secondary leading-relaxed">
+          {formatInterpretation(interpretation)}
+        </div>
       </div>
     </section>
   );

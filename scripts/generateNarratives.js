@@ -73,13 +73,20 @@ async function generateInterpretation(marketData) {
       `${item.variable}: ${item.latestLevel} (Weekly: ${item.weeklyChange > 0 ? '+' : ''}${item.weeklyChange.toFixed(2)}%, YTD: ${item.ytdChange > 0 ? '+' : ''}${item.ytdChange.toFixed(2)}%)`
     ).join('\n');
     
-    const prompt = `Write a brief market summary (4-6 sentences) for someone who is NOT a finance expert. 
+    const prompt = `Write a brief market summary for someone who is NOT a finance expert. 
 
 RULES FOR SIMPLE LANGUAGE:
 - Avoid jargon. If you must use a term like "VIX" or "yield," explain it in parentheses
 - Use everyday analogies (e.g., "Gold is like a safety blanket for investors")
 - Explain WHY something matters, not just what happened
 - Use phrases like "This means..." or "In simple terms..."
+
+FORMAT REQUIREMENTS:
+- Start with: **This Week's Theme: "[Your Theme Title]"**
+- Follow with 1-2 sentences of overview
+- Then add section headers like **What's driving the fear?** or **The catalyst:**
+- Use bullet points (•) under each section to list key points
+- Keep each bullet concise and clear
 
 Analyze this data and explain:
 1. Give the week a simple theme name (e.g., "A Good Week for Stocks, But Investors Are Nervous")
@@ -89,8 +96,16 @@ Analyze this data and explain:
 Market Data:
 ${marketSummary}
 
-Example of good simple language:
-"Gold jumped +4.4% even though stocks also went up. That's unusual—normally when investors feel confident about stocks, they don't buy as much gold (which is seen as a 'safe haven' investment). This suggests investors are hedging their bets, buying stocks for growth but also buying gold just in case something goes wrong."`;
+Example format:
+**This Week's Theme: "Your Title"**
+
+Overview paragraph explaining the main story.
+
+**What's driving the fear?**
+
+• First key point with explanation
+• Second key point with explanation
+• Third key point with explanation`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
@@ -291,9 +306,16 @@ function generateFallbackInterpretation() {
 
 The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here's what's interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they're nervous.
 
-**Why is this unusual?** Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day. The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong.
+**Why is this unusual?**
 
-**What's causing the nervousness?** The VIX (often called the "fear index" because it measures how volatile investors expect the market to be) is elevated at 16.27. Tensions in the Middle East are pushing oil prices up (+2.7%), and there's still uncertainty about when the Federal Reserve might cut interest rates.
+• Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day
+• The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong
+
+**What's causing the nervousness?**
+
+• The VIX (often called the "fear index" because it measures how volatile investors expect the market to be) is elevated at 16.27
+• Tensions in the Middle East are pushing oil prices up (+2.7%)
+• Uncertainty about when the Federal Reserve might cut interest rates
 
 **The bottom line:** Markets are doing well on the surface, but investors are clearly keeping one eye on potential risks.`;
 }
