@@ -156,7 +156,24 @@ What could go wrong:
 • Inflation stays hot → "Higher for longer" confirmed → More selling
 • Geopolitical escalation → Oil spikes → More fear → Deeper correction
 
-**The Bottom Line:** After a strong start to the year, this week was a reminder that markets can go down too. The smart move is to stay balanced—don't panic, but don't be complacent either.`,
+**The Bottom Line:** After a strong start to the year, this week was a reminder that markets can go down too. The smart move is to stay balanced—don't panic, but don't be complacent either.
+
+**6. What These Numbers Mean (Plain English Guide)**
+
+If you're new to market data, here's what each variable in the table above actually measures—in simple words:
+
+• **S&P 500 Index** — A single number that tracks the combined value of 500 of America's biggest companies. When it goes up, the broad stock market is generally doing well.
+• **Nasdaq Composite Index** — Tracks mainly technology and growth companies. Think of it as "how tech stocks are doing."
+• **VIX Index** — Often called the "fear gauge." It measures how jumpy or volatile investors expect the market to be. Higher = more worry; lower = more calm.
+• **U.S. 10-Year Treasury Yield** — The interest rate the U.S. government pays when it borrows money for 10 years. It influences mortgage rates and other long-term borrowing costs.
+• **3-Month SOFR Rate** — A key short-term interest rate that banks use when lending to each other. It reflects how expensive it is to borrow money for a few months and is tied to what the Fed does.
+• **Gold (USD/oz)** — The price of one ounce of gold in U.S. dollars. People often buy gold when they want a "safe" place for their money during uncertain times.
+• **Crude Oil (WTI)** — The U.S. benchmark price for oil. When it goes up, gas and energy costs tend to follow.
+• **USD/JPY** — How many Japanese yen you get for one U.S. dollar. It shows whether the dollar is strengthening or weakening against the yen.
+• **EUR/USD** — How many U.S. dollars you get for one euro. It shows the value of the dollar versus the European currency.
+• **BBB U.S. Corporate OAS** — The extra interest that solid-but-not-perfect companies pay to borrow money (compared to the government). When this number falls, lenders are more comfortable taking that risk.
+• **U.S. High Yield OAS** — The extra interest that riskier companies pay to borrow. A falling number usually means investors are more willing to lend to riskier borrowers.
+• **Bitcoin (USD)** — The price of one Bitcoin in U.S. dollars. A digital asset that tends to be more volatile than stocks and is often seen as a speculative or "risk-on" investment.`,
   globalEvents: `**How World Events Affected U.S. Markets This Week**
 
 **The Flight to Gold: A Global Phenomenon**

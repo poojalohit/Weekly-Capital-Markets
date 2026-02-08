@@ -173,6 +173,20 @@ Give practical, understandable advice:
 - What's the best-case scenario? Worst-case?
 - Any important economic reports coming (and why they matter)?
 
+**6. What These Numbers Mean (Plain English Guide)**
+
+Include a short subsection that explains each variable in one simple sentence for non-finance readers. Use this exact list and keep each explanation to one line:
+- S&P 500 Index: what it tracks and why it matters
+- Nasdaq Composite Index: what it represents
+- VIX Index: "fear gauge" in plain English
+- U.S. 10-Year Treasury Yield: what it is and how it affects people
+- 3-Month SOFR Rate: what it measures in simple terms
+- Gold (USD/oz): why people watch it
+- Crude Oil (WTI): what it affects (e.g. gas prices)
+- USD/JPY and EUR/USD: what the exchange rate means in plain English
+- BBB U.S. Corporate OAS and U.S. High Yield OAS: what "spread" or "OAS" means simply (extra interest risky borrowers pay)
+- Bitcoin (USD): what it represents in the context of risk/speculation
+
 Market Data:
 ${marketSummary}
 
@@ -343,7 +357,22 @@ Key events that could move markets:
 
 • **Consumer Confidence Report** — Are everyday Americans feeling good about the economy? This affects spending
 
-• **Wild card:** Any escalation in Middle East tensions could spike oil prices and create market volatility`;
+• **Wild card:** Any escalation in Middle East tensions could spike oil prices and create market volatility
+
+**6. What These Numbers Mean (Plain English Guide)**
+
+• **S&P 500 Index** — A single number that tracks the combined value of 500 of America's biggest companies. When it goes up, the broad stock market is generally doing well.
+• **Nasdaq Composite Index** — Tracks mainly technology and growth companies. Think of it as "how tech stocks are doing."
+• **VIX Index** — Often called the "fear gauge." It measures how jumpy investors expect the market to be. Higher = more worry; lower = more calm.
+• **U.S. 10-Year Treasury Yield** — The interest rate the U.S. government pays when it borrows for 10 years. It influences mortgage rates and other long-term borrowing.
+• **3-Month SOFR Rate** — A key short-term rate banks use. It reflects how expensive it is to borrow for a few months and is tied to Fed policy.
+• **Gold (USD/oz)** — The price of one ounce of gold in dollars. People often buy gold when they want a "safe" place for money in uncertain times.
+• **Crude Oil (WTI)** — The U.S. benchmark oil price. When it rises, gas and energy costs tend to follow.
+• **USD/JPY** — How many yen you get for one dollar. Shows whether the dollar is strengthening or weakening against the yen.
+• **EUR/USD** — How many dollars you get for one euro. Shows the dollar's value versus the European currency.
+• **BBB U.S. Corporate OAS** — The extra interest solid-but-not-perfect companies pay to borrow. When it falls, lenders are more comfortable with that risk.
+• **U.S. High Yield OAS** — The extra interest riskier companies pay. A falling number means investors are more willing to lend to riskier borrowers.
+• **Bitcoin (USD)** — The price of one Bitcoin in dollars. A digital asset that tends to be more volatile than stocks and is often seen as speculative or "risk-on."`;
 }
 
 function generateFallbackGlobalEvents() {
