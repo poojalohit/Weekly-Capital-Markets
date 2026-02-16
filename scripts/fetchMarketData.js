@@ -434,9 +434,9 @@ async function updateMarketData() {
     
     console.log('Generating AI narratives...');
     const [interpretation, usNarrative, globalEvents] = await Promise.all([
-      generateInterpretation(marketData.marketData),
-      generateUSNarrative(marketData.marketData, economicCalendar, news),
-      generateGlobalEvents(marketData.marketData, news)
+      generateInterpretation(marketData.marketData, marketData.date),
+      generateUSNarrative(marketData.marketData, economicCalendar, news, marketData.date),
+      generateGlobalEvents(marketData.marketData, news, marketData.date)
     ]);
     
     const dataPath = path.join(__dirname, '../src/data/sampleData.ts');

@@ -63,9 +63,10 @@ async function fetchFinancialNews() {
 }
 
 // Generate interpretation using AI
-async function generateInterpretation(marketData) {
+async function generateInterpretation(marketData, dateStr = new Date().toISOString().split('T')[0]) {
   if (!openai) {
-    return generateFallbackInterpretation();
+    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative. Set OPENAI_API_KEY for AI-generated commentary.');
+    return generateFallbackInterpretation(marketData);
   }
   
   try {
@@ -73,7 +74,9 @@ async function generateInterpretation(marketData) {
       `${item.variable}: ${item.latestLevel} (Weekly: ${item.weeklyChange > 0 ? '+' : ''}${item.weeklyChange.toFixed(2)}%, YTD: ${item.ytdChange > 0 ? '+' : ''}${item.ytdChange.toFixed(2)}%)`
     ).join('\n');
     
-    const prompt = `Write a brief market summary for someone who is NOT a finance expert. 
+    const prompt = `Write a brief market summary for the week ending ${dateStr}. Someone reads this every week—each summary MUST be unique based on the actual data below.
+
+CRITICAL: Use the EXACT numbers from the Market Data. Do not use generic percentages. Reference specific moves (e.g., "S&P 500 fell -0.7%" not "stocks dipped").
 
 RULES FOR SIMPLE LANGUAGE:
 - Avoid jargon. If you must use a term like "VIX" or "yield," explain it in parentheses
@@ -120,14 +123,15 @@ Overview paragraph explaining the main story.
     return completion.choices[0].message.content.trim();
   } catch (error) {
     console.error('Error generating interpretation:', error.message);
-    return generateFallbackInterpretation();
+    return generateFallbackInterpretation(marketData);
   }
 }
 
 // Generate U.S. Market Narrative using AI - Simple language version
-async function generateUSNarrative(marketData, economicCalendar, news) {
+async function generateUSNarrative(marketData, economicCalendar, news, dateStr = new Date().toISOString().split('T')[0]) {
   if (!openai) {
-    return generateFallbackUSNarrative();
+    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative.');
+    return generateFallbackUSNarrative(marketData);
   }
   
   try {
@@ -143,7 +147,9 @@ async function generateUSNarrative(marketData, economicCalendar, news) {
       `${article.title} (${article.publishedAt})`
     ).join('\n');
     
-    const prompt = `Write a weekly market analysis (450-500 words) that a non-finance person can understand. Use simple language throughout.
+    const prompt = `Write a weekly market analysis for the week ending ${dateStr} (450-500 words). This is read every week—your analysis MUST be unique and reflect the ACTUAL numbers below. Use the exact percentages from the data; do not substitute generic figures.
+
+CRITICAL: Each bullet point and percentage must match the Market Data. If S&P 500 fell -0.7%, say "-0.7%" not "about 1%". If Bitcoin is down -24% YTD, say exactly that.
 
 LANGUAGE RULES:
 - When you use a term like "VIX," immediately explain it: "VIX (a measure of market fear)"
@@ -226,14 +232,15 @@ Remember: Write as if explaining to a smart friend who doesn't follow finance. B
     return completion.choices[0].message.content.trim();
   } catch (error) {
     console.error('Error generating US narrative:', error.message);
-    return generateFallbackUSNarrative();
+    return generateFallbackUSNarrative(marketData);
   }
 }
 
 // Generate Global Events section using AI - Simple language
-async function generateGlobalEvents(marketData, news) {
+async function generateGlobalEvents(marketData, news, dateStr = new Date().toISOString().split('T')[0]) {
   if (!openai) {
-    return generateFallbackGlobalEvents();
+    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative.');
+    return generateFallbackGlobalEvents(marketData);
   }
   
   try {
@@ -256,7 +263,7 @@ async function generateGlobalEvents(marketData, news) {
       `${article.title} - ${article.description || ''}`
     ).join('\n');
     
-    const prompt = `Write a simple explanation (200-250 words) of how world events affected U.S. markets this week. 
+    const prompt = `Write a simple explanation (200-250 words) of how world events affected U.S. markets for the week ending ${dateStr}. Use the EXACT percentages from the Market Data—e.g., if oil rose +1.3% this week, say "+1.3%" not a generic figure. 
 
 SIMPLE LANGUAGE RULES:
 - Explain everything as if to someone who doesn't follow international news closely
@@ -296,131 +303,174 @@ Example of good simple language:
     return completion.choices[0].message.content.trim();
   } catch (error) {
     console.error('Error generating global events:', error.message);
-    return generateFallbackGlobalEvents();
+    return generateFallbackGlobalEvents(marketData);
   }
 }
 
-// Fallback interpretation with simple language
-function generateFallbackInterpretation() {
-  return `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
-
-The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose about 0.4%, and tech stocks did even better at nearly 1%. But here's what's interesting: investors also bought a lot of gold (+4.4%), which is usually what people buy when they're nervous.
-
-**Why is this unusual?**
-
-• Normally, when investors feel confident about stocks, they don't rush to buy gold—it's like bringing an umbrella on a sunny day
-• The fact that both went up suggests investors are optimistic but also hedging their bets, just in case something goes wrong
-
-**What's causing the nervousness?**
-
-• The VIX (often called the "fear index" because it measures how volatile investors expect the market to be) is elevated at 16.27
-• Tensions in the Middle East are pushing oil prices up (+2.7%)
-• Uncertainty about when the Federal Reserve might cut interest rates
-
-**The bottom line:** Markets are doing well on the surface, but investors are clearly keeping one eye on potential risks.`;
+// Helper to get value from market data
+function getValue(marketData, variableName, prop = 'latestLevel') {
+  const item = marketData?.find(m => m.variable === variableName || m.variable.includes(variableName));
+  return item ? item[prop] : null;
 }
 
-// Fallback narratives with simple language
-function generateFallbackUSNarrative() {
-  return `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
+function fmt(v) {
+  if (v == null) return 'N/A';
+  if (typeof v === 'number') return (v > 0 ? '+' : '') + v.toFixed(2) + '%';
+  return String(v);
+}
 
-In simple terms: U.S. stocks went up this week, but investors also bought a lot of "safe haven" investments like gold—which usually happens when people are nervous. It's like going to the beach but packing a rain jacket just in case.
+// Fallback interpretation - uses actual market data for correct numbers
+function generateFallbackInterpretation(marketData = []) {
+  const sp500 = getValue(marketData, 'S&P 500', 'weeklyChange');
+  const nasdaq = getValue(marketData, 'Nasdaq', 'weeklyChange');
+  const vix = getValue(marketData, 'VIX', 'latestLevel');
+  const gold = getValue(marketData, 'Gold', 'weeklyChange');
+  const oil = getValue(marketData, 'Crude Oil', 'weeklyChange');
+  const bitcoin = getValue(marketData, 'Bitcoin', 'weeklyChange');
+  
+  const stocksUp = sp500 != null && sp500 > 0;
+  const theme = stocksUp 
+    ? "Stocks Up, But Investors Are Playing It Safe" 
+    : "Stocks Slip, Investors Stay Cautious";
+  
+  return `**This Week's Theme: "${theme}"**
 
-Here's what moved and why:
+The stock market ${stocksUp ? 'had a good week' : 'pulled back this week'}—the S&P 500 (a basket of 500 large U.S. companies) ${sp500 != null ? (sp500 > 0 ? `rose ${fmt(sp500)}` : `fell ${fmt(sp500)}`) : 'moved'}, and tech stocks (Nasdaq) ${nasdaq != null ? (nasdaq > 0 ? `gained ${fmt(nasdaq)}` : `lost ${fmt(nasdaq)}`) : 'moved'}. ${gold != null && gold > 0 ? `Investors also bought gold (${fmt(gold)}), which is usually what people buy when they're nervous.` : ''}
 
-• **Stocks rose** (+0.4% for S&P 500, +0.9% for tech-heavy Nasdaq) → The economy is still growing, jobs data looked good, and the Federal Reserve isn't planning any surprises
-• **Gold jumped +4.4%** → This is unusual when stocks are up! Investors are buying gold as "insurance" against potential problems (Middle East tensions, inflation concerns)
-• **Oil prices rose +2.7%** → Conflicts in the Middle East are creating worries about oil supply, which could push gas prices higher
-• **The "fear index" (VIX) stayed elevated** → Usually when stocks go up, the VIX goes down. The fact that it stayed high suggests investors are still worried about something
+**What's driving the moves?**
 
-**Unusual Pattern to Note:** When stocks AND gold both go up, it's like seeing people celebrate AND buy emergency supplies at the same time. It suggests investors are hopeful but hedging their bets.
+• The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at ${vix != null ? vix.toFixed(2) : 'elevated'}
+• ${oil != null && oil > 0 ? `Oil prices rose ${fmt(oil)} on supply concerns` : oil != null ? `Oil ${fmt(oil)} this week` : 'Energy markets shifted'}
+• ${bitcoin != null ? `Bitcoin ${bitcoin > 0 ? 'gained' : 'fell'} ${fmt(bitcoin)}` : 'Crypto remains volatile'}
+
+**The bottom line:** Markets reflect the current mood—${stocksUp ? 'optimistic but hedged' : 'cautious and defensive'}.`;
+}
+
+// Fallback narratives - uses actual market data for correct numbers
+function generateFallbackUSNarrative(marketData = []) {
+  const sp500Chg = getValue(marketData, 'S&P 500', 'weeklyChange');
+  const sp500Lev = getValue(marketData, 'S&P 500', 'latestLevel');
+  const nasdaqChg = getValue(marketData, 'Nasdaq', 'weeklyChange');
+  const nasdaqYtd = getValue(marketData, 'Nasdaq', 'ytdChange');
+  const vix = getValue(marketData, 'VIX', 'latestLevel');
+  const goldChg = getValue(marketData, 'Gold', 'weeklyChange');
+  const goldYtd = getValue(marketData, 'Gold', 'ytdChange');
+  const oilChg = getValue(marketData, 'Crude Oil', 'weeklyChange');
+  const btcChg = getValue(marketData, 'Bitcoin', 'weeklyChange');
+  const btcYtd = getValue(marketData, 'Bitcoin', 'ytdChange');
+  
+  const stocksUp = sp500Chg != null && sp500Chg > 0;
+  const theme = stocksUp 
+    ? "A Good Week for Stocks, But Investors Bought Insurance" 
+    : "Tech Slumps, Crypto Crashes, Defensive Posture Continues";
+  
+  const sp500Line = sp500Chg != null && sp500Lev != null 
+    ? `**S&P 500 ${stocksUp ? 'rose' : 'fell'} ${fmt(sp500Chg)} to ${Math.round(sp500Lev).toLocaleString()}**`
+    : '**S&P 500** moved';
+  const nasdaqLine = nasdaqChg != null 
+    ? `**Nasdaq ${nasdaqChg > 0 ? 'gained' : 'dropped'} ${fmt(nasdaqChg)}**${nasdaqYtd != null && nasdaqYtd < 0 ? ` — now negative for the year (${fmt(nasdaqYtd)} YTD)` : ''}`
+    : '**Nasdaq** moved';
+  const btcLine = btcChg != null && btcYtd != null
+    ? `**Bitcoin ${btcChg > 0 ? 'gained' : 'fell'} ${fmt(btcChg)}** — ${btcYtd < 0 ? `down ${fmt(btcYtd)} year-to-date` : `up ${fmt(btcYtd)} YTD`}`
+    : '**Bitcoin** moved';
+  const goldLine = goldChg != null && goldYtd != null
+    ? `**Gold ${goldChg > 0 ? 'rose' : 'fell'} ${fmt(goldChg)}** — ${goldYtd > 0 ? `up ${fmt(goldYtd)} for the year` : ''}`
+    : '**Gold** moved';
+  const oilLine = oilChg != null
+    ? `**Oil ${oilChg > 0 ? 'rose' : 'fell'} ${fmt(oilChg)}**`
+    : '**Oil** moved';
+  
+  return `**1. What Happened This Week: "${theme}"**
+
+In simple terms: U.S. stocks ${stocksUp ? 'went up' : 'pulled back'} this week. Here's what moved and why:
+
+• ${sp500Line} → The broad market reflects current economic conditions and Fed policy expectations
+• ${nasdaqLine} → Tech stocks ${nasdaqChg != null && nasdaqChg < 0 ? 'led the decline' : 'performance'}
+• ${btcLine} → When risky assets like Bitcoin ${btcChg != null && btcChg < 0 ? 'fall, it signals investors are reducing risk' : 'rise, risk appetite is higher'}
+• ${goldLine} → Investors ${goldChg != null && goldChg > 0 ? 'are maintaining "safe haven" allocations' : 'are watching gold'}
+• ${oilLine} → ${oilChg != null && oilChg > 0 ? 'Geopolitical concerns continue to support energy prices' : 'Energy markets shifted'}
+• **The "fear index" (VIX) at ${vix != null ? vix.toFixed(2) : 'elevated'}** → ${vix != null && vix > 15 ? 'Still in nervous territory (above 15 = cautious)' : 'Market calm'} 
 
 **2. What Caused These Moves**
 
 • **Federal Reserve Held Steady on Rates**
-  - What happened: Fed officials (the people who control U.S. interest rates) said they're not ready to cut rates yet—they want to see more evidence that inflation is under control
-  - Why it matters: This affects everything from mortgage rates to credit card interest. No rate cuts soon means borrowing costs stay higher
+  - What happened: Fed officials said they're not ready to cut rates yet—they want more evidence that inflation is under control
+  - Why it matters: Affects mortgage rates, credit card interest. No rate cuts soon means borrowing costs stay higher
   - Market reaction: Stocks took it in stride; this was expected
 
-• **Strong Jobs Report**
-  - What happened: Fewer people filed for unemployment benefits than expected, suggesting the job market is still healthy
-  - Why it matters: When people have jobs, they spend money, which keeps the economy growing
-  - Market reaction: Stocks rose because a healthy job market supports company profits
-
-• **Middle East Tensions**
-  - What happened: Conflicts in the Red Sea region are disrupting shipping and creating concerns about oil supply
-  - Why it matters: This could raise gas prices and contribute to inflation
-  - Market reaction: Oil and gold both rose; investors are nervous about potential escalation
+• **Geopolitical Tensions**
+  - What happened: Conflicts in the Red Sea region are disrupting shipping and creating oil supply concerns
+  - Why it matters: Could raise gas prices and contribute to inflation
+  - Market reaction: Oil and gold both ${oilChg != null && oilChg > 0 ? 'rose' : 'moved'}; investors monitoring escalation
 
 **3. How Are Investors Feeling?**
 
-The mood is "cautiously optimistic"—like being happy about a sunny forecast but checking the weather app twice to be sure.
-
-Evidence:
-• The VIX (fear gauge) is at 16.27—that's in the "slightly nervous" zone (below 15 would be calm, above 20 would be worried)
-• Credit spreads (the extra interest that risky companies pay to borrow money) are getting smaller—this is a good sign, meaning investors trust companies to pay back their loans
-• Gold's big jump (+21% this year!) suggests many investors are keeping "insurance" in their portfolios
+The mood is **"${stocksUp ? 'Cautiously optimistic' : 'Cautious and defensive'}"**—${vix != null && vix > 15 ? 'the VIX in the nervous zone suggests worry' : 'markets are calm'}.
 
 **4. What Would a Pro Do With New Money?**
 
-If you had money to invest right now, here's what might make sense:
-
-• **Consider:** A balanced approach—some stocks (the economy looks okay), some bonds (in case things get rocky)
-• **Be careful with:** Very long-term bonds—if inflation surprises to the upside, these could lose value
-• **Keep in mind:** The gold rally suggests smart money is staying hedged. It's okay to be optimistic while also having a safety net
+• **Consider:** A balanced approach—some stocks, some bonds
+• **Be careful with:** Very long-term bonds if inflation surprises
+• **Keep in mind:** ${goldYtd != null && goldYtd > 0 ? `Gold up ${fmt(goldYtd)} suggests smart money is hedged.` : 'Stay diversified.'}
 
 **5. What to Watch Next Week**
 
-Key events that could move markets:
-
-• **Friday: PCE Inflation Report** — This is the Federal Reserve's favorite way to measure inflation. If it comes in higher than expected, the Fed might keep rates higher for longer, which would be bad for stocks
-  - Best case: Inflation cooling → rate cuts become more likely → stocks rally
-  - Worst case: Inflation heating up → "higher for longer" rates → stocks and bonds both fall
-
-• **Consumer Confidence Report** — Are everyday Americans feeling good about the economy? This affects spending
-
-• **Wild card:** Any escalation in Middle East tensions could spike oil prices and create market volatility
+• **PCE Inflation Report** — The Fed's favorite inflation measure. Higher than expected = rates stay higher longer
+• **Consumer Confidence** — Affects spending
+• **Wild card:** Middle East escalation could spike oil
 
 **6. What These Numbers Mean (Plain English Guide)**
 
-• **S&P 500 Index** — A single number that tracks the combined value of 500 of America's biggest companies. When it goes up, the broad stock market is generally doing well.
-• **Nasdaq Composite Index** — Tracks mainly technology and growth companies. Think of it as "how tech stocks are doing."
-• **VIX Index** — Often called the "fear gauge." It measures how jumpy investors expect the market to be. Higher = more worry; lower = more calm.
-• **U.S. 10-Year Treasury Yield** — The interest rate the U.S. government pays when it borrows for 10 years. It influences mortgage rates and other long-term borrowing.
-• **3-Month SOFR Rate** — A key short-term rate banks use. It reflects how expensive it is to borrow for a few months and is tied to Fed policy.
-• **Gold (USD/oz)** — The price of one ounce of gold in dollars. People often buy gold when they want a "safe" place for money in uncertain times.
-• **Crude Oil (WTI)** — The U.S. benchmark oil price. When it rises, gas and energy costs tend to follow.
-• **USD/JPY** — How many yen you get for one dollar. Shows whether the dollar is strengthening or weakening against the yen.
-• **EUR/USD** — How many dollars you get for one euro. Shows the dollar's value versus the European currency.
-• **BBB U.S. Corporate OAS** — The extra interest solid-but-not-perfect companies pay to borrow. When it falls, lenders are more comfortable with that risk.
-• **U.S. High Yield OAS** — The extra interest riskier companies pay. A falling number means investors are more willing to lend to riskier borrowers.
-• **Bitcoin (USD)** — The price of one Bitcoin in dollars. A digital asset that tends to be more volatile than stocks and is often seen as speculative or "risk-on."`;
+• **S&P 500 Index** — Tracks 500 of America's biggest companies. When it goes up, the broad stock market is generally doing well.
+• **Nasdaq Composite Index** — Tracks mainly technology companies. "How tech stocks are doing."
+• **VIX Index** — The "fear gauge." Higher = more worry; lower = more calm.
+• **U.S. 10-Year Treasury Yield** — Influences mortgage rates and long-term borrowing.
+• **3-Month SOFR Rate** — Key short-term rate tied to Fed policy.
+• **Gold (USD/oz)** — People buy gold when they want a "safe" place for money in uncertain times.
+• **Crude Oil (WTI)** — U.S. benchmark oil price. When it rises, gas and energy costs tend to follow.
+• **USD/JPY** — Dollar vs yen. **EUR/USD** — Dollar vs euro.
+• **BBB U.S. Corporate OAS** — Extra interest solid companies pay. Falling = lenders more comfortable.
+• **U.S. High Yield OAS** — Extra interest riskier companies pay. **Bitcoin (USD)** — Volatile digital asset, often "risk-on."`;
 }
 
-function generateFallbackGlobalEvents() {
+function generateFallbackGlobalEvents(marketData = []) {
+  const oilChg = getValue(marketData, 'Crude Oil', 'weeklyChange');
+  const goldChg = getValue(marketData, 'Gold', 'weeklyChange');
+  const sp500Chg = getValue(marketData, 'S&P 500', 'weeklyChange');
+  
+  const oilText = oilChg != null 
+    ? `Oil prices ${oilChg > 0 ? 'rose' : 'fell'} ${fmt(oilChg)} this week`
+    : 'Oil prices moved';
+  const goldText = goldChg != null && goldChg > 0 
+    ? `gold jumped (investors buying "safety")` 
+    : 'investors watching safe havens';
+  const stocksText = sp500Chg != null && sp500Chg > 0 
+    ? 'U.S. markets performed reasonably well' 
+    : 'U.S. markets pulled back';
+  
   return `**How World Events Affected U.S. Markets This Week**
 
 **Middle East Tensions: Why You Might Pay More at the Pump**
 
 What happened: Conflicts in the Red Sea region (near important shipping routes) continued this week, with attacks on commercial ships disrupting global trade.
 
-Why Americans should care: This is pushing oil prices up (+2.7% this week). When oil costs more, gas prices eventually follow. It also adds to inflation worries—remember, the Federal Reserve is watching prices closely to decide when to cut interest rates.
+Why Americans should care: ${oilText}. When oil costs more, gas prices eventually follow. It also adds to inflation worries—the Federal Reserve is watching prices closely to decide when to cut interest rates.
 
-Market reaction: Oil prices rose, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
+Market reaction: ${oilText}, ${goldText}, and the stock market's "fear gauge" stayed elevated.
 
 **Europe's Central Bank Keeping Rates High**
 
 What happened: The European Central Bank (like America's Federal Reserve, but for Europe) decided to keep interest rates high to fight inflation.
 
-Why Americans should care: When major economies worldwide keep rates high, it suggests inflation is a global problem, not just a U.S. issue. This makes it harder for the Fed to cut rates, which means mortgages, car loans, and credit card rates stay expensive longer.
+Why Americans should care: When major economies worldwide keep rates high, it suggests inflation is a global problem. This makes it harder for the Fed to cut rates, which means mortgages, car loans, and credit card rates stay expensive longer.
 
 **China's Economy Still Sluggish**
 
 What happened: China's manufacturing sector is still struggling (their PMI, a measure of factory activity, stayed below 50, which indicates shrinking activity).
 
-Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there. On the flip side, weak Chinese demand means less competition for oil and commodities, which can help keep some prices in check.
+Why Americans should care: China is the world's second-largest economy. When they're not buying as much, it can slow global growth and hurt U.S. companies that sell products there.
 
-**The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious, even as U.S. markets perform reasonably well.`;
+**The Bottom Line:** Global events this week are adding to uncertainty and keeping investors cautious, even as ${stocksText}.`;
 }
 
 export { 
