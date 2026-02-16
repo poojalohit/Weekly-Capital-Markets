@@ -17,9 +17,9 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "VIX Index",
-    latestLevel: 21.049999237060547,
-    weeklyChange: 1.1047048300077795,
-    ytdChange: 46.89462211536811
+    latestLevel: 21.100000381469727,
+    weeklyChange: 1.3448640285768834,
+    ytdChange: 47.24354845643851
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
@@ -35,21 +35,21 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "Gold (USD/oz)",
-    latestLevel: 5011.60009765625,
-    weeklyChange: 1.7852407509992823,
-    ytdChange: 14.679297628538212
+    latestLevel: 5014.2998046875,
+    weeklyChange: 1.8400716083658661,
+    ytdChange: 14.741074406436228
   },
   {
     variable: "Crude Oil (WTI)",
-    latestLevel: 63.400001525878906,
-    weeklyChange: 0.8911543156130205,
-    ytdChange: 9.404660381686952
+    latestLevel: 63.40999984741211,
+    weeklyChange: 0.9070650754935508,
+    ytdChange: 9.421913740447211
   },
   {
     variable: "USD/JPY",
-    latestLevel: 153.3280029296875,
-    weeklyChange: 0.03849815578203573,
-    ytdChange: -1.9723370601097565
+    latestLevel: 153.31100463867188,
+    weeklyChange: 0.027407660426155767,
+    ytdChange: -1.9832046297017114
   },
   {
     variable: "EUR/USD",
@@ -71,20 +71,20 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "Bitcoin (USD)",
-    latestLevel: 68445.1328125,
-    weeklyChange: 3.3573348861945576,
-    ytdChange: -21.78488241811317
+    latestLevel: 68509.875,
+    weeklyChange: 3.4551004931813005,
+    ytdChange: -21.710898811102094
   }
 ],
   interpretation: `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
 
-The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose +0.05%, and tech stocks (Nasdaq) lost -0.22%. Investors also bought gold (+1.79%), which is usually what people buy when they're nervous.
+The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose +0.05%, and tech stocks (Nasdaq) lost -0.22%. Investors also bought gold (+1.84%), which is usually what people buy when they're nervous.
 
 **What's driving the moves?**
 
-• The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at 21.05
-• Oil prices rose +0.89% on supply concerns
-• Bitcoin gained +3.36%
+• The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at 21.10
+• Oil prices rose +0.91% on supply concerns
+• Bitcoin gained +3.46%
 
 **The bottom line:** Markets reflect the current mood—optimistic but hedged.`,
   usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
@@ -93,10 +93,10 @@ In simple terms: U.S. stocks went up this week. Here's what moved and why:
 
 • **S&P 500 rose +0.05% to 6,836** → The broad market reflects current economic conditions and Fed policy expectations
 • **Nasdaq dropped -0.22%** — now negative for the year (-3.73% YTD) → Tech stocks led the decline
-• **Bitcoin gained +3.36%** — down -21.78% year-to-date → When risky assets like Bitcoin rise, risk appetite is higher
-• **Gold rose +1.79%** — up +14.68% for the year → Investors are maintaining "safe haven" allocations
-• **Oil rose +0.89%** → Geopolitical concerns continue to support energy prices
-• **The "fear index" (VIX) at 21.05** → Still in nervous territory (above 15 = cautious) 
+• **Bitcoin gained +3.46%** — down -21.71% year-to-date → When risky assets like Bitcoin rise, risk appetite is higher
+• **Gold rose +1.84%** — up +14.74% for the year → Investors are maintaining "safe haven" allocations
+• **Oil rose +0.91%** → Geopolitical concerns continue to support energy prices
+• **The "fear index" (VIX) at 21.10** → Still in nervous territory (above 15 = cautious) 
 
 **2. What Caused These Moves**
 
@@ -118,7 +118,7 @@ The mood is **"Cautiously optimistic"**—the VIX in the nervous zone suggests w
 
 • **Consider:** A balanced approach—some stocks, some bonds
 • **Be careful with:** Very long-term bonds if inflation surprises
-• **Keep in mind:** Gold up +14.68% suggests smart money is hedged.
+• **Keep in mind:** Gold up +14.74% suggests smart money is hedged.
 
 **5. What to Watch Next Week**
 
@@ -144,9 +144,9 @@ The mood is **"Cautiously optimistic"**—the VIX in the nervous zone suggests w
 
 What happened: Conflicts in the Red Sea region (near important shipping routes) continued this week, with attacks on commercial ships disrupting global trade.
 
-Why Americans should care: Oil prices rose +0.89% this week. When oil costs more, gas prices eventually follow. It also adds to inflation worries—the Federal Reserve is watching prices closely to decide when to cut interest rates.
+Why Americans should care: Oil prices rose +0.91% this week. When oil costs more, gas prices eventually follow. It also adds to inflation worries—the Federal Reserve is watching prices closely to decide when to cut interest rates.
 
-Market reaction: Oil prices rose +0.89% this week, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
+Market reaction: Oil prices rose +0.91% this week, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
 
 **Europe's Central Bank Keeping Rates High**
 
@@ -165,14 +165,14 @@ Why Americans should care: China is the world's second-largest economy. When the
     {
         category: "Equity & Volatility Data - Yahoo Finance",
         sources: [
+            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
             "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
             "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F",
-            "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC",
+            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
             "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X",
-            "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
-            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
             "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
-            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X"
+            "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
+            "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC"
         ]
     },
     {
