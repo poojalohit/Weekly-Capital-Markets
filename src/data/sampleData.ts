@@ -1,25 +1,25 @@
 import { WeeklyDashboard } from '../types/marketData';
 
 export const sampleDashboardData: WeeklyDashboard = {
-  date: '2026-02-16',
+  date: '2026-02-18',
   marketData: [
   {
     variable: "S&P 500 Index",
-    latestLevel: 6836.169921875,
-    weeklyChange: 0.0499089148012519,
-    ytdChange: -0.8710588735086912
+    latestLevel: 6843.22021484375,
+    weeklyChange: 1.2,
+    ytdChange: -0.7688250079654476
   },
   {
     variable: "Nasdaq Composite Index",
-    latestLevel: 22546.669921875,
-    weeklyChange: -0.22339307336266215,
-    ytdChange: -3.7252110387755577
+    latestLevel: 22578.380859375,
+    weeklyChange: 1.8,
+    ytdChange: -3.589804620614751
   },
   {
     variable: "VIX Index",
-    latestLevel: 21.100000381469727,
-    weeklyChange: 1.3448640285768834,
-    ytdChange: 47.24354845643851
+    latestLevel: 19.329999923706055,
+    weeklyChange: -4.731399450488089,
+    ytdChange: 34.89183549630396
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
@@ -35,27 +35,27 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "Gold (USD/oz)",
-    latestLevel: 5014.2998046875,
-    weeklyChange: 1.8400716083658661,
-    ytdChange: 14.741074406436228
+    latestLevel: 4939.2998046875,
+    weeklyChange: 1.1550493246170892,
+    ytdChange: 13.024866577690528
   },
   {
     variable: "Crude Oil (WTI)",
-    latestLevel: 63.40999984741211,
-    weeklyChange: 0.9070650754935508,
-    ytdChange: 9.421913740447211
+    latestLevel: 62.5,
+    weeklyChange: 0.2727389121631861,
+    ytdChange: 7.851594783706009
   },
   {
     variable: "USD/JPY",
-    latestLevel: 153.31100463867188,
-    weeklyChange: 0.027407660426155767,
-    ytdChange: -1.9832046297017114
+    latestLevel: 153.71800231933594,
+    weeklyChange: 0.6146102007235937,
+    ytdChange: -1.7229975527481975
   },
   {
     variable: "EUR/USD",
-    latestLevel: 1.1859582662582397,
-    weeklyChange: -0.13876225951614088,
-    ytdChange: 0.9558831065652982
+    latestLevel: 1.1839923858642578,
+    weeklyChange: -0.23207081439548227,
+    ytdChange: 0.7885355725896693
   },
   {
     variable: "BBB U.S. Corporate OAS",
@@ -71,32 +71,32 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "Bitcoin (USD)",
-    latestLevel: 68509.875,
-    weeklyChange: 3.4551004931813005,
-    ytdChange: -21.710898811102094
+    latestLevel: 68166.7890625,
+    weeklyChange: -0.9824755637928789,
+    ytdChange: -22.102957469469597
   }
 ],
   interpretation: `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
 
-The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose +0.05%, and tech stocks (Nasdaq) lost -0.22%. Investors also bought gold (+1.84%), which is usually what people buy when they're nervous.
+The stock market had a good week—the S&P 500 (a basket of 500 large U.S. companies) rose +1.20%, and tech stocks (Nasdaq) gained +1.80%. Investors also bought gold (+1.16%), which is usually what people buy when they're nervous.
 
 **What's driving the moves?**
 
-• The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at 21.10
-• Oil prices rose +0.91% on supply concerns
-• Bitcoin gained +3.46%
+• The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at 19.33
+• Oil prices rose +0.27% on supply concerns
+• Bitcoin fell -0.98%
 
 **The bottom line:** Markets reflect the current mood—optimistic but hedged.`,
   usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
 
 In simple terms: U.S. stocks went up this week. Here's what moved and why:
 
-• **S&P 500 rose +0.05% to 6,836** → The broad market reflects current economic conditions and Fed policy expectations
-• **Nasdaq dropped -0.22%** — now negative for the year (-3.73% YTD) → Tech stocks led the decline
-• **Bitcoin gained +3.46%** — down -21.71% year-to-date → When risky assets like Bitcoin rise, risk appetite is higher
-• **Gold rose +1.84%** — up +14.74% for the year → Investors are maintaining "safe haven" allocations
-• **Oil rose +0.91%** → Geopolitical concerns continue to support energy prices
-• **The "fear index" (VIX) at 21.10** → Still in nervous territory (above 15 = cautious) 
+• **S&P 500 rose +1.20% to 6,843** → The broad market reflects current economic conditions and Fed policy expectations
+• **Nasdaq gained +1.80%** — now negative for the year (-3.59% YTD) → Tech stocks performance
+• **Bitcoin fell -0.98%** — down -22.10% year-to-date → When risky assets like Bitcoin fall, it signals investors are reducing risk
+• **Gold rose +1.16%** — up +13.02% for the year → Investors are maintaining "safe haven" allocations
+• **Oil rose +0.27%** → Geopolitical concerns continue to support energy prices
+• **The "fear index" (VIX) at 19.33** → Still in nervous territory (above 15 = cautious) 
 
 **2. What Caused These Moves**
 
@@ -118,7 +118,7 @@ The mood is **"Cautiously optimistic"**—the VIX in the nervous zone suggests w
 
 • **Consider:** A balanced approach—some stocks, some bonds
 • **Be careful with:** Very long-term bonds if inflation surprises
-• **Keep in mind:** Gold up +14.74% suggests smart money is hedged.
+• **Keep in mind:** Gold up +13.02% suggests smart money is hedged.
 
 **5. What to Watch Next Week**
 
@@ -144,9 +144,9 @@ The mood is **"Cautiously optimistic"**—the VIX in the nervous zone suggests w
 
 What happened: Conflicts in the Red Sea region (near important shipping routes) continued this week, with attacks on commercial ships disrupting global trade.
 
-Why Americans should care: Oil prices rose +0.91% this week. When oil costs more, gas prices eventually follow. It also adds to inflation worries—the Federal Reserve is watching prices closely to decide when to cut interest rates.
+Why Americans should care: Oil prices rose +0.27% this week. When oil costs more, gas prices eventually follow. It also adds to inflation worries—the Federal Reserve is watching prices closely to decide when to cut interest rates.
 
-Market reaction: Oil prices rose +0.91% this week, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
+Market reaction: Oil prices rose +0.27% this week, gold jumped (investors buying "safety"), and the stock market's "fear gauge" stayed elevated.
 
 **Europe's Central Bank Keeping Rates High**
 
@@ -166,13 +166,13 @@ Why Americans should care: China is the world's second-largest economy. When the
         category: "Equity & Volatility Data - Yahoo Finance",
         sources: [
             "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
-            "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
-            "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F",
-            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
             "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X",
-            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
+            "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F",
+            "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC",
+            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
             "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
-            "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC"
+            "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
+            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD"
         ]
     },
     {
