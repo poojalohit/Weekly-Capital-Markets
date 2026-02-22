@@ -5,15 +5,28 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const geminiApiKey = process.env.GEMINI_API_KEY || '';
 const genAI = geminiApiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
 
+if (genAI) {
+  console.log('✅ GEMINI_API_KEY detected — will use Gemini AI for narratives');
+} else {
+  console.log('❌ GEMINI_API_KEY not found — will use fallback narratives');
+}
+
 async function callGemini(systemPrompt, userPrompt, maxTokens = 1400) {
   if (!genAI) return null;
-  const model = genAI.getGenerativeModel({ 
-    model: 'gemini-1.5-flash',
-    systemInstruction: systemPrompt,
-    generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 }
-  });
-  const result = await model.generateContent(userPrompt);
-  return result.response.text().trim();
+  try {
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.0-flash',
+      systemInstruction: systemPrompt,
+      generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 }
+    });
+    const result = await model.generateContent(userPrompt);
+    const text = result.response.text().trim();
+    console.log(`✅ Gemini generated ${text.length} characters`);
+    return text;
+  } catch (error) {
+    console.error(`❌ Gemini API call failed: ${error.message}`);
+    return null;
+  }
 }
 
 // Fetch economic calendar data from Trading Economics API (free tier available)
