@@ -71,9 +71,9 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "Bitcoin (USD)",
-    latestLevel: 68011.6484375,
-    weeklyChange: 1.5743189799783281,
-    ytdChange: -22.280243154038924
+    latestLevel: 67997.5625,
+    weeklyChange: 1.5532818555793826,
+    ytdChange: -22.296339744293654
   }
 ],
   interpretation: `**This Week's Theme: "Stocks Up, But Investors Are Playing It Safe"**
@@ -84,7 +84,7 @@ The stock market had a good week—the S&P 500 (a basket of 500 large U.S. compa
 
 • The VIX (often called the "fear index"—measures how volatile investors expect the market to be) is at 19.09
 • Oil prices rose +1.84% on supply concerns
-• Bitcoin gained +1.57%
+• Bitcoin gained +1.55%
 
 **The bottom line:** Markets reflect the current mood—optimistic but hedged.`,
   usNarrative: `**1. What Happened This Week: "A Good Week for Stocks, But Investors Bought Insurance"**
@@ -93,7 +93,7 @@ In simple terms: U.S. stocks went up this week. Here's what moved and why:
 
 • **S&P 500 rose +0.41% to 6,910** → The broad market reflects current economic conditions and Fed policy expectations
 • **Nasdaq gained +0.58%** — now negative for the year (-2.28% YTD) → Tech stocks performance
-• **Bitcoin gained +1.57%** — down -22.28% year-to-date → When risky assets like Bitcoin rise, risk appetite is higher
+• **Bitcoin gained +1.55%** — down -22.30% year-to-date → When risky assets like Bitcoin rise, risk appetite is higher
 • **Gold rose +1.46%** — up +15.77% for the year → Investors are maintaining "safe haven" allocations
 • **Oil rose +1.84%** → Geopolitical concerns continue to support energy prices
 • **The "fear index" (VIX) at 19.09** → Still in nervous territory (above 15 = cautious) 
@@ -165,14 +165,14 @@ Why Americans should care: China is the world's second-largest economy. When the
     {
         category: "Equity & Volatility Data - Yahoo Finance",
         sources: [
+            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
+            "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
             "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC",
             "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F",
             "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
-            "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
-            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
             "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X",
-            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
-            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD"
+            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
+            "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X"
         ]
     },
     {
