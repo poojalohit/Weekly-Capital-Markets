@@ -1,10 +1,20 @@
 import axios from 'axios';
-import OpenAI from 'openai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Initialize OpenAI client
-const openai = process.env.OPENAI_API_KEY ? new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-}) : null;
+// Initialize Gemini client
+const geminiApiKey = process.env.GEMINI_API_KEY || '';
+const genAI = geminiApiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
+
+async function callGemini(systemPrompt, userPrompt, maxTokens = 1400) {
+  if (!genAI) return null;
+  const model = genAI.getGenerativeModel({ 
+    model: 'gemini-1.5-flash',
+    systemInstruction: systemPrompt,
+    generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 }
+  });
+  const result = await model.generateContent(userPrompt);
+  return result.response.text().trim();
+}
 
 // Fetch economic calendar data from Trading Economics API (free tier available)
 async function fetchEconomicCalendar() {
@@ -24,7 +34,7 @@ async function fetchEconomicCalendar() {
         c: API_KEY,
         d1: weekAgo.toISOString().split('T')[0],
         d2: today.toISOString().split('T')[0],
-        importance: '1,2,3' // High, medium, low importance
+        importance: '1,2,3'
       }
     });
     
@@ -38,7 +48,6 @@ async function fetchEconomicCalendar() {
 // Fetch recent financial news
 async function fetchFinancialNews() {
   try {
-    // Using NewsAPI (free tier: 100 requests/day)
     const API_KEY = process.env.NEWS_API_KEY || '';
     if (!API_KEY) {
       console.warn('NEWS_API_KEY not set, using placeholder data');
@@ -64,8 +73,8 @@ async function fetchFinancialNews() {
 
 // Generate interpretation using AI
 async function generateInterpretation(marketData, dateStr = new Date().toISOString().split('T')[0]) {
-  if (!openai) {
-    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative. Set OPENAI_API_KEY for AI-generated commentary.');
+  if (!genAI) {
+    console.warn('⚠️  GEMINI_API_KEY not set — using data-driven fallback narrative. Set GEMINI_API_KEY for AI-generated commentary.');
     return generateFallbackInterpretation(marketData);
   }
   
@@ -110,17 +119,10 @@ Overview paragraph explaining the main story.
 • Second key point with explanation
 • Third key point with explanation`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: 'You are a financial educator who explains market movements to everyday people. Use simple language, avoid jargon, and always explain the "so what" behind the numbers. If you use a technical term, immediately explain it in plain English.' },
-        { role: 'user', content: prompt }
-      ],
-      max_tokens: 350,
-      temperature: 0.7
-    });
-    
-    return completion.choices[0].message.content.trim();
+    const systemPrompt = 'You are a financial educator who explains market movements to everyday people. Use simple language, avoid jargon, and always explain the "so what" behind the numbers. If you use a technical term, immediately explain it in plain English.';
+
+    const result = await callGemini(systemPrompt, prompt, 350);
+    return result || generateFallbackInterpretation(marketData);
   } catch (error) {
     console.error('Error generating interpretation:', error.message);
     return generateFallbackInterpretation(marketData);
@@ -129,8 +131,8 @@ Overview paragraph explaining the main story.
 
 // Generate U.S. Market Narrative using AI - Simple language version
 async function generateUSNarrative(marketData, economicCalendar, news, dateStr = new Date().toISOString().split('T')[0]) {
-  if (!openai) {
-    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative.');
+  if (!genAI) {
+    console.warn('⚠️  GEMINI_API_KEY not set — using data-driven fallback narrative.');
     return generateFallbackUSNarrative(marketData);
   }
   
@@ -219,17 +221,10 @@ ${recentNews}
 
 Remember: Write as if explaining to a smart friend who doesn't follow finance. Be clear, not condescending.`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: 'You are a financial educator who makes markets understandable for everyone. You explain complex concepts using everyday language and analogies. You never assume the reader knows financial jargon. When you must use a technical term, you immediately explain it in parentheses. Your goal is clarity, not impressive vocabulary.' },
-        { role: 'user', content: prompt }
-      ],
-      max_tokens: 1400,
-      temperature: 0.7
-    });
-    
-    return completion.choices[0].message.content.trim();
+    const systemPrompt = 'You are a financial educator who makes markets understandable for everyone. You explain complex concepts using everyday language and analogies. You never assume the reader knows financial jargon. When you must use a technical term, you immediately explain it in parentheses. Your goal is clarity, not impressive vocabulary.';
+
+    const result = await callGemini(systemPrompt, prompt, 1400);
+    return result || generateFallbackUSNarrative(marketData);
   } catch (error) {
     console.error('Error generating US narrative:', error.message);
     return generateFallbackUSNarrative(marketData);
@@ -238,8 +233,8 @@ Remember: Write as if explaining to a smart friend who doesn't follow finance. B
 
 // Generate Global Events section using AI - Simple language
 async function generateGlobalEvents(marketData, news, dateStr = new Date().toISOString().split('T')[0]) {
-  if (!openai) {
-    console.warn('⚠️  OPENAI_API_KEY not set — using data-driven fallback narrative.');
+  if (!genAI) {
+    console.warn('⚠️  GEMINI_API_KEY not set — using data-driven fallback narrative.');
     return generateFallbackGlobalEvents(marketData);
   }
   
@@ -290,17 +285,10 @@ ${newsSummary}
 Example of good simple language:
 "The European Central Bank (Europe's version of the Federal Reserve) kept interest rates high. This matters for U.S. investors because it signals that inflation is still a global concern—not just an American problem. When Europe keeps rates high, it makes the euro stronger compared to the dollar, which can make American exports more expensive overseas."`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: 'You explain global events and their market impact in simple terms anyone can understand. You connect international news to everyday concerns like gas prices, grocery costs, and retirement savings. You never use jargon without explaining it.' },
-        { role: 'user', content: prompt }
-      ],
-      max_tokens: 500,
-      temperature: 0.7
-    });
-    
-    return completion.choices[0].message.content.trim();
+    const systemPrompt = 'You explain global events and their market impact in simple terms anyone can understand. You connect international news to everyday concerns like gas prices, grocery costs, and retirement savings. You never use jargon without explaining it.';
+
+    const result = await callGemini(systemPrompt, prompt, 500);
+    return result || generateFallbackGlobalEvents(marketData);
   } catch (error) {
     console.error('Error generating global events:', error.message);
     return generateFallbackGlobalEvents(marketData);

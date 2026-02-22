@@ -11,10 +11,10 @@
     "update-data": "node scripts/fetchMarketData.js"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.6.0",
-    "openai": "^4.20.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

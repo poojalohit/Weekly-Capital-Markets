@@ -4,14 +4,14 @@ This dashboard can automatically update market data every Wednesday morning usin
 
 ## Required API Keys
 
-### 1. OpenAI API (Required for AI-generated narratives)
+### 1. Google Gemini API (Required for AI-generated narratives) — FREE
 **Required for:** Automatic generation of interpretation, U.S. narrative, and global events
 
-1. Go to https://platform.openai.com/api-keys
-2. Sign up for an account
+1. Go to https://aistudio.google.com/apikey
+2. Sign in with your Google account
 3. Create an API key
-4. Add it to GitHub Secrets as `OPENAI_API_KEY`
-5. **Note:** Uses GPT-4o-mini model (cost-effective). You'll need to add credits to your OpenAI account.
+4. Add it to GitHub Secrets as `GEMINI_API_KEY`
+5. **Note:** Uses Gemini 1.5 Flash model. The free tier (15 requests/minute) is more than enough for weekly runs.
 
 ### 2. FRED API (Free)
 **Required for:** Treasury yields, SOFR rates
@@ -62,7 +62,7 @@ No setup required - uses public Yahoo Finance endpoints.
 2. Click **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Add each API key:
-   - **Required:** `OPENAI_API_KEY` - Your OpenAI API key
+   - **Required:** `GEMINI_API_KEY` - Your Google Gemini API key (free)
    - **Required:** `FRED_API_KEY` - Your FRED API key
    - **Recommended:** `TRADING_ECONOMICS_API_KEY` - For economic calendar data
    - **Recommended:** `NEWS_API_KEY` - For financial news
@@ -104,7 +104,7 @@ The workflow runs:
 
 2. Set environment variables:
    ```bash
-   export OPENAI_API_KEY="your-openai-key-here"
+   export GEMINI_API_KEY="your-gemini-key-here"
    export FRED_API_KEY="your-fred-key-here"
    export TRADING_ECONOMICS_API_KEY="your-key-here"  # optional
    export NEWS_API_KEY="your-key-here"  # optional
