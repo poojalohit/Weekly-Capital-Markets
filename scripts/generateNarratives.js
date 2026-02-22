@@ -11,13 +11,17 @@ if (genAI) {
   console.log('❌ GEMINI_API_KEY not found — will use fallback narratives');
 }
 
-async function callGemini(systemPrompt, userPrompt, maxTokens = 1400) {
+async function callGemini(systemPrompt, userPrompt, maxTokens = 2000) {
   if (!genAI) return null;
   try {
     const model = genAI.getGenerativeModel({ 
       model: 'gemini-2.5-flash',
       systemInstruction: systemPrompt,
-      generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 }
+      generationConfig: { 
+        maxOutputTokens: maxTokens, 
+        temperature: 0.7,
+        thinkingConfig: { thinkingBudget: 0 }
+      }
     });
     const result = await model.generateContent(userPrompt);
     const text = result.response.text().trim();
@@ -134,7 +138,7 @@ Overview paragraph explaining the main story.
 
     const systemPrompt = 'You are a financial educator who explains market movements to everyday people. Use simple language, avoid jargon, and always explain the "so what" behind the numbers. If you use a technical term, immediately explain it in plain English.';
 
-    const result = await callGemini(systemPrompt, prompt, 350);
+    const result = await callGemini(systemPrompt, prompt, 600);
     return result || generateFallbackInterpretation(marketData);
   } catch (error) {
     console.error('Error generating interpretation:', error.message);
@@ -236,7 +240,7 @@ Remember: Write as if explaining to a smart friend who doesn't follow finance. B
 
     const systemPrompt = 'You are a financial educator who makes markets understandable for everyone. You explain complex concepts using everyday language and analogies. You never assume the reader knows financial jargon. When you must use a technical term, you immediately explain it in parentheses. Your goal is clarity, not impressive vocabulary.';
 
-    const result = await callGemini(systemPrompt, prompt, 1400);
+    const result = await callGemini(systemPrompt, prompt, 2500);
     return result || generateFallbackUSNarrative(marketData);
   } catch (error) {
     console.error('Error generating US narrative:', error.message);
@@ -300,7 +304,7 @@ Example of good simple language:
 
     const systemPrompt = 'You explain global events and their market impact in simple terms anyone can understand. You connect international news to everyday concerns like gas prices, grocery costs, and retirement savings. You never use jargon without explaining it.';
 
-    const result = await callGemini(systemPrompt, prompt, 500);
+    const result = await callGemini(systemPrompt, prompt, 800);
     return result || generateFallbackGlobalEvents(marketData);
   } catch (error) {
     console.error('Error generating global events:', error.message);
