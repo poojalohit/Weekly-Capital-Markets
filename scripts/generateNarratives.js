@@ -15,7 +15,7 @@ async function callGemini(systemPrompt, userPrompt, maxTokens = 1400) {
   if (!genAI) return null;
   try {
     const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.0-flash',
+      model: 'gemini-2.5-flash',
       systemInstruction: systemPrompt,
       generationConfig: { maxOutputTokens: maxTokens, temperature: 0.7 }
     });
