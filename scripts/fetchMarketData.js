@@ -180,7 +180,8 @@ async function fetchTreasuryYield() {
     data.weeklyChange = data.weeklyChange / 100;
     data.ytdChange = data.ytdChange / 100;
   }
-  return data || { latestLevel: 4.15, weeklyChange: 0.10, ytdChange: 0.25 };
+  // Fallback values - UPDATE THESE if Fed changes rates significantly
+  return data || { latestLevel: 4.50, weeklyChange: 0.05, ytdChange: 0.10 };
 }
 
 // Fetch SOFR from FRED
@@ -190,7 +191,8 @@ async function fetchSOFR() {
     data.weeklyChange = data.weeklyChange / 100;
     data.ytdChange = data.ytdChange / 100;
   }
-  return data || { latestLevel: 5.25, weeklyChange: 0.00, ytdChange: 0.00 };
+  // Fallback values - Fed cut rates in late 2024, SOFR now ~4.3%
+  return data || { latestLevel: 4.30, weeklyChange: 0.00, ytdChange: -0.50 };
 }
 
 // Fetch BBB Corporate OAS from FRED (ICE BofA BBB US Corporate Index OAS)
@@ -201,7 +203,8 @@ async function fetchBBBSpread() {
     data.latestLevel = data.latestLevel * 100; // Convert % to bps
     // Weekly and YTD changes are already calculated as differences
   }
-  return data || { latestLevel: 125, weeklyChange: -2, ytdChange: -8 };
+  // Fallback in basis points
+  return data || { latestLevel: 110, weeklyChange: -3, ytdChange: -10 };
 }
 
 // Fetch High Yield OAS from FRED (ICE BofA US High Yield Index OAS)
@@ -211,7 +214,8 @@ async function fetchHYSpread() {
   if (data) {
     data.latestLevel = data.latestLevel * 100; // Convert % to bps
   }
-  return data || { latestLevel: 350, weeklyChange: -5, ytdChange: -15 };
+  // Fallback in basis points
+  return data || { latestLevel: 320, weeklyChange: -5, ytdChange: -20 };
 }
 
 // Fetch VIX

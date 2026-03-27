@@ -23,15 +23,15 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
-    latestLevel: 4.15,
-    weeklyChange: 0.1,
-    ytdChange: 0.25
+    latestLevel: 4.50,
+    weeklyChange: 0.05,
+    ytdChange: 0.10
   },
   {
     variable: "3-Month SOFR Rate",
-    latestLevel: 5.25,
-    weeklyChange: 0,
-    ytdChange: 0
+    latestLevel: 4.30,
+    weeklyChange: 0.00,
+    ytdChange: -0.50
   },
   {
     variable: "Gold (USD/oz)",
@@ -59,15 +59,15 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "BBB U.S. Corporate OAS",
-    latestLevel: 125,
-    weeklyChange: -2,
-    ytdChange: -8
+    latestLevel: 110,
+    weeklyChange: -3,
+    ytdChange: -10
   },
   {
     variable: "U.S. High Yield OAS",
-    latestLevel: 350,
+    latestLevel: 320,
     weeklyChange: -5,
-    ytdChange: -15
+    ytdChange: -20
   },
   {
     variable: "Bitcoin (USD)",
