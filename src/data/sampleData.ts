@@ -23,15 +23,15 @@ export const sampleDashboardData: WeeklyDashboard = {
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
-    latestLevel: 4.50,
-    weeklyChange: 0.05,
-    ytdChange: 0.10
+    latestLevel: 4.25,
+    weeklyChange: 0.02,
+    ytdChange: -0.15
   },
   {
     variable: "3-Month SOFR Rate",
-    latestLevel: 4.30,
+    latestLevel: 3.00,
     weeklyChange: 0.00,
-    ytdChange: -0.50
+    ytdChange: -1.30
   },
   {
     variable: "Gold (USD/oz)",

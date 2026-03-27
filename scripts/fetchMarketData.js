@@ -180,8 +180,8 @@ async function fetchTreasuryYield() {
     data.weeklyChange = data.weeklyChange / 100;
     data.ytdChange = data.ytdChange / 100;
   }
-  // Fallback values - UPDATE THESE if Fed changes rates significantly
-  return data || { latestLevel: 4.50, weeklyChange: 0.05, ytdChange: 0.10 };
+  // Fallback values - only used if FRED API fails
+  return data || { latestLevel: 4.25, weeklyChange: 0.02, ytdChange: -0.15 };
 }
 
 // Fetch SOFR from FRED
@@ -191,8 +191,8 @@ async function fetchSOFR() {
     data.weeklyChange = data.weeklyChange / 100;
     data.ytdChange = data.ytdChange / 100;
   }
-  // Fallback values - Fed cut rates in late 2024, SOFR now ~4.3%
-  return data || { latestLevel: 4.30, weeklyChange: 0.00, ytdChange: -0.50 };
+  // Fallback values - Fed has cut rates, SOFR now ~3%
+  return data || { latestLevel: 3.00, weeklyChange: 0.00, ytdChange: -1.30 };
 }
 
 // Fetch BBB Corporate OAS from FRED (ICE BofA BBB US Corporate Index OAS)
