@@ -7,11 +7,37 @@ interface MarketDataTableProps {
 }
 
 export default function MarketDataTable({ data, date, interpretation }: MarketDataTableProps) {
-  const formatNumber = (value: number | string): string => {
+  // Variables that should display as percentages
+  const percentageVariables = [
+    'U.S. 10-Year Treasury Yield',
+    '3-Month SOFR Rate'
+  ];
+  
+  // Variables that are in basis points and should convert to percentage
+  const basisPointVariables = [
+    'BBB U.S. Corporate OAS',
+    'U.S. High Yield OAS'
+  ];
+
+  const formatNumber = (value: number | string, variable: string): string => {
     if (typeof value === 'string') return value;
+    
+    // For Treasury yield and SOFR - show as percentage
+    if (percentageVariables.includes(variable)) {
+      return `${value.toFixed(2)}%`;
+    }
+    
+    // For OAS spreads - convert basis points to percentage
+    if (basisPointVariables.includes(variable)) {
+      const percentage = value / 100;
+      return `${percentage.toFixed(2)}%`;
+    }
+    
+    // For large numbers (like stock indices, Bitcoin)
     if (value >= 1000) {
       return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
+    
     return value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
@@ -128,7 +154,7 @@ export default function MarketDataTable({ data, date, interpretation }: MarketDa
                 className="border-b border-border hover:bg-accent/20 transition-colors"
               >
                 <td className="px-6 py-4 text-text-primary font-medium">{row.variable}</td>
-                <td className="px-6 py-4 text-right text-text-primary font-mono">{formatNumber(row.latestLevel)}</td>
+                <td className="px-6 py-4 text-right text-text-primary font-mono">{formatNumber(row.latestLevel, row.variable)}</td>
                 <td className={`px-6 py-4 text-right font-mono font-semibold ${getChangeColor(row.weeklyChange)}`}>
                   {formatPercentage(row.weeklyChange)}
                 </td>
