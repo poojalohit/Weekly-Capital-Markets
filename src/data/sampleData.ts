@@ -1,183 +1,180 @@
 import { WeeklyDashboard } from '../types/marketData';
 
 export const sampleDashboardData: WeeklyDashboard = {
-  date: '2026-04-15',
+  date: '2026-04-22',
   marketData: [
   {
     variable: "S&P 500 Index",
-    latestLevel: 6967.3798828125,
-    weeklyChange: 1.178286636479279,
-    ytdChange: 1.0315714943179808
+    latestLevel: 7064.009765625,
+    weeklyChange: -0.634821795967298,
+    ytdChange: 2.4327680815661843
   },
   {
     variable: "Nasdaq Composite Index",
-    latestLevel: 23639.080078125,
-    weeklyChange: 1.9640482473783865,
-    ytdChange: 0.939404960682016
+    latestLevel: 24259.9609375,
+    weeklyChange: -0.5918184547990533,
+    ytdChange: 3.590580230179235
   },
   {
     variable: "VIX Index",
-    latestLevel: 18.25,
-    weeklyChange: -4.550213394594603,
-    ytdChange: 27.355199561509462
+    latestLevel: 19.18000030517578,
+    weeklyChange: 1.6428163866206626,
+    ytdChange: 33.84508309345063
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
-    latestLevel: 4.3,
-    weeklyChange: -0.009999999999999787,
-    ytdChange: 0.1200000000000001
+    latestLevel: 4.26,
+    weeklyChange: 0.1,
+    ytdChange: 0.08000000000000007
   },
   {
     variable: "3-Month SOFR Rate",
     latestLevel: 3.63,
-    weeklyChange: 0.020000000000000018,
+    weeklyChange: -0.020000000000000018,
     ytdChange: -0.2400000000000002
   },
   {
     variable: "Gold (USD/oz)",
-    latestLevel: 4824.60009765625,
-    weeklyChange: 1.7333037492657608,
-    ytdChange: 10.400219442198937
+    latestLevel: 4768.2001953125,
+    weeklyChange: -0.7988994624802301,
+    ytdChange: 9.109633389627781
   },
   {
     variable: "Crude Oil (WTI)",
-    latestLevel: 92.13999938964844,
-    weeklyChange: -7.004443190503698,
-    ytdChange: 58.99913404069251
+    latestLevel: 90.72000122070312,
+    weeklyChange: 1.2387017105134777,
+    ytdChange: 56.5487489669214
   },
   {
     variable: "USD/JPY",
-    latestLevel: 158.97300720214844,
-    weeklyChange: -0.4427514441764134,
-    ytdChange: 1.6367008556113634
+    latestLevel: 159.32200622558594,
+    weeklyChange: 0.10116218593536913,
+    ytdChange: 1.859827472942776
   },
   {
     variable: "EUR/USD",
-    latestLevel: 1.1781338453292847,
-    weeklyChange: 0.9095219784382528,
-    ytdChange: 0.2898214523281765
+    latestLevel: 1.1750881671905518,
+    weeklyChange: 0.08226005385992763,
+    ytdChange: 0.030555055775915246
   },
   {
     variable: "BBB U.S. Corporate OAS",
-    latestLevel: 104,
+    latestLevel: 101,
     weeklyChange: -2,
-    ytdChange: 0.030000000000000027
+    ytdChange: -8
   },
   {
     variable: "U.S. High Yield OAS",
-    latestLevel: 295,
-    weeklyChange: 0.010000000000000231,
-    ytdChange: 0.14000000000000012
+    latestLevel: 287,
+    weeklyChange: 0.040000000000000036,
+    ytdChange: 0.06000000000000005
   },
   {
     variable: "Bitcoin (USD)",
-    latestLevel: 74036.2578125,
-    weeklyChange: -0.6019802320822435,
-    ytdChange: -15.395669901161757
+    latestLevel: 78014.140625,
+    weeklyChange: 2.8226518513835344,
+    ytdChange: -10.849976743417852
   }
 ],
-  interpretation: `**This Week's Theme: "Tech Leads the Charge While Oil Skids, but a Safety Net is Still in Demand"**
+  interpretation: `**This Week's Theme: "Quiet Dip, But Undercurrents of Jitters"**
 
-This past week saw a tale of two markets: technology stocks surged ahead, lifting the overall market, while oil prices took a significant tumble. Despite the positive stock performance, investors also showed a strong appetite for gold, signaling some underlying caution.
+This week saw a gentle decline in major stock indexes, almost like the market was taking a small breather. However, beneath the surface, there were some interesting signals suggesting investors might be feeling a touch more nervous than the small stock dip would imply.
 
-**The Big Winners: Tech's Resilience**
+**What's unusual this week?**
 
-• **Nasdaq Composite jumped +1.96%:** This index, heavily weighted with technology companies, led the market higher. It seems investors are feeling good about the future prospects of these innovative companies.
-• **S&P 500 followed with a +1.18% gain:** The broader market index also saw a healthy increase, largely pulled up by the strong performance in the tech sector. This means more of your typical company stocks had a good week.
+• **Stocks and Volatility both up (sort of):** Normally, when stocks like the S&P 500 fall (-0.63%) and the Nasdaq falls (-0.59%), the VIX (which is like the market's fear gauge) tends to jump significantly. This week, the VIX only ticked up slightly by +1.64%. This is unusual because it suggests investors are feeling a *little* more nervous, but not outright panicking, despite the small stock dip. It's like feeling a rumble but not seeing a big earthquake.
 
-**The Biggest Loser: Oil's Sudden Drop**
+• **Gold falling with stocks:** Gold, often seen as a "safe haven" or a "safety blanket" for investors during uncertain times, usually goes up when stocks go down. This week, both the S&P 500 and Gold (-0.80%) fell. This is a bit unusual and suggests that perhaps investors aren't rushing into the traditional safe havens, or other factors are at play.
 
-• **Crude Oil (WTI) plunged -7.00%:** This was the most dramatic move of the week. A drop this sharp in oil prices often signals worries about future economic growth, as less economic activity usually means less demand for fuel. It's like fewer cars on the road or fewer factories running.
+**What caused the biggest moves?**
 
-**The Unusual Pattern: Gold's Persistent Shine**
+• **Bitcoin's big jump:** Bitcoin surged +2.82% this week, making it the top performer. This means more people were buying into the cryptocurrency, perhaps seeing it as a growth opportunity even as traditional stocks pulled back slightly. It’s a very different kind of investment than stocks or gold, and its big move shows a different kind of investor sentiment.
 
-• **Gold gained +1.73%:** This is unusual because usually when stocks are doing well, investors feel less need for gold, which is seen as a "safe haven" asset (like a financial safety blanket). The fact that both stocks and gold went up suggests that while there's optimism in some parts of the market, there's also an underlying desire for security.
-• **VIX Index (the "fear gauge") fell -4.55% to 18.25:** The VIX measures how much investors expect stock prices to swing around. A lower VIX typically means less expected turbulence, which usually goes hand-in-hand with rising stock prices. However, the strong demand for gold suggests some investors are still hedging their bets, even with less overall market nervousness.
+• **Oil's continued climb:** Crude Oil (WTI) rose +1.24%, continuing its strong year-to-date performance (+56.55%). This means that the demand for oil, or concerns about its supply, are still very strong. Higher oil prices can eventually lead to higher prices for gas and many other goods, which could impact everyone's wallets.
 
-**What's Not Moving Much? Interest Rates and Currencies**
+• **Corporate bonds getting a bit cheaper for good companies:** The BBB U.S. Corporate OAS fell -2.00%. This is a measure of how much extra interest companies with decent credit have to pay to borrow money compared to super-safe government bonds. A drop means it's slightly cheaper for these companies to borrow, which is a positive sign for businesses looking to expand or invest.`,
+  usNarrative: `Here's your weekly market analysis for the week ending April 22nd, 2026:
 
-• **U.S. 10-Year Treasury Yield barely moved, down -0.01% to 4.3%:** The yield on this important government bond is often a good indicator of long-term interest rate expectations. Its flat movement suggests that expectations for future interest rates didn't change much this week.
-• **Currencies stayed relatively stable:** The USD/JPY (US Dollar against Japanese Yen) was down a slight -0.44% and EUR/USD (Euro against US Dollar) was up +0.91%. These small moves mean there weren't any major shifts in how investors view the strength of these major economies relative to`,
-  usNarrative: `Here's your weekly market analysis for the week ending 2026-04-15:
+**1. What Happened This Week: A Pause in the Market's Climb**
 
-**1. What Happened This Week: Stocks and Gold Shine, Oil Takes a Hit**
+This week saw a slight pullback in the stock market, as investors digested new information and recalibrated their expectations. Major stock indexes like the S&P 500 and Nasdaq Composite dipped slightly, while the price of oil continued its climb.
 
-This week, the stock market saw a nice bounce, with major indexes moving higher, while the price of gold also continued its upward climb. However, oil prices tumbled quite a bit, which is good news for drivers but reflects concerns about global demand.
-
-Both the S&P 500 Index (a broad measure of U.S. stocks) rose by +1.18%, and the Nasdaq Composite Index (which is heavy on technology stocks) gained an even more impressive +1.96%. This suggests investors felt more optimistic about company earnings and the overall economy. Gold, often seen as a "safe haven" during uncertain times, also continued its strong run, increasing by +1.73% this week and now up +10.40% for the year. The unusual pattern here is that both stocks and gold are rising. Normally, when stocks are doing well, investors feel confident and move money out of "safe" assets like gold. Both rising simultaneously could mean investors are feeling optimistic about growth (buying stocks) but are also hedging their bets with gold, perhaps anticipating some inflation or future uncertainties. On the flip side, Crude Oil (WTI) took a significant dive, falling -7.00% this week, likely due to worries about slower global economic growth reducing demand for fuel.
+Both the S&P 500 Index (which tracks 500 large U.S. companies) and the Nasdaq Composite Index (heavy on tech stocks) saw small declines, falling -0.63% and -0.59% respectively. This suggests a broad cautiousness among investors, rather than a specific sector being hit hard. Interestingly, even as stocks pulled back, Gold, often seen as a "safe haven" asset during uncertain times, also fell -0.80%. Normally, when stocks dip, investors flock to gold, so this simultaneous decline suggests that the market's mood wasn't driven by extreme fear, but rather a slight shift in outlook. Meanwhile, Crude Oil (WTI) continued its strong run, gaining +1.24% this week, pushing its year-to-date gain to a significant +56.55%.
 
 **2. What Caused These Moves**
 
-While there weren't specific headline-grabbing economic events this week, the general sentiment seems to be a mix of cautious optimism and some profit-taking in energy.
+While no single major event dominated the headlines, the slight dip in stocks can be attributed to a general recalibration of expectations.
 
-*   **Positive Stock Momentum:** Investors seemed to be encouraged by the overall economic picture, as reflected in rising stock prices. This often happens when company earnings outlooks are stable or improving, making investors more willing to buy shares.
-*   **Gold's Persistent Appeal:** Gold's continued rise suggests that even with stocks doing well, some investors are still looking for a hedge against potential inflation or future economic surprises. Gold often performs well when the value of paper money is perceived to be at risk.
-*   **Oil's Demand Concerns:** The sharp drop in crude oil prices suggests that traders are worried about the global economy slowing down. When economies slow, factories produce less, people travel less, and overall demand for oil decreases, pushing prices lower. What this means for everyday investors is that while lower gas prices are a welcome relief, a significant drop in oil can sometimes signal broader economic weakness.
+*   **Steady Interest Rate Outlook:** Investors are increasingly accepting that interest rates might stay higher for longer than previously hoped. The U.S. 10-Year Treasury Yield, which is a benchmark for many long-term interest rates like mortgages, rose +0.10% this week. This rise means that borrowing money for homes or businesses might remain a bit more expensive, which can sometimes slow down economic growth and make future company profits seem less valuable.
+*   **Persistent Energy Demand:** The continued climb in crude oil prices, up +1.24% this week, suggests that global demand for energy remains strong. This could be a sign of a robust economy, but it also means higher costs for businesses (transportation, manufacturing) and consumers (gas prices), which can sometimes lead to inflationary pressures.
 
 **3. How Are Investors Feeling?**
 
-Investors appear to be feeling a bit more confident this week, but with an underlying layer of caution. The VIX Index (a measure of market fear, sometimes called the "fear gauge") decreased by -4.55% to 18.25. A VIX below 15 generally means calm, 15-20 suggests caution, and above 20 indicates worry. So, at 18.25, investors are still leaning towards cautious rather than fully confident. The fact that both stocks and gold are up also tells a story: investors are seeking both growth (stocks) and safety (gold), indicating a balanced, perhaps slightly hesitant, optimism.
+Investors are feeling a bit more cautious this week, but not outright fearful. The VIX Index (a measure of market fear) rose +1.64% to 19.18. While it's up year-to-date, a VIX reading below 20 generally indicates caution rather than panic (below 15 is calm, 15-20 is cautious, above 20 is worried). This level suggests investors are paying attention and may be a little nervous, but they aren't stampeding for the exits. The slight dip in both stocks and gold indicates a mixed sentiment – not a strong flight to safety, but rather a re-evaluation of current market conditions.
 
 **4. What Would a Pro Do With New Money?**
 
-If someone had new money to invest right now, a professional might suggest a balanced approach. Given that stocks are rising but the VIX still shows some caution, it could be smart to invest in a diversified mix of quality stocks that have solid earnings, rather than chasing the highest-flying (and riskiest) companies. Also, considering gold's consistent performance, adding a small allocation to gold or gold-related assets could act as a sensible hedge against potential inflation or unexpected market bumps down the road. Investors should be careful not to overreact to the oil price drop; while it's significant, it doesn't necessarily mean the entire economy is collapsing, but it's a signal to watch for broader economic health.
+If someone had new money to invest right now, a professional might suggest a balanced approach. Given the slight market dip, it could be an opportunity to selectively buy into quality companies that have strong fundamentals, especially if their stock prices have temporarily softened. However, with the VIX showing some caution and interest rates remaining elevated, it would also be wise to not put all your eggs in one basket. Diversification is key. Consider a mix of investments, perhaps some stable dividend-paying stocks, a portion in fixed income (like bonds, which offer a predictable return), and a smaller allocation to growth-oriented sectors if you have a higher risk tolerance. Investors should be careful about chasing the highest-flying stocks without understanding their underlying value, especially with the market showing signs of re-evaluation.
 
 **5. What to Watch Next Week**
 
-Next week, investors will be keeping an eye out for any new economic reports that could give clues about inflation or economic growth. Things like consumer spending data or manufacturing reports could sway markets. The best-case scenario would be positive economic data showing continued growth without a big jump in inflation, which would likely keep stocks moving higher. The worst-case scenario would be signs of slowing growth combined with persistent inflation, which could lead to renewed market nervousness and a pull-back in stocks.
+Next week, investors will be keeping an eye on any new economic data, particularly reports on inflation or consumer spending, as these can influence the Federal Reserve's decisions on interest rates. We'll also be watching for any major company earnings reports, which can give clues about the health of specific industries and the broader economy.
+
+*   **Best-case scenario:** Economic data comes in strong, showing healthy growth without excessive inflation, leading to renewed confidence in the market.
+*   **Worst-case scenario:** Unexpectedly high inflation numbers or signs of economic slowdown could cause further market jitters.
+*   Any comments from central bank officials will also be closely scrutinized for hints about future monetary policy.
 
 **6. What These Numbers Mean (Plain English Guide)**
 
-*   **S&P 500 Index:** Tracks 500 large U.S. companies and is a good snapshot of the overall stock market's health.
-*   **Nasdaq Composite Index:** Represents mostly technology and growth companies, showing how that sector is performing.
-*   **VIX Index:** The "fear gauge" of the market; a higher number means investors are more worried.
-*   **U.S. 10-Year Treasury Yield:** The interest rate the U.S. government pays to borrow money for 10 years; it influences mortgage rates and other loan costs.
+*   **S&P 500 Index:** Tracks 500 large U.S. companies and shows how the overall stock market is performing.
+*   **Nasdaq Composite Index:** Represents technology and growth companies, indicating how that specific sector is doing.
+*   **VIX Index:** Often called the "fear gauge," it measures how much investors expect the stock market to bounce around.
+*   **U.S. 10-Year Treasury Yield:** The interest rate the U.S. government pays to borrow money for 10 years, influencing mortgage rates and other loans.
 *   **3-Month SOFR Rate:** A key short-term interest rate that banks use to lend to each other.
-*   **Gold (USD/oz):** A traditional "safe haven" asset that investors buy during uncertainty or to protect against inflation.
-*   **Crude Oil (WTI):** The price of oil, which directly affects gas prices and the cost of goods.
-*   **USD/JPY and EUR/USD:** Tell you how many Japanese Yen or U.S. Dollars you get for one U.S. Dollar or Euro, respectively, impacting international trade and travel.
-*   **BBB U.S. Corporate OAS and U.S. High Yield OAS:** "OAS" stands for Option-Adjusted Spread, which is the extra interest rate premium (or risk premium) that companies with different credit ratings have to pay compared to super-safe government bonds.
-*   **Bitcoin (USD):** A digital currency often seen as a speculative asset, representing investor appetite for risk.`,
-  globalEvents: `Here's how global events shaped your money this week:
+*   **Gold (USD/oz):** A traditional "safe haven" asset that investors often buy when they are worried about the economy or inflation.
+*   **Crude Oil (WTI):** The price of oil, which impacts gas prices, transportation costs, and inflation.
+*   **USD/JPY and EUR/USD:** These show how many Japanese Yen or U.S. Dollars you get for one U.S. Dollar or Euro, affecting import/export costs.
+*   **BBB U.S. Corporate OAS and U.S. High Yield OAS:** These "spreads" (or "OAS") represent the extra interest rate that companies with different risk levels (BBB is investment grade, High Yield is riskier) have to pay compared to super-safe government bonds.
+*   **Bitcoin (USD):** A digital currency that is often seen as a speculative asset and can be quite volatile.`,
+  globalEvents: `This week, your investments saw a slight dip as global events stirred some caution. The S&P 500 fell -0.63%, and the Nasdaq Composite was down -0.59%.
 
-**Middle East Tensions Ease (and Oil Prices)**
-What happened: Worries about a wider conflict in the Middle East lessened.
-Why Americans should care: Less conflict often means less risk to oil supplies. This directly impacts gas prices and the cost of transporting goods, which affects grocery bills.
-Market reaction: Crude Oil (WTI) dropped significantly by -7.00% this week. This helped ease inflation worries, making investors more confident.
+**Middle East Tensions**
+- What happened: Continued unrest in the Middle East kept investors on edge.
+- Why Americans should care: When there's instability in this region, it often affects oil supplies. This can push up gas prices at the pump, making your commute more expensive and potentially increasing the cost of transporting goods to your grocery store.
+- Market reaction: Crude Oil (WTI) rose +1.24% this week, showing worries about future supply.
 
-**Central Banks in Europe and Japan**
-What happened: The European Central Bank (Europe's version of the Federal Reserve) hinted that it might lower interest rates soon. Japan’s central bank, however, kept its interest rates very low.
-Why Americans should care: When other major central banks consider lowering rates, it suggests they see inflation coming down. This can influence the U.S. Federal Reserve's decisions on our own interest rates, which affects everything from mortgage rates to credit card interest.
-Market reaction: The Euro strengthened against the dollar (EUR/USD was up +0.91%), while the Japanese Yen weakened slightly (USD/JPY was down -0.44%). The U.S. 10-Year Treasury Yield barely moved (-0.01%), showing little change in long-term borrowing costs.
+**European Central Bank Decision**
+- What happened: The European Central Bank (Europe's equivalent of the U.S. Federal Reserve) decided to keep its interest rates steady.
+- Why Americans should care: This signals that inflation remains a concern in other major economies. If inflation is high globally, it can make U.S. goods more expensive for other countries to buy, potentially slowing down economic growth here. It also influences what the U.S. Federal Reserve might do with our own interest rates, which affects everything from mortgage rates to credit card interest.
+- Market reaction: This likely contributed to the general cautious mood in markets.
 
-**China's Economy**
-What happened: China reported mixed economic data, with some signs of growth but also ongoing challenges in its property market.
-Why Americans should care: China is a massive global manufacturer and consumer. When China's economy is strong, it boosts global trade and demand for goods, which can benefit U.S. companies. A struggling China, however, can slow global growth, affecting profits for many U.S. businesses and your 401k.
-Market reaction: While not directly tied to specific numbers this week, the general sentiment around global growth, including China's, contributed to a positive week for U.S. stocks.
+**China's Economic Slowdown**
+- What happened: Reports showed China's economy is growing slower than expected.
+- Why Americans should care: China is a massive buyer of goods from around the world, including from the U.S. If China's economy slows down, they buy less, which can hurt American companies that export products there. A weaker Chinese economy can also reduce global demand for oil and other commodities, affecting prices.
+- Market reaction: Concerns about global growth likely put downward pressure on stocks like the S&P 500 and Nasdaq.
 
-**Overall Market Impact**
-The S&P 500 Index rose +1.18%, and the Nasdaq Composite Index gained +1.96%. The drop in oil prices helped ease inflation fears, contributing to these gains. Gold, often seen as a safe haven, still rose +1.73%, reflecting some lingering global uncertainty. The VIX, a measure of market fear, dropped by -4.55%, showing investors felt a bit calmer this week.`,
+Overall, the VIX Index, a measure of market fear, edged up +1.64%, reflecting the increased uncertainty from these global headlines.`,
   sources: [
     {
         category: "Equity & Volatility Data - Yahoo Finance",
         sources: [
+            "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
             "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
             "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC",
-            "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
+            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
+            "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X",
             "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
             "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F",
-            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
-            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
-            "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X"
+            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD"
         ]
     },
     {
         category: "Interest Rates & Credit Spreads - FRED (Federal Reserve Economic Data)",
         sources: [
-            "U.S. 10-Year Treasury Yield (DGS10) - https://fred.stlouisfed.org/series/DGS10",
             "3-Month SOFR Rate (SOFR) - https://fred.stlouisfed.org/series/SOFR",
             "U.S. High Yield OAS (BAMLH0A0HYM2) - https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-            "BBB U.S. Corporate OAS (BAMLC0A4CBBB) - https://fred.stlouisfed.org/series/BAMLC0A4CBBB"
+            "BBB U.S. Corporate OAS (BAMLC0A4CBBB) - https://fred.stlouisfed.org/series/BAMLC0A4CBBB",
+            "U.S. 10-Year Treasury Yield (DGS10) - https://fred.stlouisfed.org/series/DGS10"
         ]
     },
     {
