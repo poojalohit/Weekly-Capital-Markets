@@ -24,14 +24,14 @@ export const sampleDashboardData: WeeklyDashboard = {
   {
     variable: "U.S. 10-Year Treasury Yield",
     latestLevel: 4.36,
-    weeklyChange: 0.1,
-    ytdChange: 0.1800000000000006
+    weeklyChange: 2.348,
+    ytdChange: 4.306
   },
   {
     variable: "3-Month SOFR Rate",
     latestLevel: 3.61,
     weeklyChange: 0,
-    ytdChange: -0.26000000000000023
+    ytdChange: -6.718
   },
   {
     variable: "Gold (USD/oz)",
@@ -60,14 +60,14 @@ export const sampleDashboardData: WeeklyDashboard = {
   {
     variable: "BBB U.S. Corporate OAS",
     latestLevel: 99,
-    weeklyChange: -2,
-    ytdChange: -0.020000000000000018
+    weeklyChange: -1.980,
+    ytdChange: -1.980
   },
   {
     variable: "U.S. High Yield OAS",
     latestLevel: 275,
-    weeklyChange: -5,
-    ytdChange: -0.06000000000000005
+    weeklyChange: -1.786,
+    ytdChange: -2.135
   },
   {
     variable: "Bitcoin (USD)",
@@ -88,12 +88,13 @@ This week, the stock market saw a solid boost, particularly from tech companies,
 
 **Unusual Patterns and What They Mean:**
 
-*   **Bond Yields Barely Budged Alongside Stock Gains:** The U.S. 10-Year Treasury Yield, which is like the interest rate the government pays on its longer-term borrowing, only moved up a tiny +0.10% to 4.36%. Usually, when stocks rally strongly, bond yields rise more noticeably as investors move money out of safer bonds into riskier stocks. The small move suggests that while stocks were up, there might still be underlying demand for the safety of government bonds, or perhaps the stock gains weren't seen as a sign of booming economic growth.
+*   **Bond Yields Moved Up Alongside Stock Gains:** The U.S. 10-Year Treasury Yield, which is like the interest rate the government pays on its longer-term borrowing, rose +2.35% to 4.36%. When stocks rally and yields rise together, it suggests investors are rotating out of safer bonds into riskier stocks.
 *   **Gold Held Its Value:** Gold, often seen as a "safe haven" or a "safety blanket" for investors during uncertain times, still managed to climb +0.80% to 4723.90, even as stocks and Bitcoin rallied and fear (VIX) decreased. This is a bit unusual. Typically, when investors are feeling less fearful and more willing to take risks in stocks, they might sell off gold. Gold's continued rise suggests that some investors are still hedging their bets, keeping a portion of their money in this traditional safe asset despite the broader market's positive mood.
 
 **What Caused the Biggest Moves?**
 
-*   **Reduced Market Volatility:** The most significant driver of positive sentiment was the VIX Index falling -5.20%. This sharp drop means investors are`,
+*   **Reduced Market Volatility:** The most significant driver of positive sentiment was the VIX Index falling -5.20%. This sharp drop means investors are feeling more confident about market stability ahead.
+*   **Credit Spreads Tightening:** BBB Corporate OAS and High Yield OAS both narrowed (-1.98% and -1.79% respectively), signaling that lenders see less risk in corporate borrowers. This is a healthy sign for the economy.`,
   usNarrative: `Here's your weekly market analysis for the week ending 2026-05-07.
 
 **1. What Happened This Week: Stocks and Bitcoin Rise, Oil Dips**
@@ -107,7 +108,7 @@ Major U.S. stock indexes like the S&P 500 Index rose by +1.20%, and the tech-hea
 While there weren't specific headline-grabbing economic events this week, the general sentiment was one of cautious optimism, which drove many of the market's moves.
 
 *   **Positive Momentum Continues:** The steady gains in the S&P 500 and Nasdaq suggest that the underlying economic picture, though not without its challenges, is seen as stable enough for companies to continue growing. What this means for everyday investors is that their retirement accounts and brokerage portfolios, particularly those heavily invested in U.S. stocks, likely saw positive returns.
-*   **Reduced Credit Risk:** We saw a significant drop in credit spreads. The BBB U.S. Corporate OAS (a measure of the extra interest safer companies pay) fell by -2.00%, and the U.S. High Yield OAS (the extra interest riskier companies pay) dropped by -5.00%. Think of credit spreads like the interest rate premium risky borrowers pay. When these spreads shrink, it means lenders (and investors) perceive less risk in lending money to companies, even those with lower credit ratings. Because investors feel companies are less likely to default, they are willing to accept less "extra" interest for the risk, which in turn makes it easier and cheaper for companies to borrow money for growth. This is a positive sign for the economy and corporate earnings.
+*   **Reduced Credit Risk:** We saw a meaningful drop in credit spreads. The BBB U.S. Corporate OAS (a measure of the extra interest safer companies pay) fell by -1.98%, and the U.S. High Yield OAS (the extra interest riskier companies pay) dropped by -1.79%. Think of credit spreads like the interest rate premium risky borrowers pay. When these spreads shrink, it means lenders (and investors) perceive less risk in lending money to companies, even those with lower credit ratings. Because investors feel companies are less likely to default, they are willing to accept less "extra" interest for the risk, which in turn makes it easier and cheaper for companies to borrow money for growth. This is a positive sign for the economy and corporate earnings.
 
 **3. How Are Investors Feeling?**
 

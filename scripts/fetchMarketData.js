@@ -108,7 +108,9 @@ async function fetchYahooFinanceData(symbol, variableName) {
 }
 
 // Fetch data from FRED API
-async function fetchFREDData(seriesId, variableName, isRate = false) {
+// Returns latestLevel (raw FRED value), and weeklyChange/ytdChange as RELATIVE % change in level
+// This matches how Yahoo Finance, Bloomberg, etc. display rate/spread % changes
+async function fetchFREDData(seriesId, variableName) {
   try {
     const FRED_API_KEY = process.env.FRED_API_KEY || '';
     if (!FRED_API_KEY) {
@@ -136,21 +138,17 @@ async function fetchFREDData(seriesId, variableName, isRate = false) {
       const lastWedObs = observations.find(obs => obs.date <= lastWedStr);
       const lastWedValue = lastWedObs ? parseFloat(lastWedObs.value) : latest;
       
-      // Find year start (Dec 31, 2025 or closest)
+      // Find year start (Dec 31, 2025 or closest trading day on or before)
       const yearStartStr = formatDate(yearStart);
       const yearStartObs = observations.find(obs => obs.date <= yearStartStr);
       const yearStartValue = yearStartObs ? parseFloat(yearStartObs.value) : latest;
       
-      let weeklyChange, ytdChange;
-      if (isRate) {
-        // For rates, show basis point change
-        weeklyChange = (latest - lastWedValue) * 100; // Convert to bps
-        ytdChange = (latest - yearStartValue) * 100; // Convert to bps
-      } else {
-        // For spreads (already in bps), show absolute change
-        weeklyChange = latest - lastWedValue;
-        ytdChange = latest - yearStartValue;
-      }
+      // Calculate RELATIVE % change in level (matches Yahoo Finance / Bloomberg convention)
+      const weeklyChange = lastWedValue !== 0 ? ((latest - lastWedValue) / lastWedValue) * 100 : 0;
+      const ytdChange = yearStartValue !== 0 ? ((latest - yearStartValue) / yearStartValue) * 100 : 0;
+      
+      console.log(`  ${variableName}: ${latest} (Last Wed: ${lastWedValue}, Year Start: ${yearStartValue})`);
+      console.log(`    Weekly: ${weeklyChange.toFixed(2)}%, YTD: ${ytdChange.toFixed(2)}%`);
       
       // Record source
       dataSources[variableName] = {
@@ -174,48 +172,40 @@ async function fetchFREDData(seriesId, variableName, isRate = false) {
 
 // Fetch Treasury yield from FRED API
 async function fetchTreasuryYield() {
-  const data = await fetchFREDData('DGS10', 'U.S. 10-Year Treasury Yield', true);
-  if (data) {
-    // Convert back to percentage points for display
-    data.weeklyChange = data.weeklyChange / 100;
-    data.ytdChange = data.ytdChange / 100;
-  }
+  const data = await fetchFREDData('DGS10', 'U.S. 10-Year Treasury Yield');
   // Fallback values - only used if FRED API fails
-  return data || { latestLevel: 4.25, weeklyChange: 0.02, ytdChange: -0.15 };
+  return data || { latestLevel: 4.25, weeklyChange: 0.50, ytdChange: -3.50 };
 }
 
 // Fetch SOFR from FRED
 async function fetchSOFR() {
-  const data = await fetchFREDData('SOFR', '3-Month SOFR Rate', true);
-  if (data) {
-    data.weeklyChange = data.weeklyChange / 100;
-    data.ytdChange = data.ytdChange / 100;
-  }
+  const data = await fetchFREDData('SOFR', '3-Month SOFR Rate');
   // Fallback values - Fed has cut rates, SOFR now ~3%
-  return data || { latestLevel: 3.00, weeklyChange: 0.00, ytdChange: -1.30 };
+  return data || { latestLevel: 3.00, weeklyChange: 0.00, ytdChange: -30.00 };
 }
 
 // Fetch BBB Corporate OAS from FRED (ICE BofA BBB US Corporate Index OAS)
 async function fetchBBBSpread() {
-  const data = await fetchFREDData('BAMLC0A4CBBB', 'BBB U.S. Corporate OAS', false);
-  // FRED reports in percentage, convert to basis points
+  const data = await fetchFREDData('BAMLC0A4CBBB', 'BBB U.S. Corporate OAS');
+  // FRED reports in percentage (e.g., 1.10 means 1.10%), convert to basis points for display
   if (data) {
     data.latestLevel = data.latestLevel * 100; // Convert % to bps
-    // Weekly and YTD changes are already calculated as differences
+    // weeklyChange and ytdChange are already % change in level (no conversion needed)
   }
   // Fallback in basis points
-  return data || { latestLevel: 110, weeklyChange: -3, ytdChange: -10 };
+  return data || { latestLevel: 110, weeklyChange: -2.5, ytdChange: -8.0 };
 }
 
 // Fetch High Yield OAS from FRED (ICE BofA US High Yield Index OAS)
 async function fetchHYSpread() {
-  const data = await fetchFREDData('BAMLH0A0HYM2', 'U.S. High Yield OAS', false);
-  // FRED reports in percentage, convert to basis points
+  const data = await fetchFREDData('BAMLH0A0HYM2', 'U.S. High Yield OAS');
+  // FRED reports in percentage, convert to basis points for display
   if (data) {
     data.latestLevel = data.latestLevel * 100; // Convert % to bps
+    // weeklyChange and ytdChange are already % change in level
   }
   // Fallback in basis points
-  return data || { latestLevel: 320, weeklyChange: -5, ytdChange: -20 };
+  return data || { latestLevel: 320, weeklyChange: -1.5, ytdChange: -6.0 };
 }
 
 // Fetch VIX
