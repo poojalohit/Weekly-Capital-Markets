@@ -1,171 +1,162 @@
 import { WeeklyDashboard } from '../types/marketData';
 
 export const sampleDashboardData: WeeklyDashboard = {
-  date: '2026-09-30',
+  date: '2026-10-07',
   marketData: [
   {
     variable: "S&P 500 Index",
-    latestLevel: 7720.35986328125,
-    weeklyChange: 0.47724364406470005,
-    ytdChange: 11.950274365419336
+    latestLevel: 7793.14990234375,
+    weeklyChange: 0.24697491685535816,
+    ytdChange: 13.005777604701386
   },
   {
     variable: "Nasdaq Composite Index",
-    latestLevel: 27100.67578125,
-    weeklyChange: 1.045081810525534,
-    ytdChange: 15.720496667005543
+    latestLevel: 27471.02734375,
+    weeklyChange: -0.022866878162188218,
+    ytdChange: 17.30190618977298
   },
   {
     variable: "VIX Index",
-    latestLevel: 15.850000381469727,
-    weeklyChange: -1.3690063318753452,
-    ytdChange: 10.607121185319352
+    latestLevel: 15.350000381469727,
+    weeklyChange: -1.0953612840191964,
+    ytdChange: 7.117937635688955
   },
   {
     variable: "U.S. 10-Year Treasury Yield",
-    latestLevel: 5.24,
-    weeklyChange: 1.3539651837524234,
-    ytdChange: 25.358851674641166
+    latestLevel: 5.31,
+    weeklyChange: 0.568181818181806,
+    ytdChange: 27.033492822966505
   },
   {
     variable: "3-Month SOFR Rate",
-    latestLevel: 3.88,
-    weeklyChange: -0.5128205128205132,
-    ytdChange: 0.25839793281653195
+    latestLevel: 3.9,
+    weeklyChange: 0.5154639175257737,
+    ytdChange: 0.7751937984496073
   },
   {
     variable: "Gold (USD/oz)",
-    latestLevel: 4188.89990234375,
-    weeklyChange: 0.49179542462980924,
-    ytdChange: -4.500374145260088
+    latestLevel: 4138.10009765625,
+    weeklyChange: -0.44985825418301106,
+    ytdChange: -5.658521261269164
   },
   {
     variable: "Crude Oil (WTI)",
-    latestLevel: 91.3499984741211,
-    weeklyChange: -1.3498920308830646,
-    ytdChange: 57.635888302769125
+    latestLevel: 88.55000305175781,
+    weeklyChange: -0.9840067655317213,
+    ytdChange: 52.80414475574583
   },
   {
     variable: "USD/JPY",
-    latestLevel: 157.17799377441406,
-    weeklyChange: -0.18099722903107177,
-    ytdChange: 0.4890894088803067
+    latestLevel: 157.9980010986328,
+    weeklyChange: 0.1673751880939379,
+    ytdChange: 1.0133472094832323
   },
   {
     variable: "EUR/USD",
-    latestLevel: 1.1354604959487915,
-    weeklyChange: -0.20550999376817003,
-    ytdChange: -3.342790077430834
+    latestLevel: 1.1199462413787842,
+    weeklyChange: -0.4894187011624621,
+    ytdChange: -4.663456508465353
   },
   {
     variable: "BBB U.S. Corporate OAS",
-    latestLevel: 102,
-    weeklyChange: 3.030303030303033,
-    ytdChange: 0.990099009900991
+    latestLevel: 104,
+    weeklyChange: -2,
+    ytdChange: 2.970297029702973
   },
   {
     variable: "U.S. High Yield OAS",
-    latestLevel: 308,
-    weeklyChange: 5.119453924914672,
-    ytdChange: 9.608540925266905
+    latestLevel: 312,
+    weeklyChange: 0.6451612903225812,
+    ytdChange: 11.032028469750891
   },
   {
     variable: "Bitcoin (USD)",
-    latestLevel: 84218.2421875,
-    weeklyChange: 0.8570185026029313,
-    ytdChange: -3.7602902564294856
+    latestLevel: 83564.90625,
+    weeklyChange: -2.5897840243831802,
+    ytdChange: -4.506884573252877
   }
 ],
-  interpretation: `**This Week's Theme: "Tech Shines, But Borrowing Gets Pricier"**
+  interpretation: `**This Week's Theme: "A Tale of Two Markets: Stocks Creep Up, But Borrowing Costs Soar"**
 
-This week saw a mixed bag for investors. While tech stocks continued their winning streak, the cost of borrowing money went up, making things a bit more expensive for businesses and consumers alike.
+This week saw a mixed bag for investors. While the broader stock market, represented by the S&P 500, managed a small gain, the cost of borrowing money jumped significantly, creating a cautious mood. It's like seeing some of your favorite stores doing okay, but knowing that everything you buy on credit is getting more expensive.
 
-**The Good News:**
+**The Unusual Twist: Rising Borrowing Costs Despite Stable Stocks**
 
-*   **Tech's Strong Performance:** The Nasdaq Composite Index, which is heavily weighted with technology companies, jumped a solid +1.05% this week. This means that big tech companies are still seen as strong performers and are driving a lot of the positive momentum in the stock market. The broader S&P 500 Index also edged up +0.48%.
-*   **VIX is Calm:** The VIX Index (a measure of how much investors expect the stock market to jump around) actually fell -1.37%. This suggests that despite some underlying concerns, the overall mood in the market wasn't overly panicky.
+• **The 10-Year Treasury Yield shot up:** The U.S. 10-Year Treasury Yield, which is a key benchmark for how much it costs the government (and indirectly, everyone else) to borrow money over the long term, jumped a notable +0.57% this week to 5.31%. This means that investors are demanding a higher return for lending money to the government for ten years. In simple terms, it's getting more expensive to borrow for things like mortgages and business loans.
 
-**The Not-So-Good News:**
+• **Short-term borrowing also increased:** The 3-Month SOFR Rate, which reflects very short-term borrowing costs for banks, also climbed +0.52% to 3.9%. This means that even day-to-day borrowing for financial institutions is becoming pricier.
 
-*   **Higher Borrowing Costs:** The U.S. 10-Year Treasury Yield (which is a benchmark for many loan rates, like mortgages) rose by +1.35% to 5.24%. This means it's becoming more expensive for the government, and by extension, for businesses and people, to borrow money for longer periods.
-*   **Corporate Borrowing Gets More Expensive:** If you're a company, borrowing money also got pricier. The BBB U.S. Corporate OAS (a measure of how much extra interest a less-than-top-rated company has to pay compared to a super-safe government bond) increased by +3.03% to 102. Even riskier companies saw their borrowing costs jump, with the U.S. High Yield OAS rising +5.12% to 308. In simple terms, lenders are asking for more interest to lend money to companies, especially those considered less stable. This can impact company profits and future growth plans.
-*   **Oil Prices Dip:** Crude Oil (WTI) fell -1.35% to $91.3499984741211. A drop in oil prices can sometimes signal concerns about future economic demand, as less economic activity means less need for fuel.
+• **Why this is unusual:** Usually, when borrowing costs rise significantly, especially long-term ones, it can make investors nervous and often leads to stocks falling. This week, however, the S&P 500 still managed a +0.25% gain, which is a bit like seeing a car's engine warning light come on but the car still driving smoothly for a short while. It suggests underlying concerns that haven't fully hit the stock market yet.
 
-**Unusual Patterns and Their Meaning:**
+**What's Driving the Cost of Money Up?**
 
-*   **Stocks Up, Yields Up:** It's a bit unusual to see both stock markets (especially tech) performing well *and* long-term borrowing costs (the 10-Year Treasury Yield) rising significantly. Usually, when borrowing costs go up, it can put a damper on stock market enthusiasm because it makes it more expensive for companies to grow and for consumers to spend. This suggests investors are still very optimistic about the growth prospects of certain sectors, like technology`,
-  usNarrative: `Here's your weekly market analysis for the week ending September 30, 2026:
+• **The price of borrowing is climbing:** The U.S. 10-Year Treasury Yield's +0.57% jump to 5.31% was the biggest mover this week. This signals that lenders are asking for more interest, possibly because they expect inflation (the rising cost of goods and services) to stick around, or because the economy is stronger than expected, meaning the central bank might keep interest rates higher for longer. This means that future loans for homes, cars, and businesses will likely be more expensive.
 
-**1. What Happened This Week: Tech Stocks Lead the Charge, But Caution Remains**
+• **Banks are paying more too:** The 3-Month SOFR Rate increased by +0.52% to 3.9%. This shows that even the very short-term borrowing costs for banks are rising, which can ripple through the entire financial system and eventually impact consumers.
 
-This week saw the stock market continue its upward climb, especially in the technology sector, while a noticeable undercurrent of caution kept some investors on edge. Despite positive movements in stocks, signs elsewhere suggested that not everyone is fully convinced the good times will last.
+• **Corporate borrowing costs are mixed:** While the cost for solid, "BBB" rated companies (BBB U.S. Corporate OAS) actually dropped`,
+  usNarrative: `Here's your weekly market analysis for the week ending 2026-10-07.
 
-The Nasdaq Composite Index, which is heavily weighted with technology companies, led the way with a strong **+1.05%** gain this week, pushing its year-to-date (YTD) return to an impressive **+15.72%**. The broader S&P 500 Index also moved higher by **+0.48%**, bringing its YTD gain to **+11.95%**. This suggests investors are feeling good about growth-oriented companies. Bitcoin, often seen as a riskier asset, also saw a small gain of **+0.86%** this week, though it's still down **-3.76%** for the year.
+---
 
-**Unusual Pattern:** Normally, when stocks are doing well, "safe haven" assets like gold might fall because investors feel confident and don't need protection. However, this week, Gold also edged up by **+0.49%**. This is unusual because it suggests that while investors are buying stocks, they are also subtly hedging their bets, perhaps wanting a safety net in case things turn sour. It's like buying a new sports car (stocks) but also keeping your sturdy old sedan (gold) just in case.
+**1. What Happened This Week: A Mixed Bag for Investors**
+
+This week saw a bit of a tug-of-war in the markets. While the overall U.S. stock market, as measured by the S&P 500, nudged up a modest +0.25%, the tech-heavy Nasdaq Composite actually dipped slightly by -0.02%. This suggests that investors were selective, perhaps favoring broader companies over just the big tech names.
+
+The most unusual pattern this week was the simultaneous rise in U.S. government bond yields and a slight dip in gold. Normally, when bond yields rise significantly (meaning bonds are paying more interest), investors might sell off "safe haven" assets like gold because the bonds become more attractive. However, gold only fell -0.45%, which isn't a huge drop considering the U.S. 10-Year Treasury Yield jumped +0.57%. This could mean that while some investors are drawn to higher bond returns, there's still underlying caution, preventing a larger sell-off in gold.
 
 **2. What Caused These Moves**
 
-While no major economic events or news dominated the headlines this week, the market's movements reflect ongoing investor sentiment and reaction to broader trends.
-
-*   **Ongoing Tech Optimism:** The continued strong performance of the Nasdaq suggests that investors remain very optimistic about the future of technology and innovation. This sustained belief in tech companies is a major driver of the stock market's upward trend.
-*   **Rising Borrowing Costs for Companies:** We saw a notable increase in credit spreads this week. The BBB U.S. Corporate OAS (Option-Adjusted Spread), which is the extra interest that companies with decent but not top-notch credit ratings have to pay, went up by **+3.03%**. Even more dramatically, the U.S. High Yield OAS, which is the extra interest that riskier, "junk bond" companies pay, jumped by **+5.12%**.
-    *   **What happened:** Companies that borrow money are now paying a higher premium over safe government bonds.
-    *   **Why it matters:** Think of credit spreads like the interest rate premium risky borrowers pay. When these spreads go up, it means lenders (investors) are demanding more money to lend to companies, especially the riskier ones. This makes it more expensive for companies to borrow and grow, which can eventually slow down economic activity.
-    *   **Market reaction:** While stocks went up, the rise in credit spreads is a subtle warning sign. It shows that beneath the surface, there's growing caution about the financial health of some companies.
+*   **Rising Interest Rates (Again):** The U.S. 10-Year Treasury Yield, which is essentially the interest rate the U.S. government pays to borrow money for ten years, climbed by +0.57% this week, reaching 5.31%. This is a significant jump and suggests that the market believes interest rates will stay higher for longer. Why it matters: Higher bond yields make it more expensive for companies to borrow money for growth, and they can also make bonds look more attractive than stocks, potentially drawing money away from the stock market. For everyday investors, this can mean higher rates on mortgages, car loans, and even credit cards. The 3-Month SOFR Rate (a key short-term interest rate benchmark) also increased by +0.52%, reinforcing this trend.
 
 **3. How Are Investors Feeling?**
 
-Investors seem to be in a curious mood: optimistic about growth but with a noticeable undercurrent of caution. The VIX Index (a measure of market fear) edged down by **-1.37%** this week to **15.85**. A VIX below 15 suggests calm, 15-20 indicates caution, and above 20 means worry. So, at 15.85, investors are still in a "cautious" but not "worried" state.
+Investors are feeling a mix of cautious optimism this week. The VIX (a measure of market fear, often called the "fear gauge") actually decreased slightly by -1.10% to 15.35. Since a VIX below 15 suggests calm, this reading of 15.35 indicates investors are still relatively calm, though perhaps a touch cautious.
 
-The slight rise in gold, combined with the significant increase in credit spreads, tells us that while investors are happy to buy stocks, they are also demanding more for lending to companies and are perhaps seeking some safety. This is a market that's walking a tightrope between confidence and prudence.
+The slight increase in the S&P 500 suggests some confidence in the broader economy, but the dip in the Nasdaq and Bitcoin's continued decline (down -2.59% this week and -4.51% year-to-date) show that investors are shying away from more speculative or high-growth investments. The slight dip in gold also suggests some investors are chasing higher bond yields rather than solely seeking safety.
 
 **4. What Would a Pro Do With New Money?**
 
-If someone had new money to invest right now, a professional might suggest a balanced approach. Given the strong performance in tech and the broader market, it could be tempting to go "all-in" on growth stocks. However, the rising U.S. 10-Year Treasury Yield (up **+1.35%** this week) and the increasing corporate credit spreads are signals to be careful.
+If someone had new money to invest right now, a professional might suggest a balanced approach. Given the rising bond yields, locking in some of those higher rates with quality bonds could be a smart move, especially for the more conservative portion of a portfolio. For the stock portion, focusing on companies with solid earnings and less reliance on heavy borrowing might be prudent, rather than speculative high-growth tech stocks, given the Nasdaq's performance.
 
-*   **Smart move:** Consider diversifying beyond just high-flying tech. Perhaps look at companies that have solid earnings and are less sensitive to rising borrowing costs. Also, don't ignore bonds entirely; while the 10-year yield is high, it could offer a decent return for a portion of your portfolio.
-*   **Be careful about:** Over-concentrating in a few high-growth, potentially risky stocks, especially if they rely heavily on cheap borrowing. The rising cost of corporate debt could hit these companies harder. It's also wise to avoid companies with shaky financial foundations, as the market is clearly demanding a higher premium for lending to them.
+Investors should be careful about chasing past performance in highly speculative assets like Bitcoin, which continues to struggle this year. Also, with interest rates on the rise, companies with a lot of debt might face increasing pressure, so careful research is key.
 
 **5. What to Watch Next Week**
 
-Next week, investors will likely be looking for any new economic data that could shed light on inflation or the Federal Reserve's (the U.S. central bank) future interest rate plans.
+Next week, investors will likely be focused on any new statements from central banks regarding interest rates, as well as upcoming economic reports that could give clues about inflation and economic growth.
 
-*   **Important economic reports:** Keep an eye out for any inflation reports (like the Consumer Price Index or Producer Price Index) or updates on job numbers. Strong inflation could signal the Fed might keep interest rates higher for longer, while weaker job numbers could suggest an economic slowdown.
-*   **Best-case scenario:** Inflation cools down without a major hit to economic growth, allowing the stock market to continue its climb.
-*   **Worst-case scenario:** Inflation remains stubbornly high, forcing the Fed to signal even higher interest rates, which could dampen corporate profits and stock market enthusiasm.
+*   **Best-case scenario:** Inflation shows clear signs of cooling without a significant economic slowdown, and corporate earnings reports are strong, giving investors confidence to push stocks higher.
+*   **Worst-case scenario:** Inflation remains stubbornly high, prompting central banks to signal even higher interest rates, which could further dampen stock market enthusiasm and put pressure on company profits.
+*   Any new data on consumer spending or manufacturing will be closely watched, as these reports offer direct insights into the health of the economy.
 
 **6. What These Numbers Mean (Plain English Guide)**
 
-*   **S&P 500 Index:** Tracks 500 large U.S. companies; it's a good snapshot of the overall health of the U.S. stock market.
-*   **Nasdaq Composite Index:** Represents mostly technology and growth companies; it shows how these innovative sectors are performing.
-*   **VIX Index:** Often called the "fear gauge," it measures how much investors expect the stock market to jump around in the near future.
-*   **U.S. 10-Year Treasury Yield:** The interest rate the U.S. government pays to borrow money for 10 years; it influences mortgage rates and other loan costs.
-*   **3-Month SOFR Rate:** A key short-term interest rate that banks use to lend to each other; it reflects very short-term borrowing costs.
-*   **Gold (USD/oz):** A traditional "safe haven" asset that investors often buy when they are worried about economic uncertainty or inflation.
-*   **Crude Oil (WTI):** The price of a barrel of U.S. oil; it directly affects gas prices, manufacturing costs, and inflation.
-*   **USD/JPY and EUR/USD:** These show how many Japanese Yen or U.S. Dollars you get for one U.S. Dollar or Euro, respectively; they indicate the strength of one currency against another.
-*   **BBB U.S. Corporate OAS and U.S. High Yield OAS:** These are "spreads" or the extra interest that companies with different credit ratings have to pay to borrow money compared to super-safe government bonds.
-*   **Bitcoin (USD):** A digital currency that often acts as a speculative asset, meaning its price can be very volatile and is often seen as a barometer for investor appetite for risk.`,
-  globalEvents: `Here's a look at how world events impacted your money this past week:
+*   **S&P 500 Index:** Tracks 500 large U.S. companies and is a good snapshot of the overall U.S. stock market's health.
+*   **Nasdaq Composite Index:** Represents many technology and growth companies, showing how that specific sector is performing.
+*   **VIX Index:** Often called the "fear gauge," it measures how much investors expect the stock market to swing, indicating nervousness or calm.
+*   **U.S. 10-Year Treasury Yield:** The interest rate the U.S. government pays on its 10-year bonds, influencing other long-term interest rates like mortgages.
+*   **3-Month SOFR Rate:** A key short-term interest rate that influences things like adjustable-rate loans and savings account rates.
+*   **Gold (USD/oz):** A traditional "safe haven" asset that investors often buy when they are worried about the economy or inflation.
+*   **Crude Oil (WTI):** The price of oil, which directly impacts gasoline prices and the cost of transporting goods.
+*   **USD/JPY and EUR/USD:** These show how many Japanese Yen or U.S. Dollars you get for one U.S. Dollar or Euro, affecting import/export costs.
+*   **BBB U.S. Corporate OAS and U.S. High Yield OAS:** "OAS" stands for Option-Adjusted Spread, which is the extra interest (premium) that companies with different risk levels (BBB is investment grade, High Yield is "junk" bond) have to pay above a safe U.S. Treasury bond.
+*   **Bitcoin (USD):** A digital currency often seen as a speculative asset, reflecting investor appetite for riskier bets.`,
+  globalEvents: `Here's a look at how global events impacted your money this past week:
 
-**Middle East Tensions**
-- What happened: While specific new events weren't highlighted, ongoing tensions in the Middle East often create uncertainty.
-- Why Americans should care: This region is a major oil producer. Any instability can disrupt oil supplies, potentially leading to higher crude oil prices. Even though crude oil (WTI) actually went down this week by -1.35%, the underlying risk of higher prices remains. If oil prices rise, you might see higher gas prices at the pump, making your commute or grocery run more expensive.
-- Market reaction: Despite the tensions, crude oil actually fell -1.35% this week. Gold, often seen as a safe investment during uncertain times, rose +0.49%.
+**Middle East Tensions Ease Slightly**
+- What happened: There was a slight de-escalation in a regional conflict.
+- Why Americans should care: This often affects the price of oil. Less tension means less worry about oil supplies being disrupted, which can lead to lower gas prices at the pump.
+- Market reaction: Crude Oil (WTI) fell -0.98% this week. This is good news for your wallet as it can help keep down the cost of transportation and many goods.
 
-**Global Central Banks**
-- What happened: Other major countries' central banks made decisions about their interest rates, though specific actions weren't detailed.
-- Why Americans should care: When other big economies, like Europe or Japan, adjust their interest rates, it shows how they view global inflation and economic growth. If they keep rates high, it suggests inflation is a global worry, not just a U.S. problem. This can influence the Federal Reserve's decisions here at home about U.S. interest rates, which then affects your mortgage rates, credit card interest, and even how much your retirement savings grow.
-- Market reaction: The U.S. 10-Year Treasury Yield, a benchmark for long-term borrowing costs, rose +1.35%, indicating investors might expect slightly higher interest rates or inflation in the future.
+**European Central Bank Holds Rates**
+- What happened: Europe's central bank (like our Federal Reserve) decided to keep its key interest rate unchanged.
+- Why Americans should care: This signals that inflation is still a global concern. When other major economies keep rates high, it can influence what our own Federal Reserve might do. It also affects the strength of the dollar against other currencies.
+- Market reaction: The EUR/USD (the value of the euro compared to the dollar) fell -0.49%. A stronger dollar makes imported goods cheaper for Americans but can make our exports more expensive for other countries. The U.S. 10-Year Treasury Yield rose +0.57%, reflecting ongoing inflation worries.
 
-**China's Economy**
-- What happened: Reports on China's economic health, though not detailed, continue to be a focus.
-- Why Americans should care: China is a massive global manufacturer and consumer. If its economy slows down, it means less demand for products and services worldwide, including from American companies. This can hurt global growth and affect how much profit U.S. companies make, which in turn can impact your 401k or investment portfolio.
-- Market reaction: Despite global concerns, the U.S. stock market had a positive week. The S&P 500 Index, which tracks 500 large U.S. companies, rose +0.48%, and the tech-heavy Nasdaq Composite Index jumped +1.05%. This suggests U.S. investors remain somewhat optimistic.
-
-**Overall Market Picture:**
-Your retirement savings (like those in the S&P 500 and Nasdaq) generally saw a good week, rising +0.48% and +1.05% respectively. The VIX Index, a measure of market fear, actually fell -1.37%, suggesting investors felt a bit less anxious. However, the cost of borrowing for companies (BBB U.S. Corporate OAS and U.S. High Yield OAS) went up by +3.03% and +5.12%, meaning it's getting more expensive for businesses to borrow money.`,
+**China's Economic Slowdown**
+- What happened: Reports showed China's economy is growing slower than expected.
+- Why Americans should care: China is a huge buyer of goods from around the world. A slowdown there means less demand for products made in other countries, including the U.S. This can affect company profits and, in turn, your 401k or other investments.
+- Market reaction: The S&P 500 Index managed a small gain of +0.25%, while the Nasdaq Composite Index dipped -0.02%. A global slowdown can make investors more cautious, but the U.S. market showed some resilience.`,
   sources: [
     {
         category: "Equity & Volatility Data - Yahoo Finance",
@@ -173,20 +164,20 @@ Your retirement savings (like those in the S&P 500 and Nasdaq) generally saw a g
             "VIX Index (^VIX) - https://finance.yahoo.com/quote/^VIX",
             "S&P 500 Index (^GSPC) - https://finance.yahoo.com/quote/^GSPC",
             "Nasdaq Composite Index (^IXIC) - https://finance.yahoo.com/quote/^IXIC",
-            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
             "EUR/USD (EURUSD=X) - https://finance.yahoo.com/quote/EURUSD=X",
-            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
+            "Crude Oil (WTI) (CL=F) - https://finance.yahoo.com/quote/CL=F",
             "USD/JPY (USDJPY=X) - https://finance.yahoo.com/quote/USDJPY=X",
+            "Bitcoin (USD) (BTC-USD) - https://finance.yahoo.com/quote/BTC-USD",
             "Gold (USD/oz) (GC=F) - https://finance.yahoo.com/quote/GC=F"
         ]
     },
     {
         category: "Interest Rates & Credit Spreads - FRED (Federal Reserve Economic Data)",
         sources: [
-            "3-Month SOFR Rate (SOFR) - https://fred.stlouisfed.org/series/SOFR",
+            "U.S. High Yield OAS (BAMLH0A0HYM2) - https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
             "U.S. 10-Year Treasury Yield (DGS10) - https://fred.stlouisfed.org/series/DGS10",
             "BBB U.S. Corporate OAS (BAMLC0A4CBBB) - https://fred.stlouisfed.org/series/BAMLC0A4CBBB",
-            "U.S. High Yield OAS (BAMLH0A0HYM2) - https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+            "3-Month SOFR Rate (SOFR) - https://fred.stlouisfed.org/series/SOFR"
         ]
     },
     {
